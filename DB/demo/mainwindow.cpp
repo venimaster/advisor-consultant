@@ -2,7 +2,7 @@
 
 MainWindow::MainWindow()
 {
-     QTextCodec *codec = QTextCodec::codecForName("UTF8");
+     QTextCodec *codec = QTextCodec::codecForName("Windows-1251");
      QTextCodec::setCodecForTr(codec);
 
     // actionExit = new QAction(tr("В&ыход"), this);
@@ -10,13 +10,13 @@ MainWindow::MainWindow()
     // actionExit->setShortcut(tr("Ctrl+Q"));
     // connect(actionExit, SIGNAL(triggered()), qApp, SLOT(quit()));
 
-     actionAbout = new QAction(tr("About"), this);
-     actionAbout->setStatusTip(tr("Program info"));
+     actionAbout = new QAction(tr("О программе"), this);
+     actionAbout->setStatusTip(tr("Информация о программе"));
      connect(actionAbout, SIGNAL(triggered()), this, SLOT(slotAbout()));
 
   //   menuFile = menuBar()->addMenu(tr("&Файл"));
   //   menuFile->addAction(actionExit);
-     menuFile = menuBar()->addMenu(tr("Help"));
+     menuFile = menuBar()->addMenu(tr("Справка"));
      menuFile->addAction(actionAbout);
 
      labelMenu = new QLabel(statusBar());
@@ -32,8 +32,8 @@ MainWindow::MainWindow()
      tableWidget->setColumnWidth(0,200);
      tableWidget->setColumnWidth(1,200);
      //tableWidget->setColumnWidth(2,50);
-     tableWidget->setHorizontalHeaderItem(0, new QTableWidgetItem(tr("ID")));
-     tableWidget->setHorizontalHeaderItem(1, new QTableWidgetItem(tr("State")));
+     tableWidget->setHorizontalHeaderItem(0, new QTableWidgetItem(tr("Идентификатор")));
+     tableWidget->setHorizontalHeaderItem(1, new QTableWidgetItem(tr("Данные")));
     // tableWidget->setHorizontalHeaderItem(2, new QTableWidgetItem(tr("String")));
     // tableWidget->setHorizontalHeaderItem(3, new QTableWidgetItem(tr("Integer")));
      tableWidget->setShowGrid(true);
@@ -41,12 +41,12 @@ MainWindow::MainWindow()
      tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
      //tableWidget->setColumnHidden(0, true);
 
-     butAdd = new QPushButton(tr("Add"));
-     butAdd->setStatusTip(tr("Add data"));
+     butAdd = new QPushButton(tr("Добавить"));
+     butAdd->setStatusTip(tr("Добавить данные"));
      connect(butAdd, SIGNAL(clicked()), this, SLOT(slotAdd()));
 
-     butDelete = new QPushButton(tr("Delete"));
-     butDelete->setStatusTip(tr("Delete data"));
+     butDelete = new QPushButton(tr("Удалить"));
+     butDelete->setStatusTip(tr("Удалить данные"));
      connect(butDelete, SIGNAL(clicked()), this, SLOT(slotDelete()));
 
      lineEdit = new QLineEdit();
@@ -71,12 +71,12 @@ MainWindow::MainWindow()
 
      db.setUserName("root");
 
-    //db.setPassword("123");
+
 
 
      if (!db.open())
      {
-         QMessageBox::warning( 0 , "Ошибка!", db.lastError().databaseText());
+         QMessageBox::warning( 0 , tr("Ошибка!"), db.lastError().databaseText());
      }
 
      RefreshTable();
@@ -143,5 +143,5 @@ void MainWindow::slotDelete()
 
 void MainWindow::slotAbout()
 {
-     QMessageBox::about( 0 , tr("About"), tr("Info"));
+     QMessageBox::about( 0 , tr("О программе"), tr("Информация"));
 }
