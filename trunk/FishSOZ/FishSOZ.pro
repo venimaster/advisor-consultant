@@ -15,13 +15,17 @@ SOURCES += main.cpp\
     startwin.cpp \
     dialog.cpp \
     wizard.cpp \
-    mywizard.cpp
+    mywizard.cpp \
+    etap.cpp
 
 HEADERS  += mainwindow.h \
     startwin.h \
     dialog.h \
     wizard.h \
-    mywizard.h
+    mywizard.h \
+    etap.h
+
+
 
 
 
