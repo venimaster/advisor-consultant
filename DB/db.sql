@@ -1,1084 +1,3273 @@
-
-CREATE TABLE answer_variant_list
-(
-	a_v_id               TINYINT NOT NULL,
-	answer_variant_1     TEXT NOT NULL,
-	answer_variant_2     TEXT NOT NULL,
-	answer_variant_3     TEXT NOT NULL,
-	answer_variant_4     TEXT NOT NULL,
-	answer_variant_5     TEXT NOT NULL,
-	answer_variant_6     TEXT NOT NULL,
-	answer_variant_7     TEXT NOT NULL,
-	answer_variant_8     TEXT NOT NULL,
-	answer_variant_9     TEXT NOT NULL,
-	answer_variant_10    TEXT NOT NULL,
-	answer_variant_11    TEXT NOT NULL
-);
-
-
-
-ALTER TABLE answer_variant_list
-ADD PRIMARY KEY (a_v_id);
-
-
-
-CREATE TABLE c_s_answer
-(
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	c_s_id               TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE c_s_answer
-ADD PRIMARY KEY (u_id,c_s_id);
-
-
-
-CREATE TABLE creator_speculator
-(
-	c_s_id               TINYINT NOT NULL,
-	question             TEXT NOT NULL,
-	hemisphere           CHAR(1) NOT NULL,
-	a_v_id               TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE creator_speculator
-ADD PRIMARY KEY (c_s_id);
-
-
-
-CREATE TABLE f_f_answer
-(
-	answer               TEXT NOT NULL,
-	f_f_id               TINYINT NOT NULL,
-	u_id                 TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE f_f_answer
-ADD PRIMARY KEY (f_f_id,u_id);
-
-
-
-CREATE TABLE fielddependence_fieldindependence
-(
-	f_f_id               TINYINT NOT NULL,
-	right_answer         TEXT NOT NULL,
-	a_v_id               TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE fielddependence_fieldindependence
-ADD PRIMARY KEY (f_f_id);
-
-
-
-CREATE TABLE glossary
-(
-	g_id                 TINYINT NOT NULL,
-	termin               TEXT NOT NULL,
-	abbreviation         TEXT NOT NULL,
-	definition           TEXT NOT NULL
-);
-
-
-
-ALTER TABLE glossary
-ADD PRIMARY KEY (g_id);
-
-
-
-CREATE TABLE i_e_answer
-(
-	answer               TEXT NOT NULL,
-	i_e_id               TINYINT NOT NULL,
-	u_id                 TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE i_e_answer
-ADD PRIMARY KEY (i_e_id,u_id);
-
-
-
-CREATE TABLE i_k_i_answer
-(
-	answer               TEXT NOT NULL,
-	i_k_i_id             TINYINT NOT NULL,
-	u_id                 TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE i_k_i_answer
-ADD PRIMARY KEY (i_k_i_id,u_id);
-
-
-
-CREATE TABLE ideal_expert
-(
-	i_e_id               TINYINT NOT NULL,
-	question             TEXT NOT NULL,
-	weight               TINYINT NOT NULL,
-	a_v_id               TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE ideal_expert
-ADD PRIMARY KEY (i_e_id);
-
-
-
-CREATE TABLE ideal_knowledge_ingeneer
-(
-	i_k_i_id             TINYINT NOT NULL,
-	question             TEXT NOT NULL,
-	weight               TINYINT NOT NULL,
-	a_v_id               TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE ideal_knowledge_ingeneer
-ADD PRIMARY KEY (i_k_i_id);
-
-
-
-CREATE TABLE integ_m_answer
-(
-	answer               TEXT NOT NULL,
-	integ_m_id           TINYINT NOT NULL,
-	u_id                 TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE integ_m_answer
-ADD PRIMARY KEY (integ_m_id,u_id);
-
-
-
-CREATE TABLE integration_means
-(
-	integ_m_id           TINYINT NOT NULL,
-	integration_mean     TEXT NOT NULL
-);
-
-
-
-ALTER TABLE integration_means
-ADD PRIMARY KEY (integ_m_id);
-
-
-
-CREATE TABLE inter_m_answer
-(
-	answer               TEXT NOT NULL,
-	inter_m_id           TINYINT NOT NULL,
-	u_id                 TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE inter_m_answer
-ADD PRIMARY KEY (inter_m_id,u_id);
-
-
-
-CREATE TABLE interface_means
-(
-	inter_m_id           TINYINT NOT NULL,
-	interface_mean       TEXT NOT NULL
-);
-
-
-
-ALTER TABLE interface_means
-ADD PRIMARY KEY (inter_m_id);
-
-
-
-CREATE TABLE k_r_answer
-(
-	answer               TEXT NOT NULL,
-	k_r_id               TINYINT NOT NULL,
-	u_id                 TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE k_r_answer
-ADD PRIMARY KEY (k_r_id,u_id);
-
-
-
-CREATE TABLE knowledge_representation
-(
-	k_r_id               TINYINT NOT NULL,
-	knowledge_representation TEXT NOT NULL
-);
-
-
-
-ALTER TABLE knowledge_representation
-ADD PRIMARY KEY (k_r_id);
-
-
-
-CREATE TABLE m_c_answer
-(
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	m_c_id               TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE m_c_answer
-ADD PRIMARY KEY (u_id,m_c_id);
-
-
-
-CREATE TABLE manufacturing_company
-(
-	m_c_id               TINYINT NOT NULL,
-	company              TEXT NOT NULL
-);
-
-
-
-ALTER TABLE manufacturing_company
-ADD PRIMARY KEY (m_c_id);
-
-
-
-CREATE TABLE o_r_answer
-(
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	o_r_id               TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE o_r_answer
-ADD PRIMARY KEY (u_id,o_r_id);
-
-
-
-CREATE TABLE opportunity_research
-(
-	o_r_id               TINYINT NOT NULL,
-	measure              TEXT NOT NULL,
-	weight               TINYINT NOT NULL,
-	a_v_id               TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE opportunity_research
-ADD PRIMARY KEY (o_r_id);
-
-
-
-CREATE TABLE p_answer
-(
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	pl_id                TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE p_answer
-ADD PRIMARY KEY (u_id,pl_id);
-
-
-
-CREATE TABLE p_c_answer
-(
-	answer               TEXT NOT NULL,
-	p_c_id               TINYINT NOT NULL,
-	u_id                 TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE p_c_answer
-ADD PRIMARY KEY (p_c_id,u_id);
-
-
-
-CREATE TABLE p_r_answer
-(
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	p_r_id               TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE p_r_answer
-ADD PRIMARY KEY (u_id,p_r_id);
-
-
-
-CREATE TABLE platform
-(
-	pl_id                TINYINT NOT NULL,
-	platform_name        TEXT NOT NULL
-);
-
-
-
-ALTER TABLE platform
-ADD PRIMARY KEY (pl_id);
-
-
-
-CREATE TABLE producing_country
-(
-	p_c_id               TINYINT NOT NULL,
-	country              TEXT NOT NULL
-);
-
-
-
-ALTER TABLE producing_country
-ADD PRIMARY KEY (p_c_id);
-
-
-
-CREATE TABLE programming_language
-(
-	p_l_id               TINYINT NOT NULL,
-	language             TEXT NOT NULL
-);
-
-
-
-ALTER TABLE programming_language
-ADD PRIMARY KEY (p_l_id);
-
-
-
-CREATE TABLE project
-(
-	pr_id                TINYINT NOT NULL,
-	project_name         TEXT NOT NULL
-);
-
-
-
-ALTER TABLE project
-ADD PRIMARY KEY (pr_id);
-
-
-
-CREATE TABLE project_group
-(
-	u_id                 TINYINT NOT NULL,
-	pr_id                TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE project_group
-ADD PRIMARY KEY (u_id,pr_id);
-
-
-
-CREATE TABLE propriety_research
-(
-	p_r_id               TINYINT NOT NULL,
-	measure              TEXT NOT NULL,
-	weight               TINYINT NOT NULL,
-	a_v_id               TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE propriety_research
-ADD PRIMARY KEY (p_r_id);
-
-
-
-CREATE TABLE r_l_answer
-(
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	p_l_id               TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE r_l_answer
-ADD PRIMARY KEY (u_id,p_l_id);
-
-
-
-CREATE TABLE r_r_answer
-(
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	r_r_id               TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE r_r_answer
-ADD PRIMARY KEY (u_id,r_r_id);
-
-
-
-CREATE TABLE r_v_answer
-(
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	r_v_id               TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE r_v_answer
-ADD PRIMARY KEY (u_id,r_v_id);
-
-
-
-CREATE TABLE references_
-(
-	r_id                 TINYINT NOT NULL,
-	reference            TEXT NOT NULL
-);
-
-
-
-ALTER TABLE references_
-ADD PRIMARY KEY (r_id);
-
-
-
-CREATE TABLE relevance_research
-(
-	r_r_id               TINYINT NOT NULL,
-	measure              TEXT NOT NULL,
-	weight               TINYINT NOT NULL,
-	a_v_id               TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE relevance_research
-ADD PRIMARY KEY (r_r_id);
-
-
-
-CREATE TABLE rigidity_versatility
-(
-	r_v_id               TINYINT NOT NULL,
-	statement            TEXT NOT NULL,
-	right_answer         TEXT NOT NULL,
-	a_v_id               TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE rigidity_versatility
-ADD PRIMARY KEY (r_v_id);
-
-
-
-CREATE TABLE s_l_answer
-(
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	p_l_id               TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE s_l_answer
-ADD PRIMARY KEY (u_id,p_l_id);
-
-
-
-CREATE TABLE sol_answer
-(
-	answer               TEXT NOT NULL,
-	so_id                TINYINT NOT NULL,
-	u_id                 TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE sol_answer
-ADD PRIMARY KEY (so_id,u_id);
-
-
-
-CREATE TABLE solver
-(
-	so_id                TINYINT NOT NULL,
-	solver               TEXT NOT NULL
-);
-
-
-
-ALTER TABLE solver
-ADD PRIMARY KEY (so_id);
-
-
-
-CREATE TABLE sys_answer
-(
-	answer               TEXT NOT NULL,
-	sy_id                TINYINT NOT NULL,
-	u_id                 TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE sys_answer
-ADD PRIMARY KEY (sy_id,u_id);
-
-
-
-CREATE TABLE system
-(
-	sy_id                TINYINT NOT NULL,
-	system_name          TEXT NOT NULL
-);
-
-
-
-ALTER TABLE system
-ADD PRIMARY KEY (sy_id);
-
-
-
-CREATE TABLE system_integration_means
-(
-	integ_m_id           TINYINT NOT NULL,
-	sy_id                TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE system_integration_means
-ADD PRIMARY KEY (integ_m_id,sy_id);
-
-
-
-CREATE TABLE system_interface_means
-(
-	sy_id                TINYINT NOT NULL,
-	inter_m_id           TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE system_interface_means
-ADD PRIMARY KEY (sy_id,inter_m_id);
-
-
-
-CREATE TABLE system_knowledge_representation
-(
-	sy_id                TINYINT NOT NULL,
-	k_r_id               TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE system_knowledge_representation
-ADD PRIMARY KEY (sy_id,k_r_id);
-
-
-
-CREATE TABLE system_manufacturing_company
-(
-	m_c_id               TINYINT NOT NULL,
-	sy_id                TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE system_manufacturing_company
-ADD PRIMARY KEY (m_c_id,sy_id);
-
-
-
-CREATE TABLE system_platform
-(
-	pl_id                TINYINT NOT NULL,
-	sy_id                TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE system_platform
-ADD PRIMARY KEY (pl_id,sy_id);
-
-
-
-CREATE TABLE system_producing_country
-(
-	p_c_id               TINYINT NOT NULL,
-	sy_id                TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE system_producing_country
-ADD PRIMARY KEY (p_c_id,sy_id);
-
-
-
-CREATE TABLE system_realization_language
-(
-	p_l_id               TINYINT NOT NULL,
-	sy_id                TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE system_realization_language
-ADD PRIMARY KEY (p_l_id,sy_id);
-
-
-
-CREATE TABLE system_solver
-(
-	sy_id                TINYINT NOT NULL,
-	so_id                TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE system_solver
-ADD PRIMARY KEY (sy_id,so_id);
-
-
-
-CREATE TABLE system_supported_language
-(
-	p_l_id               TINYINT NOT NULL,
-	sy_id                TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE system_supported_language
-ADD PRIMARY KEY (p_l_id,sy_id);
-
-
-
-CREATE TABLE t_t_answer
-(
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	t_t_id               TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE t_t_answer
-ADD PRIMARY KEY (u_id,t_t_id);
-
-
-
-CREATE TABLE temperament_type
-(
-	t_t_id               TINYINT NOT NULL,
-	question             TEXT NOT NULL,
-	sincerity            TEXT NOT NULL,
-	instability          TEXT NOT NULL,
-	extraversion         TEXT NOT NULL,
-	a_v_id               TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE temperament_type
-ADD PRIMARY KEY (t_t_id);
-
-
-
-CREATE TABLE user
-(
-	u_id                 TINYINT NOT NULL,
-	password             TEXT NOT NULL,
-	name                 TEXT NOT NULL,
-	gender               TEXT NOT NULL,
-	age                  tinyint NULL,
-	u_g_id               TINYINT NOT NULL,
-	login                TEXT NOT NULL
-);
-
-
-
-ALTER TABLE user
-ADD PRIMARY KEY (u_id);
-
-
-
-CREATE TABLE user_group
-(
-	u_g_id               TINYINT NOT NULL,
-	group_name           TEXT NOT NULL
-);
-
-
-
-ALTER TABLE user_group
-ADD PRIMARY KEY (u_g_id);
-
-
-
-ALTER TABLE c_s_answer
-ADD FOREIGN KEY R_4 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE c_s_answer
-ADD FOREIGN KEY R_6 (c_s_id) REFERENCES creator_speculator (c_s_id);
-
-
-
-ALTER TABLE creator_speculator
-ADD FOREIGN KEY R_3 (a_v_id) REFERENCES answer_variant_list (a_v_id);
-
-
-
-ALTER TABLE f_f_answer
-ADD FOREIGN KEY R_15 (f_f_id) REFERENCES fielddependence_fieldindependence (f_f_id);
-
-
-
-ALTER TABLE f_f_answer
-ADD FOREIGN KEY R_16 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE fielddependence_fieldindependence
-ADD FOREIGN KEY R_9 (a_v_id) REFERENCES answer_variant_list (a_v_id);
-
-
-
-ALTER TABLE i_e_answer
-ADD FOREIGN KEY R_28 (i_e_id) REFERENCES ideal_expert (i_e_id);
-
-
-
-ALTER TABLE i_e_answer
-ADD FOREIGN KEY R_29 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE i_k_i_answer
-ADD FOREIGN KEY R_27 (i_k_i_id) REFERENCES ideal_knowledge_ingeneer (i_k_i_id);
-
-
-
-ALTER TABLE i_k_i_answer
-ADD FOREIGN KEY R_30 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE ideal_expert
-ADD FOREIGN KEY R_8 (a_v_id) REFERENCES answer_variant_list (a_v_id);
-
-
-
-ALTER TABLE ideal_knowledge_ingeneer
-ADD FOREIGN KEY R_7 (a_v_id) REFERENCES answer_variant_list (a_v_id);
-
-
-
-ALTER TABLE integ_m_answer
-ADD FOREIGN KEY R_64 (integ_m_id) REFERENCES integration_means (integ_m_id);
-
-
-
-ALTER TABLE integ_m_answer
-ADD FOREIGN KEY R_65 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE inter_m_answer
-ADD FOREIGN KEY R_66 (inter_m_id) REFERENCES interface_means (inter_m_id);
-
-
-
-ALTER TABLE inter_m_answer
-ADD FOREIGN KEY R_67 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE k_r_answer
-ADD FOREIGN KEY R_68 (k_r_id) REFERENCES knowledge_representation (k_r_id);
-
-
-
-ALTER TABLE k_r_answer
-ADD FOREIGN KEY R_69 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE m_c_answer
-ADD FOREIGN KEY R_56 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE m_c_answer
-ADD FOREIGN KEY R_57 (m_c_id) REFERENCES manufacturing_company (m_c_id);
-
-
-
-ALTER TABLE o_r_answer
-ADD FOREIGN KEY R_21 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE o_r_answer
-ADD FOREIGN KEY R_26 (o_r_id) REFERENCES opportunity_research (o_r_id);
-
-
-
-ALTER TABLE opportunity_research
-ADD FOREIGN KEY R_10 (a_v_id) REFERENCES answer_variant_list (a_v_id);
-
-
-
-ALTER TABLE p_answer
-ADD FOREIGN KEY R_58 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE p_answer
-ADD FOREIGN KEY R_59 (pl_id) REFERENCES platform (pl_id);
-
-
-
-ALTER TABLE p_c_answer
-ADD FOREIGN KEY R_54 (p_c_id) REFERENCES producing_country (p_c_id);
-
-
-
-ALTER TABLE p_c_answer
-ADD FOREIGN KEY R_55 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE p_r_answer
-ADD FOREIGN KEY R_22 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE p_r_answer
-ADD FOREIGN KEY R_25 (p_r_id) REFERENCES propriety_research (p_r_id);
-
-
-
-ALTER TABLE project_group
-ADD FOREIGN KEY R_74 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE project_group
-ADD FOREIGN KEY R_73 (pr_id) REFERENCES project (pr_id);
-
-
-
-ALTER TABLE propriety_research
-ADD FOREIGN KEY R_12 (a_v_id) REFERENCES answer_variant_list (a_v_id);
-
-
-
-ALTER TABLE r_l_answer
-ADD FOREIGN KEY R_60 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE r_l_answer
-ADD FOREIGN KEY R_61 (p_l_id) REFERENCES programming_language (p_l_id);
-
-
-
-ALTER TABLE r_r_answer
-ADD FOREIGN KEY R_23 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE r_r_answer
-ADD FOREIGN KEY R_24 (r_r_id) REFERENCES relevance_research (r_r_id);
-
-
-
-ALTER TABLE r_v_answer
-ADD FOREIGN KEY R_17 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE r_v_answer
-ADD FOREIGN KEY R_19 (r_v_id) REFERENCES rigidity_versatility (r_v_id);
-
-
-
-ALTER TABLE relevance_research
-ADD FOREIGN KEY R_11 (a_v_id) REFERENCES answer_variant_list (a_v_id);
-
-
-
-ALTER TABLE rigidity_versatility
-ADD FOREIGN KEY R_14 (a_v_id) REFERENCES answer_variant_list (a_v_id);
-
-
-
-ALTER TABLE s_l_answer
-ADD FOREIGN KEY R_62 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE s_l_answer
-ADD FOREIGN KEY R_63 (p_l_id) REFERENCES programming_language (p_l_id);
-
-
-
-ALTER TABLE sol_answer
-ADD FOREIGN KEY R_70 (so_id) REFERENCES solver (so_id);
-
-
-
-ALTER TABLE sol_answer
-ADD FOREIGN KEY R_71 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE sys_answer
-ADD FOREIGN KEY R_52 (sy_id) REFERENCES system (sy_id);
-
-
-
-ALTER TABLE sys_answer
-ADD FOREIGN KEY R_53 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE system_integration_means
-ADD FOREIGN KEY R_37 (integ_m_id) REFERENCES integration_means (integ_m_id);
-
-
-
-ALTER TABLE system_integration_means
-ADD FOREIGN KEY R_38 (sy_id) REFERENCES system (sy_id);
-
-
-
-ALTER TABLE system_interface_means
-ADD FOREIGN KEY R_39 (sy_id) REFERENCES system (sy_id);
-
-
-
-ALTER TABLE system_interface_means
-ADD FOREIGN KEY R_40 (inter_m_id) REFERENCES interface_means (inter_m_id);
-
-
-
-ALTER TABLE system_knowledge_representation
-ADD FOREIGN KEY R_32 (sy_id) REFERENCES system (sy_id);
-
-
-
-ALTER TABLE system_knowledge_representation
-ADD FOREIGN KEY R_33 (k_r_id) REFERENCES knowledge_representation (k_r_id);
-
-
-
-ALTER TABLE system_manufacturing_company
-ADD FOREIGN KEY R_41 (m_c_id) REFERENCES manufacturing_company (m_c_id);
-
-
-
-ALTER TABLE system_manufacturing_company
-ADD FOREIGN KEY R_42 (sy_id) REFERENCES system (sy_id);
-
-
-
-ALTER TABLE system_platform
-ADD FOREIGN KEY R_43 (pl_id) REFERENCES platform (pl_id);
-
-
-
-ALTER TABLE system_platform
-ADD FOREIGN KEY R_45 (sy_id) REFERENCES system (sy_id);
-
-
-
-ALTER TABLE system_producing_country
-ADD FOREIGN KEY R_46 (p_c_id) REFERENCES producing_country (p_c_id);
-
-
-
-ALTER TABLE system_producing_country
-ADD FOREIGN KEY R_47 (sy_id) REFERENCES system (sy_id);
-
-
-
-ALTER TABLE system_realization_language
-ADD FOREIGN KEY R_48 (p_l_id) REFERENCES programming_language (p_l_id);
-
-
-
-ALTER TABLE system_realization_language
-ADD FOREIGN KEY R_49 (sy_id) REFERENCES system (sy_id);
-
-
-
-ALTER TABLE system_solver
-ADD FOREIGN KEY R_34 (sy_id) REFERENCES system (sy_id);
-
-
-
-ALTER TABLE system_solver
-ADD FOREIGN KEY R_35 (so_id) REFERENCES solver (so_id);
-
-
-
-ALTER TABLE system_supported_language
-ADD FOREIGN KEY R_50 (p_l_id) REFERENCES programming_language (p_l_id);
-
-
-
-ALTER TABLE system_supported_language
-ADD FOREIGN KEY R_51 (sy_id) REFERENCES system (sy_id);
-
-
-
-ALTER TABLE t_t_answer
-ADD FOREIGN KEY R_18 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE t_t_answer
-ADD FOREIGN KEY R_20 (t_t_id) REFERENCES temperament_type (t_t_id);
-
-
-
-ALTER TABLE temperament_type
-ADD FOREIGN KEY R_13 (a_v_id) REFERENCES answer_variant_list (a_v_id);
-
-
-
-ALTER TABLE user
-ADD FOREIGN KEY R_72 (u_g_id) REFERENCES user_group (u_g_id);
-
-
+-- phpMyAdmin SQL Dump
+-- version 3.4.5
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Nov 28, 2011 at 07:52 PM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `db`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `answer_variant_list`
+--
+
+CREATE TABLE IF NOT EXISTS `answer_variant_list` (
+  `a_v_id` tinyint(4) NOT NULL,
+  `answer_variant_1` text NOT NULL,
+  `answer_variant_2` text NOT NULL,
+  `answer_variant_3` text NOT NULL,
+  `answer_variant_4` text NOT NULL,
+  `answer_variant_5` text NOT NULL,
+  `answer_variant_6` text NOT NULL,
+  `answer_variant_7` text NOT NULL,
+  `answer_variant_8` text NOT NULL,
+  `answer_variant_9` text NOT NULL,
+  `answer_variant_10` text NOT NULL,
+  `answer_variant_11` text NOT NULL,
+  PRIMARY KEY (`a_v_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `answer_variant_list`
+--
+
+INSERT INTO `answer_variant_list` (`a_v_id`, `answer_variant_1`, `answer_variant_2`, `answer_variant_3`, `answer_variant_4`, `answer_variant_5`, `answer_variant_6`, `answer_variant_7`, `answer_variant_8`, `answer_variant_9`, `answer_variant_10`, `answer_variant_11`) VALUES
+(1, 'Да', 'Нет', '', '', '', '', '', '', '', '', ''),
+(2, 'Да\r\n', 'Скорее да, чем нет', 'Не знаю', 'Скорее нет, чем да', 'Нет', '', '', '', '', '', ''),
+(3, 'Да', 'Скорее да, чем нет', 'Не уверен', 'Скорее нет, чем да', 'Нет', '', '', '', '', '', ''),
+(4, 'Всегда', 'Часто', 'Не всегда', 'Иногда', 'Редко', '', '', '', '', '', ''),
+(5, 'Всегда\r\n', 'Часто', 'Иногда', 'Редко', 'Никогда', '', '', '', '', '', ''),
+(6, 'Могу', 'Скорее да, чем нет', 'Затрудняюсь ответить', 'Скорее нет, чем да', 'Не могу', '', '', '', '', '', ''),
+(7, 'Да', 'Скорее да', 'Очень приблизительно', 'Скорее нет', 'Нет', '', '', '', '', '', ''),
+(8, 'Важна', 'Скорее важна, чем нет', 'Затрудняюсь ответить', 'Скорее не важна', 'Не важна', '', '', '', '', '', ''),
+(9, 'Не трудно', 'Скорее не трудно', 'Затрудняюсь ответить', 'Скорее трудно, чем нет', 'Трудно', '', '', '', '', '', ''),
+(10, 'Да', 'Скорее да, чем нет', 'Затрудняюсь ответить', 'Скорее нет, чем да', 'Нет', '', '', '', '', '', ''),
+(11, 'Да', 'Скорее да, чем нет', 'В отдельных случаях', 'Скорее нет, чем да', 'Нет', '', '', '', '', '', ''),
+(12, 'Да', 'Скорее да, чем нет', 'Не всегда', 'Скорее нет, чем да', 'Нет', '', '', '', '', '', ''),
+(13, 'Да', 'Скорее да, чем нет', 'Терплю', 'Скорее нет, чем да', 'Нет', '', '', '', '', '', ''),
+(14, 'Отталкиваюсь от них в ходе рассуждения\r\n', 'Учитываю в ходе рассуждения', 'Пренебрегаю ими', '', '', '', '', '', '', '', ''),
+(15, 'Всегда', 'Часто', 'Не знаю', 'Иногда', 'Никогда', '', '', '', '', '', ''),
+(16, 'На понимание задачи', 'Скорее на понимание, чем на решение', 'Затрудняюсь ответить', 'Скорее на решение, чем на понимание', 'На решение задачи', '', '', '', '', '', ''),
+(17, 'А', 'Б', 'В', 'Г', 'Д', '', '', '', '', '', ''),
+(18, '10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '0'),
+(19, 'Да', 'Скорее да, чем нет', 'Очень приблизительно', 'Скорее нет, чем да', 'Нет', '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `creator_speculator`
+--
+
+CREATE TABLE IF NOT EXISTS `creator_speculator` (
+  `c_s_id` tinyint(4) NOT NULL,
+  `question` text NOT NULL,
+  `hemisphere` char(1) NOT NULL,
+  `a_v_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`c_s_id`),
+  KEY `R_3` (`a_v_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `creator_speculator`
+--
+
+INSERT INTO `creator_speculator` (`c_s_id`, `question`, `hemisphere`, `a_v_id`) VALUES
+(1, 'У меня преобладает хорошее настроение.', 'Л', 18),
+(2, 'Я помню то, чему учился несколько лет назад.', 'Л', 18),
+(3, 'Прослушав раз-другой мелодию, я могу правильно воспроизвести ее.', 'П', 18),
+(4, 'Когда я слушаю рассказ, то представляю его в образах.', 'П', 18),
+(5, 'Я считаю, что эмоции в разговоре только мешают.', 'Л', 18),
+(6, 'Мне трудно дается алгебра.', 'П', 18),
+(7, 'Я легко запоминаю незнакомые лица.', 'П', 18),
+(8, 'В группе приятелей я первой начинаю разговор.', 'Л', 18),
+(9, 'Если обсуждают чьи-то идеи, то я требую аргументов.', 'Л', 18),
+(10, 'У меня преобладает плохое настроение.', 'П', 18);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `c_s_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `c_s_answer` (
+  `answer` text NOT NULL,
+  `u_id` tinyint(4) NOT NULL,
+  `c_s_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`u_id`,`c_s_id`),
+  KEY `R_6` (`c_s_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fielddependence_fieldindependence`
+--
+
+CREATE TABLE IF NOT EXISTS `fielddependence_fieldindependence` (
+  `f_f_id` tinyint(4) NOT NULL,
+  `right_answer` text NOT NULL,
+  `a_v_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`f_f_id`),
+  KEY `R_9` (`a_v_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `fielddependence_fieldindependence`
+--
+
+INSERT INTO `fielddependence_fieldindependence` (`f_f_id`, `right_answer`, `a_v_id`) VALUES
+(1, 'А', 17),
+(2, 'Б', 17),
+(3, 'В', 17),
+(4, 'Г', 17),
+(5, 'В', 17),
+(6, 'В', 17),
+(7, 'А', 17),
+(8, 'В', 17),
+(9, 'Д', 17),
+(10, 'Д', 17),
+(11, 'Б', 17),
+(12, 'А', 17),
+(13, 'А', 17),
+(14, 'В', 17),
+(15, 'Б', 17),
+(16, 'Д', 17),
+(17, 'А', 17),
+(18, 'А', 17),
+(19, 'Б', 17),
+(20, 'В', 17),
+(21, 'Г', 17),
+(22, 'Б', 17),
+(23, 'Г', 17),
+(24, 'А', 17),
+(25, 'Д', 17),
+(26, 'Б', 17),
+(27, 'А', 17),
+(28, 'Д', 17),
+(29, 'В', 17),
+(30, 'Б', 17);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `f_f_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `f_f_answer` (
+  `answer` text NOT NULL,
+  `f_f_id` tinyint(4) NOT NULL,
+  `u_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`f_f_id`,`u_id`),
+  KEY `R_16` (`u_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `glossary`
+--
+
+CREATE TABLE IF NOT EXISTS `glossary` (
+  `g_id` tinyint(4) NOT NULL,
+  `termin` text NOT NULL,
+  `abbreviation` text NOT NULL,
+  `definition` text NOT NULL,
+  PRIMARY KEY (`g_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `glossary`
+--
+
+INSERT INTO `glossary` (`g_id`, `termin`, `abbreviation`, `definition`) VALUES
+(1, 'Искусственный интеллект', 'ИИ', 'направление науки и техники, ориентированное на создание программно-аппаратных средств решения интеллектуальных задач'),
+(2, 'Эвристика', '', 'теоретически не обоснованное правило.'),
+(3, 'Предметная область', '', 'специальным образом выделенная и описанная область человеческой деятельности (множество сущностей, описывающих область экспертизы).'),
+(4, 'Область экспертизы', '', 'см. Предметная область.'),
+(5, 'Проблемная область', 'ПрО', 'совокупность предметной области и решаемых на ней задач.'),
+(6, 'Проблемная среда', '', 'см. Проблемная область.'),
+(7, 'Понятийная структура', '', 'совокупность понятий предметной области плюс способы рассуждений на понятиях, связанные с решением конкретных задач.'),
+(8, 'Концептуализация', '', 'способы переноса понятийной структуры в компьютер.'),
+(9, 'База знаний', '', 'модель проблемной области, описанная на языке сверхвысокого уровня.'),
+(10, 'Онтология', '', 'упорядоченная тройка вида: O = <A, B, C>, где A – конечное множество концептов (понятий, терминов) предметной области, которую представляет онтология O; B – конечное множество отношений между концептами заданной предметной области; C – конечное множество функций интерпретации (аксиоматизация), заданных на A и B.'),
+(11, 'Специализированные интеллектуальные системы', '', 'системы, выполняющие решение фиксированного набора задач, предопределенного при проектировании конкретной системы.'),
+(12, 'Прикладные интеллектуальные системы', '', 'см. Специализированные интеллектуальные системы.'),
+(13, 'Интеллектуальные системы общего назначения', '', 'системы, которые не только используют заданные процедуры, но на основе метапроцедур поиска интерпретируют и исполняют процедуры новых конкретных задач.'),
+(14, 'Интеллектуальная система', 'ИнСист', 'система, ядром которой является база знаний.'),
+(15, 'Неформализованные задачи', 'НФ-задачи', 'задачи, обладающие одной или несколькими из следующих характеристик: они не могут быть заданы в числовой форме; цели не могут быть выражены в терминах точно определенной целевой функции; не существует алгоритмического решения задач; алгоритмическое решение существует, но его нельзя использовать из-за ограниченности ресурсов (время, память и т.п.).'),
+(16, 'Пользователь', '', 'лицо, для которого предназначена система.'),
+(17, 'Конечный пользователь', '', 'см. Пользователь.'),
+(18, 'Инженер по знаниям', '', 'специалист в области искусственного интеллекта, выступающий в роли связующего звена между источником знаний и ИнСист.'),
+(19, 'Когнитолог', '', 'см. Инженер по знаниям.'),
+(20, 'Инженер-интерпретатор', '', 'см. Инженер по знаниям.'),
+(21, 'Эксперт', '', 'высококвалифицированный специалист, согласившийся поделиться своим опытом решения конкретного класса задач в конкретной предметной/проблемной области.'),
+(22, 'Интерфейс пользователя', '', 'комплекс программ, реализующих общение пользователя с ИнСист на всех стадиях функционирования системы.'),
+(23, 'Среда общения пользователя', '', 'см. Интерфейс пользователя.'),
+(24, 'База знаний', 'БЗ', 'ядро ИнСист, т.е. совокупность знаний проблемной/предметной области, записанная на машинный носитель на языке представления знаний.'),
+(25, 'Решатель', '', 'программа, моделирующая ход рассуждений эксперта на основе знаний, имеющихся в БЗ.'),
+(26, 'Средство вывода', '', 'см. Решатель.'),
+(27, 'Машина логического вывода', '', 'см. Решатель.'),
+(28, 'Дедуктивная машина', '', 'см. Решатель.'),
+(29, 'Интерпретатор', '', 'см. Решатель.'),
+(30, 'Подсистема объяснений', '', 'программа, позволяющая пользователю получить ответы на вопросы, как было получено то или иное решение и почему.'),
+(31, 'Технология ИнСист', '', 'технология создания на основе знаний экспертов (или других источников) систем, решающих НФ-задачи в слабоструктурированных предметных областях.'),
+(32, 'Хорошо структурированная область', '', 'обладает устоявшейся терминологией, четкой аксиоматизацией, широким использованием математического аппарата.'),
+(33, 'Средне структурированная область', '', 'это область с развивающейся теорией, определяющейся терминологией, явными взаимосвязями между явлениями.'),
+(34, 'Слабо структурированная область', '', 'обладает богатой эмпирикой, размытой терминологией, явными взаимосвязями, большим количеством «белых пятен».'),
+(35, 'Простое понятие', '', 'это тройка вида: <N, I, E>, где N – имя понятия (любой идентификатор); I – интенсионал понятия (множество атрибутов, т.е. свойств понятия, с областями их определения); E – экстенсионал понятия (множество кортежей значений, удовлетворяющих интенсионалу).'),
+(36, 'Атрибуты', '', 'первичные характеристики предметной области, не подлежащие дальнейшей конкретизации.'),
+(37, 'Сложное понятие', '', 'понятие, образованное из ранее определенных простых понятий путем применения некоторых правил.'),
+(38, 'Дедуктивный способ рассуждений', '', 'способ получения достоверных знаний на основе перехода от знаний большей общности к знаниям меньшей общности, а также установление достоверности частных случаев на основании общих утверждений.'),
+(39, 'Индуктивный способ рассуждений', '', 'способ получения правдоподобных знаний на основе перехода от знаний меньшей общности к знаниям большей общности, а также установление правдоподобности общих случаев на основании частных.'),
+(40, 'Способ суждений по аналогии', '', 'предполагает получение правдоподобных знаний о свойствах некоторых элементов предметной области на основании их сходства с другими элементами.'),
+(41, 'Способ рассуждений посредством выдвижения гипотез', '', 'способ получения правдоподобных знаний о существовании событий, связанных с данным событием некоторым отношением, с последующим обоснованием или опровержением гипотез.'),
+(42, 'Лингвистическая переменная', '', 'переменная, значение которой определяется набором вербальных (т.е. словесных) характеристик некоторого свойства.'),
+(43, 'Продукционная модель', '', 'модель, основанная на правилах, позволяет представить знания в виде предложений типа: ЕСЛИ {<условие>} ТО {<действие>} [ИНАЧЕ {<действие>}], где условие – это образец для поискав БЗ; действие – действия или операторы, выполняемые при успешном исходе поиска.'),
+(44, 'Семантическая сеть', '', 'ориентированный граф с помеченными вершинами (понятиями) и дугами (отношениями между понятиями).'),
+(45, 'Фрейм', '', 'абстрактный образ или ситуация, для отображения которых используется отображение в виде сети. «Верхние уровни» этой сети зафиксированы и представляют сущности, всегда истинные в ситуации, описанной данным фреймом, а «нижние уровни» заканчиваются слотами, заполняемыми конкретной информацией при вызове фрейма.'),
+(46, 'Объектно-ориентированная модель представления знаний', '', 'знания представляются в виде классов объектов, имеющих определенные атрибуты.'),
+(47, 'Рабочая память', '', 'база исходных фактов (данных).'),
+(48, 'Прямой вывод', '', 'по известным фактам отыскивается заключение, которое из этих фактов следует, и если такое заключение удается найти, то оно заносится в рабочую память.'),
+(49, 'Обратный вывод', '', 'вначале выдвигается некоторая гипотеза (цель) о конечном суждении, а затем механизм вывода осуществляет поиск в рабочей памяти таких фактов, которые могли бы подтвердить или опровергнуть выдвинутую гипотезу.'),
+(50, 'Неоднородная сеть', '', 'сеть с различными типами вершин и различными типами помеченных дуг.'),
+(51, 'Семантическая валентность', '', 'бинарная связь между предикатом и каждым его актантом, т.е. участником ситуации, являющаяся лингвистическим отношением.'),
+(52, 'Глубинный падеж', '', 'то же что и Семантическая валентность для английского языка.'),
+(53, 'Инженерия знаний', '', 'наука ИИ, занимающаяся проблемами получения, структурирования и представления знаний.'),
+(54, 'Извлечение знаний', '', 'если при разработке СОЗ (ЭС) процесс получения знаний осуществлялся путем прямого контакта инженера по знаниям с любым источником знаний (эксперт, тексты или другие источники) без использования специальных средств программной поддержки, то уместно говорить об извлечении (выявлении) знаний.'),
+(55, 'Выявление знаний', '', 'см. Извлечение знаний.'),
+(56, 'Приобретение знаний', '', 'если при разработке СОЗ (ЭС) процесс получения знаний осуществляется автоматизированным путем с использованием специальных инструментов, то уместно говорить о приобретении знаний.'),
+(57, 'Формирование знаний', '', 'если процесс получения знаний осуществляется путем анализа данных и выявления скрытых закономерностей в них с использованием специального математического аппарата и инструментальных средств, то уместно говорить о формировании знаний.'),
+(58, 'Недостоверные знания', '', 'знания, содержащие НЕ-факторы, проявляющиеся эксплицитно в рассуждениях эксперта.'),
+(59, 'Эксплицитно', '', 'явно.'),
+(60, 'Недоопределенность', '', 'степень неуверенности, которую эксперт приписывает своим высказываниям, т.е. некоторый субъективный коэффициент неполной уверенности в "высказывании x принадлежит F", который в зависимости от метода, используемого для обработки этого коэффициента, может иметь вид и интервала уверенности.'),
+(61, 'Нечеткость', '', 'свойство количественной оценки экспертом качественных понятий и отношений, которые он использует в своих рассуждениях, когда по количественной оценке элемента x невозможно однозначно сказать, принадлежит ли он множеству F или нет.'),
+(62, 'Неточность', '', 'проявляется тогда, когда значение x известно с точностью до некоторого множества X, имеющего непустое пересечение с множеством F.'),
+(63, 'Неполнота', '', 'неизвестен либо элемент x, либо множество F.'),
+(64, 'Недоопределенность общих знаний', '', 'частичное отсутствие знаний о предметной/проблемной области в целом.'),
+(65, 'Недоопределенность конкретных знаний', '', 'частичное отсутствие знаний об отдельных понятиях и отношениях проблемной/предметной области.'),
+(66, 'Интегрированная экспертная система', 'ИЭС', 'программная система, в архитектуре которой наряду с программным компонентом СОЗ (ЭС), применяющим для решения НФ-задач методологию продукционных СОЗ (ЭС), содержатся компоненты некоторой программной среды, обеспечивающей поддержку решения формализованной составляющей решаемой задачи, расширяющие функциональные возможности системы до решения комбинированных задач, включающих в себя наряду с НФ-задачами и формализованные задачи.'),
+(67, 'Статическая ИЭС', '', 'ИЭС, функционирующая в статической ПрО (т.е. использующая статическое представление предметной области и решающая статические задачи).'),
+(68, 'Динамическая ИЭС', '', 'ИЭС, функционирующая в динамической ПрО (т.е. использующая динамическое представление предметной области и решающая динамические задачи).'),
+(69, 'Поверхностная интеграция', '', 'интеграция, достигаемая с помощью любого способа обмена информацией между компонентами СОЗ (ЭС) и некоторой программной среды, обеспечивающей поддержку решения формализованной составляющей решаемой задачи в ИЭС.'),
+(70, 'Глубинная интеграция', '', 'интеграция, связанная с модификацией любого из компонентов в ИЭС путем включения в него функций другого (других) компонента(ов).'),
+(71, 'Полная интеграция', '', 'интеграция, связанная с селекцией и последующим соединением в ИЭС лучших функций и механизмов компонентов СОЗ (ЭС) и некоторой программной среды, обеспечивающей поддержку решения формализованной составляющей решаемой задачи.'),
+(72, 'Знания', '', 'закономерности предметной области (принципы, связи, законы), полученные в результате практической деятельности и профессионального опыта, позволяющие специалистам ставить и решать задачи в данной области.'),
+(73, 'Система, основанная на знаниях (экспертная система)', 'СОЗ (ЭС)', 'компьютерная программа, в которую перенесены знания из различных источников знаний.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ideal_expert`
+--
+
+CREATE TABLE IF NOT EXISTS `ideal_expert` (
+  `i_e_id` tinyint(4) NOT NULL,
+  `question` text NOT NULL,
+  `weight` tinyint(4) NOT NULL,
+  `a_v_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`i_e_id`),
+  KEY `R_8` (`a_v_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `ideal_expert`
+--
+
+INSERT INTO `ideal_expert` (`i_e_id`, `question`, `weight`, `a_v_id`) VALUES
+(1, 'Четко ли Вы осознает границы своих познаний?\r\n', 1, 3),
+(2, 'Всегда ли Вы можете ответить на поставленный вопрос, если вопрос поставлен в этих границах?\r\n', 2, 4),
+(3, 'Как часто Вы ошибаетесь?', 1, 5),
+(4, 'Можете ли Вы оценить значение некоторого параметра, неподдающегося прямому измерению?', 7, 6),
+(5, 'Обладаете ли Вы некоторой моделью предметной области?', 5, 7),
+(6, 'Всегда ли Вы можете объяснить причины и/или мотивы своих решений, ответов, рекомендаций?', 7, 4),
+(7, 'Важна ли для Вас степень детализации?', 9, 8),
+(8, 'Трудно ли для Вас сравнивать несколько ситуаций (вариантов, альтернатив и т.д.), находить в них различия и отличать, принципиальны ли они и к чему приводят?', 8, 9),
+(9, 'Способны ли Вы учесть одновременное воздействие нескольких независимых или взаимозависимых факторов, параметров, критериев и т.д?', 9, 10),
+(10, 'Можете ли Вы о себе сказать, что Вы рациональны и последовательны в своих предпочтениях?', 2, 10),
+(11, 'Важна ли для Вас форма и последовательность задаваемых вопросов?', 8, 11),
+(12, 'Вы всегда искренни в Ваших ответах?', 1, 11),
+(13, 'Вы беспристрастный человек?', 1, 12),
+(14, 'Вам удобно работать в группе?', 8, 13),
+(15, 'Затрудняют ли Вас противоречия в эмпирических знаниях о Вашей предметной / проблемной области?', 6, 13),
+(16, 'Как Вы решаете проблему сужения, пересечения  границ проблемной области?', 9, 14),
+(17, 'Важны ли для Вас такие оттенки, как:\r\n«Вы знаете, что …»\r\n«Вы думаете, что …»\r\n«Вы хотите, что …»\r\n«Вы считаете, что …» и т.д.?', 8, 2),
+(18, 'Всегда ли Вы в ходе беседы стремитесь за частным увидеть обобщенное, т.е. цепочки вида: факт – обобщенный факт и т.д.?', 6, 15),
+(19, 'На что Вы тратите большую часть времени: на понимание или на решение задачи?', 9, 16),
+(20, 'Важно ли для Вас понимание динамики Вашей предметной области?', 7, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ideal_knowledge_ingeneer`
+--
+
+CREATE TABLE IF NOT EXISTS `ideal_knowledge_ingeneer` (
+  `i_k_i_id` tinyint(4) NOT NULL,
+  `question` text NOT NULL,
+  `weight` tinyint(4) NOT NULL,
+  `a_v_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`i_k_i_id`),
+  KEY `R_7` (`a_v_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `ideal_knowledge_ingeneer`
+--
+
+INSERT INTO `ideal_knowledge_ingeneer` (`i_k_i_id`, `question`, `weight`, `a_v_id`) VALUES
+(1, 'Знакомы ли Вы с методами реферирования и анкетирования текста?', 1, 19),
+(2, 'Владеете ли Вы навыками быстрого чтения?', 1, 3),
+(3, 'Знаете ли Вы текстологические методы извлечения знаний?', 2, 19),
+(4, 'Знакомы ли Вы с моделями и методами представления знаний в интеллектуальных системах?', 3, 19),
+(5, 'Знакомы ли Вы с методами обработки знаний в интеллектуальных системах?', 3, 19),
+(6, 'Знакомы ли Вы с основами системного анализа?', 3, 19),
+(7, 'Известны ли Вам методы получения знаний?', 2, 19),
+(8, 'Владеете ли Вы со следующими методами структурирования информации:\r\n1. Многомерное шкалирование;\r\n2. Кластерный анализ;\r\n3. Факторный анализ;\r\n4. Иерархическая кластеризация;\r\n5. Построение взвешенных ситуаций;\r\n6. Ранжирование деревьев выбора;\r\n7. Анализ репертуарных решеток?\r\n(напротив каждого метода отметить степень владения им)', 1, 19),
+(9, 'Владеете ли Вы методологиями разработки интеллектуальных систем?', 5, 19),
+(10, 'Знакомы ли Вам инструментальные средства построения интеллектуальных систем?', 4, 19),
+(11, 'Владеете ли Вы практическими навыками работы на ЭВМ одним ил несколькими языками программирования?', 2, 19),
+(12, 'Известны ли Вам способы репрезентации понятий и процессов в памяти человека?', 2, 19),
+(13, 'Известны ли Вам основные механизмы мышления:\r\n1. Логические;\r\n2. Ассоциативные?\r\n(напротив каждого механизма отметить, на сколько хорошо Вы с ним знакомы)\r\n', 2, 19),
+(14, 'Известны ли Вам способы оптимизации мышления:\r\n1. Мозговой штурм;\r\n2. Ролевые игры?\r\n(напротив каждого способа отметить, на сколько хорошо Вы с ним знакомы)\r\n', 3, 19),
+(15, 'Всегда ли Вы выглядите здоровым и бодрым при общении с экспертом?', 1, 12),
+(16, 'Всегда ли Вы ведете себя спокойно и уверенно при работе с экспертом?', 1, 12),
+(17, 'Проявляете ли Вы доброжелательность и интерес к собеседнику?', 2, 12),
+(18, 'Считаете ли Вы знания эксперта полными?', 5, 12);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `integration_means`
+--
+
+CREATE TABLE IF NOT EXISTS `integration_means` (
+  `integ_m_id` tinyint(4) NOT NULL,
+  `integration_mean` text NOT NULL,
+  PRIMARY KEY (`integ_m_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `integration_means`
+--
+
+INSERT INTO `integration_means` (`integ_m_id`, `integration_mean`) VALUES
+(1, 'доступ к базе данных'),
+(2, 'вызов внешних функций'),
+(3, 'доступ к оборудованию'),
+(4, 'связь с другими языками');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `integ_m_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `integ_m_answer` (
+  `answer` text NOT NULL,
+  `integ_m_id` tinyint(4) NOT NULL,
+  `u_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`integ_m_id`,`u_id`),
+  KEY `R_65` (`u_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `interface_means`
+--
+
+CREATE TABLE IF NOT EXISTS `interface_means` (
+  `inter_m_id` tinyint(4) NOT NULL,
+  `interface_mean` text NOT NULL,
+  PRIMARY KEY (`inter_m_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `interface_means`
+--
+
+INSERT INTO `interface_means` (`inter_m_id`, `interface_mean`) VALUES
+(1, 'отладочные возможности'),
+(2, 'поддержка меню'),
+(3, 'оконные средства'),
+(4, 'интерактивная графика'),
+(5, 'цветовая гамма'),
+(6, 'оперативная подсказка'),
+(7, 'объяснение ПОЧЕМУ'),
+(8, 'объяснение КАК'),
+(9, 'объяснение ЧТО ЕСЛИ'),
+(10, 'сохранение случаев');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inter_m_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `inter_m_answer` (
+  `answer` text NOT NULL,
+  `inter_m_id` tinyint(4) NOT NULL,
+  `u_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`inter_m_id`,`u_id`),
+  KEY `R_67` (`u_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `i_e_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `i_e_answer` (
+  `answer` text NOT NULL,
+  `i_e_id` tinyint(4) NOT NULL,
+  `u_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`i_e_id`,`u_id`),
+  KEY `R_29` (`u_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `i_k_i_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `i_k_i_answer` (
+  `answer` text NOT NULL,
+  `i_k_i_id` tinyint(4) NOT NULL,
+  `u_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`i_k_i_id`,`u_id`),
+  KEY `R_30` (`u_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `knowledge_representation`
+--
+
+CREATE TABLE IF NOT EXISTS `knowledge_representation` (
+  `k_r_id` tinyint(4) NOT NULL,
+  `knowledge_representation` text NOT NULL,
+  PRIMARY KEY (`k_r_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `knowledge_representation`
+--
+
+INSERT INTO `knowledge_representation` (`k_r_id`, `knowledge_representation`) VALUES
+(1, 'примеры'),
+(2, 'объекты'),
+(3, 'логические модели'),
+(4, 'продукционные правила'),
+(5, 'фреймы');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `k_r_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `k_r_answer` (
+  `answer` text NOT NULL,
+  `k_r_id` tinyint(4) NOT NULL,
+  `u_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`k_r_id`,`u_id`),
+  KEY `R_69` (`u_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `manufacturing_company`
+--
+
+CREATE TABLE IF NOT EXISTS `manufacturing_company` (
+  `m_c_id` tinyint(4) NOT NULL,
+  `company` text NOT NULL,
+  PRIMARY KEY (`m_c_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `manufacturing_company`
+--
+
+INSERT INTO `manufacturing_company` (`m_c_id`, `company`) VALUES
+(1, 'AlCorp'),
+(2, 'Gold Hill Computers'),
+(3, 'LITHP Systems BV'),
+(4, 'Aion Corp.'),
+(5, 'Olivetti Al Center'),
+(6, 'Harris & Hall Associates'),
+(7, 'Logic Programming'),
+(8, 'Arity Corp.'),
+(9, 'Inference Corp.'),
+(10, 'London School Economics'),
+(11, 'Intelligence Ware Inc.'),
+(12, 'VRS Software Ltd.'),
+(13, 'Cambridge Consultants'),
+(14, 'Texpert Systems Inc.'),
+(15, 'Britham Young Unv.'),
+(16, 'Peridom Inc.'),
+(17, 'Cognitech'),
+(18, 'Teknowledge'),
+(19, 'Intelligent Environ. Inc.'),
+(20, 'Software Plus'),
+(21, 'Smart Systems Tech'),
+(22, 'Systems Designers'),
+(23, 'EPITEC'),
+(24, 'IBM Corp.'),
+(25, 'AT&T Bell Lab.'),
+(26, 'Lightware'),
+(27, 'Expert Systems Int.'),
+(28, 'NEC Corp.'),
+(29, 'Intelligent Termin.'),
+(30, 'Expert Telligence'),
+(31, 'Exsys Inc.'),
+(32, 'NOVOCAST AB'),
+(33, 'Kemp-Carraway Heart'),
+(34, 'Generic Software'),
+(35, 'Georgia Tech Res'),
+(36, 'Micro Data Base Sys Inc.'),
+(37, 'Xerox Special Info.'),
+(38, 'ICL'),
+(39, 'Level Five Research'),
+(40, 'Human Intellect Corp.'),
+(41, 'KDS Corp.'),
+(42, 'Intellicorp'),
+(43, 'Software A&E'),
+(44, 'Technology Applic.'),
+(45, 'Brainware Applic.'),
+(46, 'Carnegie Group Inc.'),
+(47, 'Perceptics Corp.'),
+(48, 'Knowledge Garden'),
+(49, 'Intelligent Machine'),
+(50, 'Creative Logic Ltd.'),
+(51, 'Cognition Technology'),
+(52, 'Stone & Webster'),
+(53, 'Machine Intelligence'),
+(54, 'CRIL'),
+(55, 'Neuron Data'),
+(56, 'Mind Soft'),
+(57, 'Texas Instruments'),
+(58, 'Titan Systems Inc.'),
+(59, 'Radian Corp.'),
+(60, 'Intelligent Systems'),
+(61, 'Bynas Div.'),
+(62, 'UNY Co.'),
+(63, 'INRIA'),
+(64, 'General Research Corp.'),
+(65, 'Dynamic Master Sys.'),
+(66, 'Berkshire Software Co.'),
+(67, 'Nixdorf Computer AG'),
+(68, 'Paperback Software'),
+(69, 'Software Intelligence Lab.'),
+(70, 'Expertech'),
+(71, 'Attar Software'),
+(72, 'California Intelligence');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `m_c_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `m_c_answer` (
+  `answer` text NOT NULL,
+  `u_id` tinyint(4) NOT NULL,
+  `m_c_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`u_id`,`m_c_id`),
+  KEY `R_57` (`m_c_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `opportunity_research`
+--
+
+CREATE TABLE IF NOT EXISTS `opportunity_research` (
+  `o_r_id` tinyint(4) NOT NULL,
+  `measure` text NOT NULL,
+  `weight` tinyint(4) NOT NULL,
+  `a_v_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`o_r_id`),
+  KEY `R_10` (`a_v_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `opportunity_research`
+--
+
+INSERT INTO `opportunity_research` (`o_r_id`, `measure`, `weight`, `a_v_id`) VALUES
+(1, 'Задача не имеет общедоступных знаний, «здравого смысла» (т.е. опыта в решении задач, который пока не выделен).', 6, 2),
+(2, 'Задача требует только интеллектуальных навыков (решение задачи требует рассуждений, а не действий).', 5, 2),
+(3, 'Эксперты могут описывать (вербализовать) применяемые ими методы работы и объяснить их.', 9, 2),
+(4, 'В природе существуют люди – признанные специалисты по решению задач такого рода.', 9, 2),
+(5, 'Эксперты единодушны в применяемых ими решениях (сходятся в оценке предлагаемого решения).', 8, 2),
+(6, 'Задача не слишком трудна (т.е. эксперту не нужны недели или месяцы для ее решения).', 7, 2),
+(7, 'Решаемая задача достаточно понятна (т.е. не требует разработки новых методов решения).', 7, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `o_r_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `o_r_answer` (
+  `answer` text NOT NULL,
+  `u_id` tinyint(4) NOT NULL,
+  `o_r_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`u_id`,`o_r_id`),
+  KEY `R_26` (`o_r_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `platform`
+--
+
+CREATE TABLE IF NOT EXISTS `platform` (
+  `pl_id` tinyint(4) NOT NULL,
+  `platform_name` text NOT NULL,
+  PRIMARY KEY (`pl_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `platform`
+--
+
+INSERT INTO `platform` (`pl_id`, `platform_name`) VALUES
+(1, 'IBM PC'),
+(2, 'Olivetti'),
+(3, 'Sun'),
+(4, 'Appolo'),
+(5, 'microVAX'),
+(6, 'VAX'),
+(7, 'Vac'),
+(8, 'Mac'),
+(9, 'AT&T'),
+(10, 'NEC'),
+(11, 'ICL'),
+(12, 'HP'),
+(13, 'Wang'),
+(14, 'Tektornix');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `producing_country`
+--
+
+CREATE TABLE IF NOT EXISTS `producing_country` (
+  `p_c_id` tinyint(4) NOT NULL,
+  `country` text NOT NULL,
+  PRIMARY KEY (`p_c_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `producing_country`
+--
+
+INSERT INTO `producing_country` (`p_c_id`, `country`) VALUES
+(1, 'USA'),
+(2, 'Germany'),
+(3, 'UK'),
+(4, 'France'),
+(5, 'Sweden'),
+(6, 'Japan'),
+(7, 'Irland'),
+(8, 'The Nether');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `programming_language`
+--
+
+CREATE TABLE IF NOT EXISTS `programming_language` (
+  `p_l_id` tinyint(4) NOT NULL,
+  `language` text NOT NULL,
+  PRIMARY KEY (`p_l_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `programming_language`
+--
+
+INSERT INTO `programming_language` (`p_l_id`, `language`) VALUES
+(1, 'Ассемблер'),
+(2, 'Cobol'),
+(3, 'Fortran'),
+(4, 'Pascal'),
+(5, 'Prolog'),
+(6, 'Lisp'),
+(7, 'KnwlDef'),
+(8, 'PLATO'),
+(9, 'SmallTalk'),
+(10, 'IntComp'),
+(11, 'C'),
+(12, 'AL'),
+(13, 'SL'),
+(14, 'Forth'),
+(15, 'Assembly'),
+(16, 'Modula'),
+(17, 'Forthran'),
+(18, 'OPS5'),
+(19, 'Basic'),
+(20, 'Pro'),
+(21, 'Yes'),
+(22, 'Progol'),
+(23, 'Ada'),
+(24, 'APL');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `project`
+--
+
+CREATE TABLE IF NOT EXISTS `project` (
+  `pr_id` tinyint(4) NOT NULL,
+  `project_name` text NOT NULL,
+  PRIMARY KEY (`pr_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `project_group`
+--
+
+CREATE TABLE IF NOT EXISTS `project_group` (
+  `u_id` tinyint(4) NOT NULL,
+  `pr_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`u_id`,`pr_id`),
+  KEY `R_73` (`pr_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `propriety_research`
+--
+
+CREATE TABLE IF NOT EXISTS `propriety_research` (
+  `p_r_id` tinyint(4) NOT NULL,
+  `measure` text NOT NULL,
+  `weight` tinyint(4) NOT NULL,
+  `a_v_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`p_r_id`),
+  KEY `R_12` (`a_v_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `propriety_research`
+--
+
+INSERT INTO `propriety_research` (`p_r_id`, `measure`, `weight`, `a_v_id`) VALUES
+(1, 'Решение задачи обещает приносить высокий доход.', 9, 2),
+(2, 'Показано, что существует опасность постепенного утрачивания опыта решения задач в данной области.', 8, 2),
+(3, 'Экспертов в данной области явно недостаточно.', 6, 2),
+(4, 'Сходные специалисты нужны во многих физически разнесенных местах.', 7, 2),
+(5, 'Условия, в которых решается задача, опасны для человека (т.е. окружение враждебно для человека).', 8, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `p_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `p_answer` (
+  `answer` text NOT NULL,
+  `u_id` tinyint(4) NOT NULL,
+  `pl_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`u_id`,`pl_id`),
+  KEY `R_59` (`pl_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `p_c_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `p_c_answer` (
+  `answer` text NOT NULL,
+  `p_c_id` tinyint(4) NOT NULL,
+  `u_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`p_c_id`,`u_id`),
+  KEY `R_55` (`u_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `p_r_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `p_r_answer` (
+  `answer` text NOT NULL,
+  `u_id` tinyint(4) NOT NULL,
+  `p_r_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`u_id`,`p_r_id`),
+  KEY `R_25` (`p_r_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `references_`
+--
+
+CREATE TABLE IF NOT EXISTS `references_` (
+  `r_id` tinyint(4) NOT NULL,
+  `reference` text NOT NULL,
+  PRIMARY KEY (`r_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `references_`
+--
+
+INSERT INTO `references_` (`r_id`, `reference`) VALUES
+(1, 'Поспелов Д.А. Моделирование рассуждений. Опыт анализа мыслительных фактов / Д.А. Поспелов. – М.: Радио и связь, 1989.'),
+(2, 'Попов Э.В. Экспертные системы: Решение неформализованных задач в диалоге с ЭВМ / Э.В. Попов. – М.: Наука, 1987.'),
+(3, 'Статические и динамические экспертные системы: учеб. пособ. / Э.В. Попов, И.Б. Фоминых, Е.Б. Кисель и др. – М.: Финансы и статистика, 1996.'),
+(4, 'Рыбина Г.В. Проектирование систем, основанных на знаниях: учеб. пособ. / Г.В. Рыбина. – М.: МИФИ, 2000.'),
+(5, 'Частиков А.П. Разработка экспертных систем. Среда CLIPS / А.П. Частиков, Т.А. Гаврилова, Д.Л. Белов. – СПб.: БХВ – Петербург, 2003.'),
+(6, 'Гаврилова Т.А. Базы знаний интеллектуальных систем / Т.А. Гаврилова, В.Ф. Хорошевский. – СПб: Петербург, 2000.'),
+(7, 'Рассел С. Искусственный интеллект: современный подход / С. Рассел, П. Норвиг. – М.: Изд. Дом «Вильямс», 2006.'),
+(8, 'Люгер Дж. Ф. Искусственный интеллект: стратегии и методы решения сложных проблем / Дж. Ф. Люгер. –  М.: Изд. Дом «Вильямс», 2003.'),
+(9, 'Джексон П. Введение в экспертные системы / П. Джексон. – М.: Изд. Дом «Вильямс», 2001.'),
+(10, 'Попов. Э.В. Алгоритмические основы интеллектуальных роботов и искусственного интеллекта / Э.В. Попов, Г.Р. Фирдман. – М.: Наука, 1976.'),
+(11, 'Попов Э.В. Общение с ЭВМ на естественном языке / Э.В. Попов; изд. 2-е, стереотипное. – М.: Эдиториал УРСС, 2004.'),
+(12, 'Осипов Г.С. Приобретение знаний интеллектуальными системами / Г.С. Осипов. – М.: Физматлит, 1997.'),
+(13, 'Ларичев О.И. Теория и методы принятия решений, а также Хроника событий в Волшебных странах: учебник / О.И. ларичев. – М.: логос, 2000.'),
+(14, 'Достоверный и правдоподобный вывод в интеллектуальных системах / В.Н. Вагин, Е.Ю. Головина, А.А. Загорянская и др.; под ред. В.Н. Вагина, Д.А. Поспелова. – М.: Физматлит, 2004.'),
+(15, 'Емельянов В.В. Введение в интеллектуальное имитационное моделирование сложных дискретных систем и процессов. Язык РДО / В.В. Емельянов, С.И. Ясиновский. – М.: АНВИК, 1998.'),
+(16, 'Башлыков А.А. Экспертные системы поддержки принятия решений в энергетике / А.А. Башлыков, А.П. Еремеев. – М.: Изд-во МЭИ, 1994.'),
+(17, 'Тарасов В.Б. От многоагентных систем к интеллектуальным организациям: философия, психология, информатика / В.Б. Тарасов. – М.: Эдиториал УРСС, 2002.'),
+(18, 'Поспелов Г.С. Искусственный интеллект – основа новой информационной технологии / Г.С. Поспелов. – М.: Наука, 1988.'),
+(19, 'Кузин Е.С. Интеллектуальный интерфейс. Общие принципы организации и проблемы реализации / Е.С. Кузин // Известия АН СССР. Техническая кибернетика. – 1985. – №5. – с. 90-102.'),
+(20, 'Кузин Л.Т. Основы Кибернетики в 2-х томах / Л.Т. Кузин. – Т.2. основы кибернетических моделей. – М.: Энергия, 1979.'),
+(21, 'Рыбина Г.В. Задачно-ориентированная методология автоматизированного построения интегрированных экспертных систем для статических проблемных областей / Г.В. Рыбина // Известия РАН. Теория и системы управления. – 1997. – №5 – с. 129-137.'),
+(22, 'Рыбина Г.В. Теория и технология построения интегрированных экспертных систем / Г.В. Рыбина. – М.: Научтехлитиздат, 2008.'),
+(23, 'Хорошевский В.Ф. PIES-технология и инструментарий PiEs WorkBench для разработки систем, основанных на знаниях / В.Ф. Хорошевский // Новости искусственного интеллекта. – 1995. – №2. – с.7 – 64.'),
+(24, 'Инструментальный комплекс АТ-ТЕХНОЛОГИЯ для поддержки интегрированных экспертных систем: учебн. пособ. / Г.В. Рыбина, С.В. Пышагин, В.В. Смирнов и др. – М.: МИЯИ, 2001.'),
+(25, 'Рыбина Г.В. Инструментальные средства нового поколения для построения прикладных интеллектуальных систем / Г.В. Рыбина // Авиакосмическое приборостроение. – 2004. – №10. – с. 14-23.'),
+(26, 'Рыбина Г.В. Введение в интеллектуальные системы: учебное пособие / Г.В. Рыбина, С.В. Рудина. – М.: МИФИ, 1999.'),
+(27, 'Рыбина Г.В. лабораторный практикум по курсу «Динамические интеллектуальные  системы»: учеб. пособ. / Г.В. Рыбина, В.Ю. Берзин. – М.: МИФИ, 2004.'),
+(28, 'Рыбина Г.В. Автоматизированное рабочее место для построения интегрированных экспертных систем: комплекс АТ-ТЕХНОЛОГИЯ / Г.В. Рыбина // Новости искусственного интеллекта. – 2005. – №3 – с. 69-87.'),
+(29, 'Рыбина Г.В. Динамические интегрированные экспертные системы реального времени: анализ опыта исследований и разработок / Г.В. Рыбина, В.М. Рыбин // Приборы и системы управления. – 1999. – №8 – с.4-8.'),
+(30, 'Рыбина Г.В. Основы теории и технологии построения интеллектуальных диалоговых систем: курс лекций / Г.В. Рыбина. – М.: МИФИ, 2005.'),
+(31, 'Нечеткие множества в моделях управления и искусственном интеллекте / Под ред. Д.А. Поспелова. – М.: Наука, 1986.'),
+(32, 'Финн В.К. Об интеллектуальном анализе данных / В.К. Финн // Новости искусственного интеллекта. – 2004. – №3 – с. 3-18.'),
+(33, 'Минский М. Фреймы для представления знаний / М. Минский. – М.: Энергия, 1979.'),
+(34, 'Рыбина Г.В. Автоматизированное построение баз знаний для интегрированных экспертных систем / Рыбина Г.В. // Известия РАН. Теория и системы управления. – 1998. – №5. – с.152-166.'),
+(35, 'Рыбина Г.В. Об одном подходе к автоматизированному извлечению, представлению и обработке знаний, содержащих НЕ-факторы / Г.В. Рыбина, Р.В. Душкин // Известия РАН. Теория и системы управления. – 1999. – №5. – с. 34-44.'),
+(36, 'Рыбина Г.В. Верификация баз знаний в интегрированных экспертных системах / Г.В. Рыбина, В.В. Смирнов // Новости искусственного интеллекта. – 2005. – №3 – с. 7-19.'),
+(37, 'Системный анализ и принятие решений: Словарь-справочник: учеб. пособ. для вузов / Под ред. В.Н. Волковой, В.Н. Козлова. – М.: Высшая школа, 2004.'),
+(38, 'Рыбина Г.В. Использование методов имитационного моделирования при создании интегрированных экспертных систем реального времени / Г.В. Рыбина // Известия РАН. Теория и системы управления. – 2000. – №5. – с. 182-191.'),
+(39, 'Месарович Н. Общая теория систем: математические основы / Н. Месарович, Я. Такахара. – М.: Мир, 1978.'),
+(40, 'Рыбина Г.В. Особенности и принципы построения интегрированных экспертных систем для диагностики сложных технических систем / Г.В. Рыбина // Приборы и системы управления. – 1998. – №9 – с. 12-16.'),
+(41, 'Рыбина Г.В. Обучающие интегрированные экспертные системы: некоторые итоги и перспективы / Г.В. Рыбина // Искусственный интеллект и принятие решений. – 2008. – №1 – с.22-46.'),
+(42, 'Белкин А.Р. Учет когнитивных и поведенческих особенностей человека-эксперта при построении систем искусственного интеллекта / А.Р. Белкин // Программные продукты и системы. Software & Systems. – 1993. – №2 – с. 13-18.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `relevance_research`
+--
+
+CREATE TABLE IF NOT EXISTS `relevance_research` (
+  `r_r_id` tinyint(4) NOT NULL,
+  `measure` text NOT NULL,
+  `weight` tinyint(4) NOT NULL,
+  `a_v_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`r_r_id`),
+  KEY `R_11` (`a_v_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `relevance_research`
+--
+
+INSERT INTO `relevance_research` (`r_r_id`, `measure`, `weight`, `a_v_id`) VALUES
+(1, 'Решение задачи опирается на использование операций с символами, а не с числами (т.е. задача связана не с расчетом, а с логическими рассуждениями, анализом, перебором вариантов).', 9, 2),
+(2, 'Решение задачи опирается на использование эвристик (задача не имеет четкого алгоритмического решения).', 9, 2),
+(3, 'Задача не слишком проста (задача считается простой, если ее решение не требует больших усилий или даже обходится без привлечения ЭВМ).', 5, 2),
+(4, 'Задача представляет большой интерес для практики (практическая значимость).', 6, 2),
+(5, 'Задача не является слишком крупной для решения на ЭВМ (комбинаторные задачи и т.д.).', 3, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rigidity_versatility`
+--
+
+CREATE TABLE IF NOT EXISTS `rigidity_versatility` (
+  `r_v_id` tinyint(4) NOT NULL,
+  `statement` text NOT NULL,
+  `right_answer` text NOT NULL,
+  `a_v_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`r_v_id`),
+  KEY `R_14` (`a_v_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `rigidity_versatility`
+--
+
+INSERT INTO `rigidity_versatility` (`r_v_id`, `statement`, `right_answer`, `a_v_id`) VALUES
+(1, 'Полезно читать книги, в которых содержатся мысли, противоположные моим собственным.', 'Нет', 1),
+(2, 'Меня раздражает, когда отвлекают от важной работы (например, просят совета).', 'Да', 1),
+(3, 'Праздники нужно отмечать с родственниками.', 'Да', 1),
+(4, 'Я могу быть в дружеских отношениях с людьми, чьи поступки не одобряю.', 'Нет', 1),
+(5, 'В игре я предпочитаю выигрывать.', 'Да', 1),
+(6, 'Когда я опаздываю куда-нибудь, я не в состоянии думать ни о чем другом, кроме как скорее доехать.', 'Нет', 1),
+(7, 'Мне труднее сосредоточиться, чем другим.', 'Да', 1),
+(8, 'Я много времени уделяю тому, чтобы все вещи лежали на своих местах.', 'Нет', 1),
+(9, 'Я очень напряженно работаю.', 'Нет', 1),
+(10, 'Неприличные шутки нередко вызывают у меня смех.', 'Да', 1),
+(11, 'Уверен, что за моей спиной обо мне говорят.', 'Нет', 1),
+(12, 'Меня легко переспорить.', 'Да', 1),
+(13, 'Я предпочитаю ходить известными маршрутами.', 'Нет', 1),
+(14, 'Всю свою жизнь я строго следую принципам, основанным на чувстве долга.', 'Нет', 1),
+(15, 'Временами мои мысли проносятся быстрее, чем я успеваю их высказать.', 'Да', 1),
+(16, 'Бывает, что чья-то нелепая оплошность вызывает у меня смех.', 'Да', 1),
+(17, 'Бывает, что мне в голову приходят плохие слова, часто даже ругательства, и я не могу никак от них избавиться.', 'Да', 1),
+(18, 'Я уверен, что в мое отсутствие обо мне говорят.', 'Нет', 1),
+(19, 'Я спокойно выхожу из дома, не беспокоясь о том, заперта ли дверь, выключен ли свет, газ и т.п.', 'Да', 1),
+(20, 'Самое трудное для меня в любом деле – это начало.', 'Нет', 1),
+(21, 'Я, практически всегда, сдерживаю свои обещания.', 'Да', 1),
+(22, 'Нельзя строго осуждать человека, нарушающего формальные правила.', 'Да', 1),
+(23, 'Мне часто приходилось выполнять распоряжения людей, гораздо меньше знающих, чем я.', 'Нет', 1),
+(24, 'Я не всегда говорю правду.', 'Да', 1),
+(25, 'Мне трудно сосредоточиться на какой-либо задаче или работе.', 'Да', 1),
+(26, 'Кое-кто настроен против меня.', 'Нет', 1),
+(27, 'Я люблю доводить начатое до конца.', 'Нет', 1),
+(28, 'Я всегда стараюсь не откладывать на завтра то, что можно сделать сегодня.', 'Да', 1),
+(29, 'Когда я иду или еду по улице, я часто подмечаю изменения в окружающей обстановке – подстриженные кусты, новые рекламные щиты и т.д.', 'Да', 1),
+(30, 'Иногда я так настаиваю на своем, что люди теряют терпение.', 'Нет', 1),
+(31, 'Иногда знакомые подшучивают над моей аккуратностью и педантичностью.', 'Нет', 1),
+(32, 'Если я не прав, я не сержусь.', 'Да', 1),
+(33, 'Обычно меня настораживают люди, которые относятся ко мне дружелюбнее, чем я ожидал', 'Нет', 1),
+(34, 'Мне трудно отвлечься от начатой работы даже ненадолго.', 'Нет', 1),
+(35, 'Когда я вижу, что меня не понимают, я легко отказываюсь от намерения доказать что-либо.', 'Да', 1),
+(36, 'В трудные моменты я умею позаботиться о других.', 'Да', 1),
+(37, 'У меня тяга к перемене мест, и я счастлив, когда брожу где-нибудь или путешествую.', 'Да', 1),
+(38, 'Мне нелегко переключиться на новое дело, но потом, разобравшись, я справляюсь с ним лучше других.', 'Нет', 1),
+(39, 'Мне нравится детально изучать то, чем я занимаюсь.', 'Нет', 1),
+(40, 'Мать и отец заставляли подчиниться меня даже тогда, когда я считал это неразумным.', 'Нет', 1),
+(41, 'Я умею быть спокойным и даже немного равнодушным при виде чужого несчастья.', 'Да', 1),
+(42, 'Я легко переключаюсь с одного дела на другое.', 'Да', 1),
+(43, 'Из всех мнений по спорному вопросу только одно действительно является верным.', 'Нет', 1),
+(44, 'Я люблю доводить свои умения и навыки до автоматизма.', 'Нет', 1),
+(45, 'Меня легко увлечь новыми затеями.', 'Да', 1),
+(46, 'Я пытаюсь добиться своего наперекор обстоятельствам.', 'Нет', 1),
+(47, 'Во время монотонной работы я невольно начинаю изменять способ действия, даже если это порой ухудшает результат.', 'Да', 1),
+(48, 'Люди порой завидуют моему терпению и дотошности.', 'Нет', 1),
+(49, 'На улице, в транспорте я часто разглядываю окружающих людей.', 'Да', 1),
+(50, 'Если бы люди не были настроены против меня, я бы достиг в жизни гораздо большего.', 'Нет', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `r_l_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `r_l_answer` (
+  `answer` text NOT NULL,
+  `u_id` tinyint(4) NOT NULL,
+  `p_l_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`u_id`,`p_l_id`),
+  KEY `R_61` (`p_l_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `r_r_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `r_r_answer` (
+  `answer` text NOT NULL,
+  `u_id` tinyint(4) NOT NULL,
+  `r_r_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`u_id`,`r_r_id`),
+  KEY `R_24` (`r_r_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `r_v_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `r_v_answer` (
+  `answer` text NOT NULL,
+  `u_id` tinyint(4) NOT NULL,
+  `r_v_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`u_id`,`r_v_id`),
+  KEY `R_19` (`r_v_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `solver`
+--
+
+CREATE TABLE IF NOT EXISTS `solver` (
+  `so_id` tinyint(4) NOT NULL,
+  `solver` text NOT NULL,
+  PRIMARY KEY (`so_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `solver`
+--
+
+INSERT INTO `solver` (`so_id`, `solver`) VALUES
+(1, 'прямой вывод'),
+(2, 'обратный вывод'),
+(3, 'индукция'),
+(4, 'демоны'),
+(5, 'доска объявлений'),
+(6, 'мета-управление'),
+(7, 'поиск по образцу'),
+(8, 'обработка недостоверности'),
+(9, 'математические операции'),
+(10, 'наследование свойств');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sol_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `sol_answer` (
+  `answer` text NOT NULL,
+  `so_id` tinyint(4) NOT NULL,
+  `u_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`so_id`,`u_id`),
+  KEY `R_71` (`u_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `system`
+--
+
+CREATE TABLE IF NOT EXISTS `system` (
+  `sy_id` tinyint(4) NOT NULL,
+  `system_name` text NOT NULL,
+  PRIMARY KEY (`sy_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `system`
+--
+
+INSERT INTO `system` (`sy_id`, `system_name`) VALUES
+(1, '1st-Class Fusion HT'),
+(2, 'Acom'),
+(3, 'Acquaint'),
+(4, 'ADS'),
+(5, 'AIDA'),
+(6, 'ALEX'),
+(7, 'APES'),
+(8, 'Arity/Expert'),
+(9, 'ART'),
+(10, 'ASPES'),
+(11, 'Auto-Intelligence'),
+(12, 'BEAGLE'),
+(13, 'BLOBS'),
+(14, 'CLASS'),
+(15, 'CODAR'),
+(16, 'COGNATE'),
+(17, 'CognitlF'),
+(18, 'Copernicus'),
+(19, 'CRYSTAL'),
+(20, 'CxPERT'),
+(21, 'DUCK'),
+(22, 'Envisage'),
+(23, 'Ehitool'),
+(24, 'ES Environment'),
+(25, 'ES/AG'),
+(26, 'ESIE'),
+(27, 'ESP-Advisor'),
+(28, 'EXCORE'),
+(29, 'EX-TRAN'),
+(30, 'Expertfacts'),
+(31, 'Expert Ease'),
+(32, 'EXSYS Professional'),
+(33, 'Flist Expert'),
+(34, 'FLOPS'),
+(35, 'FrameKit'),
+(36, 'GEST'),
+(37, 'Gold Works'),
+(38, 'Guru (РІ Р РѕСЃСЃРёРё Р?РќРўР•Р -Р­РљРЎРџР•Р Рў)'),
+(39, 'Humble'),
+(40, 'ICL Adviser'),
+(41, 'INSIHT2+'),
+(42, 'Instant-Expert Plus'),
+(43, 'Intelligence Compiler'),
+(44, 'KDS3'),
+(45, 'KEE'),
+(46, 'KES'),
+(47, 'Keystone'),
+(48, 'KISS'),
+(49, 'Knowledge Craft'),
+(50, 'Knowledge Shaper'),
+(51, 'Knowledge Maker'),
+(52, 'Knowledge Pro'),
+(53, 'KNOWOL+'),
+(54, 'Leonardo'),
+(55, 'Level5 Object'),
+(56, 'M.1'),
+(57, 'MacSMARTS'),
+(58, 'MaidService'),
+(59, 'MICE'),
+(60, 'MicroExpert'),
+(61, 'MP-LPO'),
+(62, 'MUSE'),
+(63, 'NExpert Object'),
+(64, 'NETUX'),
+(65, 'Personal Consultant Plus'),
+(66, 'RBEST'),
+(67, 'RuleMaster'),
+(68, 'S.1'),
+(69, 'SAVOIR'),
+(70, 'SD-Adviser'),
+(71, 'Sheii Kaba'),
+(72, 'SMESI'),
+(73, 'SuperExpert'),
+(74, 'TIMM'),
+(75, 'TOPSI'),
+(76, 'Turbo Expert'),
+(77, 'TWAICE'),
+(78, 'VP-Expert'),
+(79, 'Wizdom'),
+(80, 'Xi Plus'),
+(81, 'Xpert Rule'),
+(82, 'XSYS'),
+(83, 'Expertkit'),
+(84, 'Expert-2'),
+(85, 'Expert Edge');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `system_integration_means`
+--
+
+CREATE TABLE IF NOT EXISTS `system_integration_means` (
+  `integ_m_id` tinyint(4) NOT NULL,
+  `sy_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`integ_m_id`,`sy_id`),
+  KEY `R_38` (`sy_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `system_integration_means`
+--
+
+INSERT INTO `system_integration_means` (`integ_m_id`, `sy_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(1, 2),
+(2, 2),
+(3, 2),
+(1, 4),
+(2, 4),
+(1, 6),
+(2, 6),
+(1, 8),
+(2, 8),
+(3, 8),
+(3, 9),
+(1, 12),
+(2, 12),
+(3, 13),
+(2, 16),
+(1, 17),
+(2, 17),
+(1, 19),
+(2, 19),
+(3, 19),
+(1, 22),
+(2, 22),
+(1, 24),
+(2, 24),
+(1, 27),
+(2, 27),
+(1, 28),
+(3, 29),
+(1, 32),
+(2, 32),
+(3, 32),
+(1, 34),
+(2, 34),
+(2, 36),
+(1, 37),
+(2, 37),
+(1, 38),
+(2, 38),
+(2, 39),
+(1, 40),
+(2, 40),
+(3, 40),
+(1, 41),
+(2, 41),
+(3, 41),
+(1, 43),
+(1, 44),
+(2, 44),
+(3, 44),
+(1, 45),
+(2, 45),
+(1, 46),
+(2, 46),
+(3, 46),
+(2, 49),
+(1, 50),
+(2, 50),
+(3, 50),
+(1, 51),
+(2, 51),
+(1, 52),
+(2, 52),
+(1, 53),
+(2, 53),
+(1, 54),
+(2, 54),
+(1, 55),
+(2, 55),
+(3, 55),
+(1, 56),
+(2, 56),
+(1, 57),
+(2, 57),
+(2, 59),
+(1, 62),
+(3, 62),
+(1, 63),
+(2, 63),
+(3, 63),
+(1, 64),
+(2, 64),
+(1, 65),
+(2, 65),
+(3, 65),
+(1, 67),
+(2, 67),
+(3, 67),
+(1, 68),
+(2, 68),
+(3, 68),
+(1, 69),
+(2, 69),
+(3, 69),
+(1, 70),
+(2, 70),
+(3, 70),
+(1, 73),
+(2, 73),
+(1, 74),
+(1, 75),
+(2, 75),
+(1, 77),
+(2, 77),
+(1, 80),
+(2, 80),
+(1, 81),
+(2, 81),
+(1, 82),
+(2, 82),
+(1, 85),
+(2, 85);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `system_interface_means`
+--
+
+CREATE TABLE IF NOT EXISTS `system_interface_means` (
+  `sy_id` tinyint(4) NOT NULL,
+  `inter_m_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`sy_id`,`inter_m_id`),
+  KEY `R_40` (`inter_m_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `system_interface_means`
+--
+
+INSERT INTO `system_interface_means` (`sy_id`, `inter_m_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
+(13, 1),
+(19, 1),
+(20, 1),
+(22, 1),
+(23, 1),
+(24, 1),
+(25, 1),
+(26, 1),
+(27, 1),
+(28, 1),
+(29, 1),
+(32, 1),
+(33, 1),
+(34, 1),
+(35, 1),
+(36, 1),
+(37, 1),
+(38, 1),
+(39, 1),
+(40, 1),
+(41, 1),
+(43, 1),
+(44, 1),
+(45, 1),
+(46, 1),
+(47, 1),
+(49, 1),
+(51, 1),
+(52, 1),
+(53, 1),
+(54, 1),
+(55, 1),
+(56, 1),
+(57, 1),
+(59, 1),
+(62, 1),
+(63, 1),
+(64, 1),
+(65, 1),
+(66, 1),
+(67, 1),
+(68, 1),
+(69, 1),
+(70, 1),
+(73, 1),
+(74, 1),
+(75, 1),
+(77, 1),
+(78, 1),
+(79, 1),
+(80, 1),
+(81, 1),
+(1, 2),
+(2, 2),
+(3, 2),
+(4, 2),
+(5, 2),
+(6, 2),
+(7, 2),
+(8, 2),
+(9, 2),
+(11, 2),
+(19, 2),
+(20, 2),
+(22, 2),
+(23, 2),
+(24, 2),
+(27, 2),
+(28, 2),
+(29, 2),
+(31, 2),
+(32, 2),
+(33, 2),
+(36, 2),
+(37, 2),
+(38, 2),
+(39, 2),
+(40, 2),
+(41, 2),
+(43, 2),
+(44, 2),
+(45, 2),
+(46, 2),
+(47, 2),
+(48, 2),
+(49, 2),
+(50, 2),
+(51, 2),
+(52, 2),
+(53, 2),
+(54, 2),
+(55, 2),
+(56, 2),
+(57, 2),
+(62, 2),
+(63, 2),
+(65, 2),
+(66, 2),
+(67, 2),
+(68, 2),
+(73, 2),
+(74, 2),
+(75, 2),
+(76, 2),
+(77, 2),
+(78, 2),
+(80, 2),
+(81, 2),
+(1, 3),
+(3, 3),
+(4, 3),
+(6, 3),
+(8, 3),
+(9, 3),
+(19, 3),
+(20, 3),
+(22, 3),
+(23, 3),
+(28, 3),
+(31, 3),
+(36, 3),
+(37, 3),
+(38, 3),
+(41, 3),
+(42, 3),
+(43, 3),
+(44, 3),
+(45, 3),
+(46, 3),
+(47, 3),
+(48, 3),
+(51, 3),
+(52, 3),
+(55, 3),
+(56, 3),
+(57, 3),
+(62, 3),
+(63, 3),
+(65, 3),
+(66, 3),
+(67, 3),
+(68, 3),
+(69, 3),
+(71, 3),
+(73, 3),
+(75, 3),
+(78, 3),
+(80, 3),
+(1, 4),
+(4, 4),
+(5, 4),
+(6, 4),
+(9, 4),
+(19, 4),
+(20, 4),
+(23, 4),
+(24, 4),
+(38, 4),
+(43, 4),
+(44, 4),
+(45, 4),
+(47, 4),
+(49, 4),
+(52, 4),
+(54, 4),
+(55, 4),
+(57, 4),
+(63, 4),
+(64, 4),
+(65, 4),
+(68, 4),
+(78, 4),
+(80, 4),
+(1, 5),
+(4, 5),
+(19, 5),
+(20, 5),
+(26, 5),
+(32, 5),
+(33, 5),
+(37, 5),
+(38, 5),
+(41, 5),
+(44, 5),
+(47, 5),
+(51, 5),
+(52, 5),
+(56, 5),
+(59, 5),
+(63, 5),
+(65, 5),
+(69, 5),
+(73, 5),
+(74, 5),
+(78, 5),
+(80, 5),
+(81, 5),
+(1, 6),
+(2, 6),
+(3, 6),
+(4, 6),
+(6, 6),
+(7, 6),
+(8, 6),
+(9, 6),
+(12, 6),
+(19, 6),
+(20, 6),
+(22, 6),
+(23, 6),
+(24, 6),
+(27, 6),
+(29, 6),
+(31, 6),
+(32, 6),
+(33, 6),
+(36, 6),
+(37, 6),
+(38, 6),
+(40, 6),
+(41, 6),
+(43, 6),
+(44, 6),
+(45, 6),
+(46, 6),
+(49, 6),
+(51, 6),
+(52, 6),
+(53, 6),
+(54, 6),
+(55, 6),
+(56, 6),
+(57, 6),
+(59, 6),
+(63, 6),
+(65, 6),
+(66, 6),
+(67, 6),
+(68, 6),
+(69, 6),
+(70, 6),
+(73, 6),
+(74, 6),
+(77, 6),
+(78, 6),
+(79, 6),
+(80, 6),
+(81, 6),
+(3, 7),
+(4, 7),
+(8, 7),
+(9, 7),
+(10, 7),
+(19, 7),
+(20, 7),
+(22, 7),
+(23, 7),
+(24, 7),
+(27, 7),
+(28, 7),
+(29, 7),
+(32, 7),
+(33, 7),
+(36, 7),
+(38, 7),
+(40, 7),
+(41, 7),
+(43, 7),
+(44, 7),
+(45, 7),
+(46, 7),
+(47, 7),
+(49, 7),
+(53, 7),
+(54, 7),
+(55, 7),
+(56, 7),
+(57, 7),
+(58, 7),
+(59, 7),
+(63, 7),
+(65, 7),
+(66, 7),
+(67, 7),
+(68, 7),
+(69, 7),
+(70, 7),
+(72, 7),
+(73, 7),
+(76, 7),
+(77, 7),
+(78, 7),
+(79, 7),
+(80, 7),
+(81, 7),
+(2, 8),
+(3, 8),
+(4, 8),
+(8, 8),
+(9, 8),
+(19, 8),
+(22, 8),
+(23, 8),
+(24, 8),
+(27, 8),
+(28, 8),
+(29, 8),
+(32, 8),
+(36, 8),
+(38, 8),
+(39, 8),
+(40, 8),
+(41, 8),
+(43, 8),
+(44, 8),
+(45, 8),
+(46, 8),
+(47, 8),
+(49, 8),
+(51, 8),
+(52, 8),
+(54, 8),
+(55, 8),
+(56, 8),
+(57, 8),
+(59, 8),
+(63, 8),
+(65, 8),
+(66, 8),
+(67, 8),
+(68, 8),
+(69, 8),
+(73, 8),
+(74, 8),
+(77, 8),
+(78, 8),
+(79, 8),
+(80, 8),
+(1, 9),
+(4, 9),
+(9, 9),
+(11, 9),
+(22, 9),
+(24, 9),
+(25, 9),
+(28, 9),
+(36, 9),
+(40, 9),
+(41, 9),
+(44, 9),
+(45, 9),
+(46, 9),
+(49, 9),
+(54, 9),
+(56, 9),
+(59, 9),
+(63, 9),
+(65, 9),
+(68, 9),
+(70, 9),
+(74, 9),
+(77, 9),
+(80, 9),
+(1, 10),
+(2, 10),
+(4, 10),
+(6, 10),
+(8, 10),
+(9, 10),
+(19, 10),
+(22, 10),
+(24, 10),
+(27, 10),
+(29, 10),
+(32, 10),
+(34, 10),
+(36, 10),
+(37, 10),
+(38, 10),
+(39, 10),
+(41, 10),
+(43, 10),
+(44, 10),
+(45, 10),
+(46, 10),
+(47, 10),
+(49, 10),
+(51, 10),
+(52, 10),
+(53, 10),
+(54, 10),
+(56, 10),
+(57, 10),
+(59, 10),
+(63, 10),
+(65, 10),
+(66, 10),
+(68, 10),
+(69, 10),
+(73, 10),
+(74, 10),
+(75, 10),
+(77, 10),
+(78, 10),
+(79, 10),
+(80, 10);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `system_knowledge_representation`
+--
+
+CREATE TABLE IF NOT EXISTS `system_knowledge_representation` (
+  `sy_id` tinyint(4) NOT NULL,
+  `k_r_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`sy_id`,`k_r_id`),
+  KEY `R_33` (`k_r_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `system_knowledge_representation`
+--
+
+INSERT INTO `system_knowledge_representation` (`sy_id`, `k_r_id`) VALUES
+(1, 1),
+(11, 1),
+(12, 1),
+(14, 1),
+(29, 1),
+(31, 1),
+(33, 1),
+(44, 1),
+(48, 1),
+(51, 1),
+(57, 1),
+(73, 1),
+(74, 1),
+(78, 1),
+(80, 1),
+(81, 1),
+(82, 1),
+(83, 1),
+(2, 2),
+(4, 2),
+(5, 2),
+(6, 2),
+(9, 2),
+(13, 2),
+(17, 2),
+(23, 2),
+(28, 2),
+(35, 2),
+(37, 2),
+(39, 2),
+(43, 2),
+(44, 2),
+(45, 2),
+(46, 2),
+(47, 2),
+(48, 2),
+(49, 2),
+(54, 2),
+(57, 2),
+(59, 2),
+(61, 2),
+(62, 2),
+(63, 2),
+(64, 2),
+(65, 2),
+(79, 2),
+(84, 2),
+(1, 3),
+(5, 3),
+(7, 3),
+(8, 3),
+(9, 3),
+(15, 3),
+(22, 3),
+(27, 3),
+(34, 3),
+(41, 3),
+(43, 3),
+(45, 3),
+(49, 3),
+(56, 3),
+(66, 3),
+(1, 4),
+(2, 4),
+(3, 4),
+(4, 4),
+(5, 4),
+(7, 4),
+(8, 4),
+(9, 4),
+(10, 4),
+(11, 4),
+(12, 4),
+(15, 4),
+(17, 4),
+(18, 4),
+(19, 4),
+(20, 4),
+(21, 4),
+(22, 4),
+(23, 4),
+(24, 4),
+(25, 4),
+(26, 4),
+(27, 4),
+(28, 4),
+(29, 4),
+(30, 4),
+(31, 4),
+(32, 4),
+(33, 4),
+(34, 4),
+(35, 4),
+(36, 4),
+(37, 4),
+(38, 4),
+(39, 4),
+(40, 4),
+(41, 4),
+(42, 4),
+(43, 4),
+(44, 4),
+(45, 4),
+(46, 4),
+(47, 4),
+(49, 4),
+(50, 4),
+(51, 4),
+(52, 4),
+(53, 4),
+(54, 4),
+(55, 4),
+(56, 4),
+(57, 4),
+(58, 4),
+(59, 4),
+(60, 4),
+(61, 4),
+(62, 4),
+(63, 4),
+(64, 4),
+(65, 4),
+(66, 4),
+(73, 4),
+(74, 4),
+(75, 4),
+(77, 4),
+(78, 4),
+(79, 4),
+(80, 4),
+(81, 4),
+(82, 4),
+(83, 4),
+(84, 4),
+(85, 4),
+(1, 5),
+(2, 5),
+(3, 5),
+(5, 5),
+(8, 5),
+(9, 5),
+(13, 5),
+(20, 5),
+(23, 5),
+(25, 5),
+(27, 5),
+(28, 5),
+(30, 5),
+(32, 5),
+(35, 5),
+(36, 5),
+(37, 5),
+(43, 5),
+(44, 5),
+(45, 5),
+(47, 5),
+(49, 5),
+(52, 5),
+(54, 5),
+(62, 5),
+(63, 5),
+(64, 5),
+(65, 5),
+(66, 5),
+(77, 5),
+(79, 5),
+(82, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `system_manufacturing_company`
+--
+
+CREATE TABLE IF NOT EXISTS `system_manufacturing_company` (
+  `m_c_id` tinyint(4) NOT NULL,
+  `sy_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`m_c_id`,`sy_id`),
+  KEY `R_42` (`sy_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `system_manufacturing_company`
+--
+
+INSERT INTO `system_manufacturing_company` (`m_c_id`, `sy_id`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(9, 9),
+(10, 10),
+(11, 11),
+(12, 12),
+(13, 13),
+(14, 14),
+(15, 15),
+(16, 16),
+(17, 17),
+(18, 18),
+(19, 19),
+(20, 20),
+(21, 21),
+(22, 22),
+(23, 23),
+(24, 24),
+(25, 25),
+(26, 26),
+(27, 27),
+(28, 28),
+(9, 29),
+(30, 30),
+(29, 31),
+(31, 32),
+(32, 33),
+(33, 34),
+(34, 35),
+(35, 36),
+(2, 37),
+(36, 38),
+(37, 39),
+(38, 40),
+(39, 41),
+(40, 42),
+(11, 43),
+(41, 44),
+(42, 45),
+(43, 46),
+(44, 47),
+(45, 48),
+(46, 49),
+(47, 50),
+(48, 51),
+(48, 52),
+(49, 53),
+(50, 54),
+(39, 55),
+(18, 56),
+(51, 57),
+(52, 58),
+(53, 59),
+(48, 60),
+(54, 61),
+(13, 62),
+(55, 63),
+(56, 64),
+(57, 65),
+(58, 66),
+(59, 67),
+(18, 68),
+(60, 69),
+(22, 70),
+(61, 71),
+(62, 71),
+(63, 72),
+(29, 73),
+(64, 74),
+(65, 75),
+(66, 76),
+(67, 77),
+(68, 78),
+(69, 79),
+(70, 80),
+(71, 81),
+(72, 82);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `system_platform`
+--
+
+CREATE TABLE IF NOT EXISTS `system_platform` (
+  `pl_id` tinyint(4) NOT NULL,
+  `sy_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`pl_id`,`sy_id`),
+  KEY `R_45` (`sy_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `system_platform`
+--
+
+INSERT INTO `system_platform` (`pl_id`, `sy_id`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(2, 5),
+(1, 6),
+(1, 7),
+(3, 7),
+(4, 7),
+(1, 8),
+(3, 9),
+(5, 9),
+(1, 11),
+(3, 12),
+(5, 12),
+(6, 12),
+(3, 13),
+(1, 14),
+(7, 16),
+(3, 17),
+(4, 17),
+(6, 17),
+(8, 17),
+(1, 18),
+(3, 18),
+(4, 18),
+(6, 18),
+(1, 19),
+(1, 20),
+(1, 21),
+(5, 21),
+(6, 21),
+(5, 22),
+(6, 22),
+(6, 23),
+(1, 24),
+(6, 25),
+(9, 25),
+(1, 26),
+(1, 27),
+(5, 27),
+(6, 27),
+(10, 28),
+(1, 29),
+(6, 29),
+(8, 30),
+(1, 31),
+(1, 32),
+(5, 32),
+(1, 33),
+(1, 34),
+(1, 35),
+(5, 35),
+(6, 35),
+(3, 36),
+(6, 36),
+(1, 37),
+(1, 38),
+(3, 38),
+(3, 39),
+(8, 39),
+(11, 40),
+(1, 41),
+(1, 42),
+(1, 43),
+(1, 44),
+(3, 45),
+(4, 45),
+(6, 45),
+(1, 46),
+(3, 46),
+(4, 46),
+(6, 46),
+(12, 46),
+(1, 47),
+(1, 48),
+(3, 49),
+(4, 49),
+(5, 49),
+(6, 49),
+(1, 51),
+(1, 52),
+(1, 53),
+(1, 54),
+(5, 54),
+(6, 54),
+(8, 54),
+(1, 55),
+(6, 55),
+(8, 55),
+(1, 56),
+(8, 57),
+(1, 58),
+(1, 59),
+(1, 60),
+(1, 61),
+(3, 61),
+(4, 61),
+(6, 61),
+(3, 62),
+(1, 63),
+(5, 63),
+(8, 63),
+(1, 64),
+(8, 64),
+(1, 65),
+(6, 65),
+(1, 66),
+(3, 66),
+(4, 66),
+(6, 66),
+(1, 67),
+(3, 67),
+(4, 67),
+(6, 67),
+(3, 68),
+(4, 68),
+(6, 68),
+(1, 69),
+(5, 69),
+(6, 69),
+(13, 69),
+(1, 70),
+(6, 70),
+(11, 70),
+(10, 71),
+(1, 73),
+(8, 73),
+(1, 74),
+(6, 74),
+(1, 75),
+(1, 76),
+(3, 77),
+(4, 77),
+(6, 77),
+(14, 77),
+(1, 78),
+(1, 79),
+(4, 79),
+(1, 80),
+(4, 80),
+(1, 81),
+(1, 82),
+(6, 82);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `system_producing_country`
+--
+
+CREATE TABLE IF NOT EXISTS `system_producing_country` (
+  `p_c_id` tinyint(4) NOT NULL,
+  `sy_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`p_c_id`,`sy_id`),
+  KEY `R_47` (`sy_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `system_producing_country`
+--
+
+INSERT INTO `system_producing_country` (`p_c_id`, `sy_id`) VALUES
+(1, 1),
+(1, 2),
+(8, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(3, 7),
+(1, 8),
+(1, 9),
+(3, 10),
+(1, 11),
+(3, 12),
+(3, 13),
+(1, 14),
+(1, 15),
+(1, 16),
+(4, 17),
+(1, 18),
+(3, 19),
+(1, 20),
+(1, 21),
+(1, 22),
+(5, 23),
+(1, 24),
+(1, 25),
+(1, 26),
+(1, 27),
+(6, 28),
+(3, 29),
+(1, 30),
+(3, 31),
+(1, 32),
+(5, 33),
+(1, 34),
+(7, 35),
+(1, 36),
+(1, 37),
+(1, 38),
+(1, 39),
+(3, 40),
+(1, 41),
+(1, 42),
+(1, 43),
+(1, 44),
+(1, 45),
+(3, 46),
+(1, 47),
+(1, 48),
+(1, 49),
+(1, 50),
+(1, 51),
+(1, 52),
+(1, 53),
+(3, 54),
+(1, 55),
+(1, 56),
+(1, 57),
+(1, 58),
+(1, 59),
+(1, 60),
+(4, 61),
+(3, 62),
+(1, 63),
+(4, 64),
+(1, 65),
+(1, 66),
+(1, 67),
+(1, 68),
+(3, 69),
+(3, 70),
+(6, 71),
+(4, 72),
+(3, 73),
+(1, 74),
+(1, 75),
+(1, 76),
+(2, 77),
+(1, 78),
+(1, 79),
+(3, 80),
+(3, 81),
+(1, 82);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `system_realization_language`
+--
+
+CREATE TABLE IF NOT EXISTS `system_realization_language` (
+  `p_l_id` tinyint(4) NOT NULL,
+  `sy_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`p_l_id`,`sy_id`),
+  KEY `R_49` (`sy_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `system_realization_language`
+--
+
+INSERT INTO `system_realization_language` (`p_l_id`, `sy_id`) VALUES
+(4, 1),
+(6, 2),
+(6, 3),
+(7, 4),
+(8, 5),
+(9, 6),
+(5, 7),
+(6, 8),
+(6, 9),
+(4, 10),
+(10, 11),
+(4, 12),
+(5, 13),
+(11, 14),
+(6, 15),
+(4, 16),
+(11, 16),
+(6, 17),
+(6, 18),
+(11, 19),
+(11, 20),
+(6, 21),
+(4, 22),
+(6, 23),
+(4, 24),
+(12, 25),
+(13, 25),
+(4, 26),
+(5, 27),
+(6, 28),
+(3, 29),
+(6, 30),
+(4, 31),
+(11, 32),
+(14, 33),
+(11, 34),
+(6, 35),
+(6, 36),
+(6, 37),
+(11, 38),
+(9, 39),
+(4, 40),
+(4, 41),
+(11, 43),
+(15, 44),
+(6, 45),
+(11, 46),
+(6, 47),
+(11, 48),
+(6, 49),
+(11, 50),
+(4, 51),
+(4, 52),
+(11, 54),
+(4, 55),
+(11, 56),
+(11, 59),
+(4, 60),
+(6, 61),
+(11, 62),
+(11, 63),
+(16, 64),
+(6, 65),
+(11, 66),
+(11, 67),
+(11, 68),
+(4, 69),
+(5, 70),
+(5, 71),
+(6, 72),
+(14, 73),
+(17, 74),
+(18, 75),
+(5, 76),
+(5, 77),
+(11, 78),
+(11, 79),
+(5, 80),
+(4, 81),
+(6, 82);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `system_solver`
+--
+
+CREATE TABLE IF NOT EXISTS `system_solver` (
+  `sy_id` tinyint(4) NOT NULL,
+  `so_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`sy_id`,`so_id`),
+  KEY `R_35` (`so_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `system_solver`
+--
+
+INSERT INTO `system_solver` (`sy_id`, `so_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(9, 1),
+(12, 1),
+(14, 1),
+(15, 1),
+(17, 1),
+(19, 1),
+(22, 1),
+(23, 1),
+(24, 1),
+(25, 1),
+(27, 1),
+(28, 1),
+(29, 1),
+(30, 1),
+(32, 1),
+(33, 1),
+(34, 1),
+(35, 1),
+(36, 1),
+(37, 1),
+(38, 1),
+(41, 1),
+(42, 1),
+(43, 1),
+(44, 1),
+(45, 1),
+(46, 1),
+(47, 1),
+(48, 1),
+(49, 1),
+(54, 1),
+(55, 1),
+(56, 1),
+(59, 1),
+(60, 1),
+(62, 1),
+(63, 1),
+(64, 1),
+(65, 1),
+(66, 1),
+(73, 1),
+(74, 1),
+(77, 1),
+(78, 1),
+(80, 1),
+(81, 1),
+(82, 1),
+(83, 1),
+(84, 1),
+(1, 2),
+(2, 2),
+(3, 2),
+(4, 2),
+(5, 2),
+(8, 2),
+(9, 2),
+(10, 2),
+(14, 2),
+(15, 2),
+(17, 2),
+(19, 2),
+(20, 2),
+(22, 2),
+(23, 2),
+(24, 2),
+(25, 2),
+(27, 2),
+(28, 2),
+(29, 2),
+(30, 2),
+(32, 2),
+(33, 2),
+(35, 2),
+(36, 2),
+(37, 2),
+(38, 2),
+(39, 2),
+(40, 2),
+(41, 2),
+(42, 2),
+(43, 2),
+(44, 2),
+(45, 2),
+(46, 2),
+(47, 2),
+(48, 2),
+(49, 2),
+(54, 2),
+(55, 2),
+(56, 2),
+(57, 2),
+(60, 2),
+(63, 2),
+(64, 2),
+(65, 2),
+(66, 2),
+(73, 2),
+(77, 2),
+(78, 2),
+(80, 2),
+(81, 2),
+(82, 2),
+(83, 2),
+(85, 2),
+(1, 3),
+(11, 3),
+(12, 3),
+(26, 3),
+(29, 3),
+(31, 3),
+(33, 3),
+(44, 3),
+(48, 3),
+(51, 3),
+(52, 3),
+(53, 3),
+(58, 3),
+(73, 3),
+(74, 3),
+(78, 3),
+(80, 3),
+(81, 3),
+(83, 3),
+(4, 4),
+(6, 4),
+(9, 4),
+(13, 4),
+(22, 4),
+(23, 4),
+(24, 4),
+(27, 4),
+(28, 4),
+(35, 4),
+(37, 4),
+(40, 4),
+(43, 4),
+(45, 4),
+(47, 4),
+(49, 4),
+(55, 4),
+(57, 4),
+(63, 4),
+(64, 4),
+(66, 4),
+(80, 4),
+(1, 5),
+(9, 5),
+(13, 5),
+(28, 5),
+(34, 5),
+(36, 5),
+(44, 5),
+(53, 5),
+(3, 6),
+(7, 6),
+(9, 6),
+(13, 6),
+(22, 6),
+(24, 6),
+(25, 6),
+(27, 6),
+(34, 6),
+(36, 6),
+(37, 6),
+(41, 6),
+(42, 6),
+(43, 6),
+(44, 6),
+(45, 6),
+(49, 6),
+(56, 6),
+(64, 6),
+(66, 6),
+(1, 7),
+(2, 7),
+(7, 7),
+(9, 7),
+(22, 7),
+(27, 7),
+(32, 7),
+(35, 7),
+(37, 7),
+(39, 7),
+(41, 7),
+(43, 7),
+(44, 7),
+(45, 7),
+(46, 7),
+(47, 7),
+(49, 7),
+(58, 7),
+(59, 7),
+(64, 7),
+(66, 7),
+(73, 7),
+(74, 7),
+(75, 7),
+(78, 7),
+(79, 7),
+(1, 8),
+(2, 8),
+(3, 8),
+(4, 8),
+(6, 8),
+(8, 8),
+(11, 8),
+(12, 8),
+(15, 8),
+(17, 8),
+(19, 8),
+(22, 8),
+(24, 8),
+(28, 8),
+(32, 8),
+(34, 8),
+(36, 8),
+(37, 8),
+(38, 8),
+(39, 8),
+(40, 8),
+(41, 8),
+(42, 8),
+(43, 8),
+(44, 8),
+(46, 8),
+(54, 8),
+(55, 8),
+(56, 8),
+(57, 8),
+(59, 8),
+(60, 8),
+(64, 8),
+(66, 8),
+(74, 8),
+(77, 8),
+(78, 8),
+(85, 8),
+(1, 9),
+(3, 9),
+(4, 9),
+(6, 9),
+(7, 9),
+(8, 9),
+(9, 9),
+(11, 9),
+(12, 9),
+(13, 9),
+(17, 9),
+(19, 9),
+(22, 9),
+(23, 9),
+(24, 9),
+(25, 9),
+(27, 9),
+(28, 9),
+(29, 9),
+(32, 9),
+(34, 9),
+(37, 9),
+(38, 9),
+(39, 9),
+(40, 9),
+(41, 9),
+(42, 9),
+(43, 9),
+(44, 9),
+(45, 9),
+(46, 9),
+(47, 9),
+(48, 9),
+(49, 9),
+(51, 9),
+(52, 9),
+(53, 9),
+(55, 9),
+(56, 9),
+(57, 9),
+(64, 9),
+(66, 9),
+(75, 9),
+(78, 9),
+(80, 9),
+(81, 9),
+(83, 9),
+(85, 9),
+(2, 10),
+(3, 10),
+(6, 10),
+(8, 10),
+(9, 10),
+(13, 10),
+(23, 10),
+(25, 10),
+(27, 10),
+(28, 10),
+(30, 10),
+(32, 10),
+(35, 10),
+(36, 10),
+(37, 10),
+(43, 10),
+(44, 10),
+(45, 10),
+(47, 10),
+(49, 10),
+(53, 10),
+(55, 10),
+(63, 10),
+(64, 10),
+(66, 10),
+(82, 10);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `system_supported_language`
+--
+
+CREATE TABLE IF NOT EXISTS `system_supported_language` (
+  `p_l_id` tinyint(4) NOT NULL,
+  `sy_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`p_l_id`,`sy_id`),
+  KEY `R_51` (`sy_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `system_supported_language`
+--
+
+INSERT INTO `system_supported_language` (`p_l_id`, `sy_id`) VALUES
+(19, 1),
+(11, 2),
+(3, 4),
+(4, 4),
+(11, 4),
+(1, 6),
+(20, 6),
+(11, 7),
+(3, 8),
+(4, 8),
+(11, 8),
+(21, 9),
+(3, 12),
+(4, 12),
+(11, 12),
+(11, 19),
+(11, 20),
+(3, 22),
+(4, 22),
+(11, 22),
+(3, 23),
+(4, 23),
+(6, 23),
+(4, 24),
+(6, 25),
+(3, 27),
+(4, 27),
+(5, 27),
+(3, 28),
+(11, 28),
+(3, 29),
+(11, 34),
+(6, 35),
+(3, 36),
+(4, 36),
+(5, 36),
+(6, 37),
+(11, 37),
+(2, 40),
+(3, 40),
+(4, 40),
+(4, 41),
+(4, 43),
+(11, 43),
+(3, 44),
+(4, 44),
+(11, 44),
+(4, 45),
+(11, 45),
+(11, 46),
+(6, 47),
+(11, 47),
+(22, 48),
+(11, 50),
+(23, 50),
+(4, 51),
+(5, 51),
+(1, 56),
+(11, 56),
+(11, 62),
+(4, 63),
+(11, 63),
+(3, 65),
+(4, 65),
+(6, 65),
+(11, 66),
+(24, 66),
+(3, 67),
+(11, 67),
+(3, 68),
+(6, 68),
+(11, 68),
+(3, 69),
+(4, 69),
+(3, 70),
+(4, 70),
+(11, 70),
+(3, 74),
+(4, 74),
+(11, 75),
+(5, 77),
+(11, 77),
+(3, 78),
+(4, 78),
+(11, 78),
+(3, 79),
+(4, 79),
+(11, 79),
+(1, 80),
+(11, 80),
+(3, 81),
+(4, 81),
+(11, 81);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sys_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `sys_answer` (
+  `answer` text NOT NULL,
+  `sy_id` tinyint(4) NOT NULL,
+  `u_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`sy_id`,`u_id`),
+  KEY `R_53` (`u_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `s_l_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `s_l_answer` (
+  `answer` text NOT NULL,
+  `u_id` tinyint(4) NOT NULL,
+  `p_l_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`u_id`,`p_l_id`),
+  KEY `R_63` (`p_l_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `temperament_type`
+--
+
+CREATE TABLE IF NOT EXISTS `temperament_type` (
+  `t_t_id` tinyint(4) NOT NULL,
+  `question` text NOT NULL,
+  `sincerity` text NOT NULL,
+  `instability` text NOT NULL,
+  `extraversion` text NOT NULL,
+  `a_v_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`t_t_id`),
+  KEY `R_13` (`a_v_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `temperament_type`
+--
+
+INSERT INTO `temperament_type` (`t_t_id`, `question`, `sincerity`, `instability`, `extraversion`, `a_v_id`) VALUES
+(1, 'Часто ли Вы испытываете тягу к новым впечатлениям, к тому, чтобы встряхнуться, испытать возбуждение?', '', '', 'Да', 1),
+(2, 'Часто ли Вы чувствуете, что нуждаетесь в друзьях, которые вас понимают, могут одобрить или утешить?', '', 'Да', '', 1),
+(3, 'Считаете ли Вы себя безобидным человеком?', '', '', 'Да', 1),
+(4, 'Очень ли трудно Вам отказаться от своих намерений?', '', 'Да', '', 1),
+(5, 'Вы обдумываете свои дела не спеша, предпочитаете подождать, прежде чем действовать?', '', '', 'Нет', 1),
+(6, 'Всегда ли Вы сдерживаете свои обещания, не считаясь с тем, что Вам это невыгодно?', 'Да', '', '', 1),
+(7, 'Часто ли у Вас бывают спады и подъёмы настроения?', '', 'Да', '', 1),
+(8, 'Вообще, Вы действуете и говорите быстро, не задерживаясь для обдумывания?', '', '', 'Да', 1),
+(9, 'Возникало ли у Вас чувство, что Вы несчастный человек, хотя серьёзной причины для этого не было?', '', 'Да', '', 1),
+(10, 'Верно ли, что Вы почти на всё могли бы решиться, если дело пошло на спор?', '', '', 'Да', 1),
+(11, 'Вы смущаетесь, когда хотите завязать разговор с незнакомым человеком?', '', 'Да', '', 1),
+(12, 'Бывает ли, что разозлившись, Вы выходите из себя?', 'Нет', '', '', 1),
+(13, 'Часто ли бывает, что Вы действуете под влиянием минуты?', '', '', 'Да', 1),
+(14, 'Часто ли Вас терзают мысли о том, что чего-либо не следовало делать или говорить?', '', 'Да', '', 1),
+(15, 'Предпочитаете ли Вы книги встречам с другими людьми?', '', '', 'Нет', 1),
+(16, 'Верно ли, что Вас довольно легко задеть?', '', 'Да', '', 1),
+(17, 'Вы любите часто бывать в компании?', '', '', 'Да', 1),
+(18, 'Бывают ли у Вас мысли, о которых неудобно рассказывать другим?', 'Нет', '', '', 1),
+(19, 'Верно ли, что Вы иногда полны энергии так, что всё горит в руках, а иногда вялые?', '', 'Да', '', 1),
+(20, 'Предпочитаете ли иметь поменьше приятелей, но зато особенно близких?', '', '', 'Нет', 1),
+(21, 'Вы много мечтаете?', '', 'Да', '', 1),
+(22, 'Когда на Вас кричат, отвечаете тем же?', '', '', 'Да', 1),
+(23, 'Часто ли Вас терзает чувство вины?', '', 'Да', '', 1),
+(24, 'Все ли ваши привычки хороши и желательны?', 'Да', '', '', 1),
+(25, 'Способны ли Вы дать волю чувствам и вовсю повеселиться в шумной компании?', '', '', 'Да', 1),
+(26, 'Можно ли сказать, что нервы бывают у Вас часто натянуты до предела?', '', 'Да', '', 1),
+(27, 'Вы слывёте за человека весёлого и живого?', '', '', 'Да', 1),
+(28, 'После того как дело сделано, часто ли Вы мысленно возвращаетесь к нему, думая, что могли бы сделать лучше?', '', 'Да', '', 1),
+(29, 'Вы обычно чувствуете себя спокойным, когда находитесь в компании?', '', '', 'Нет', 1),
+(30, 'Бывает ли, что Вы передаёте слухи?', 'Нет', '', '', 1),
+(31, 'Бывает ли, что Вам не спится из-за того, что разные мысли лезут Вам в голову?', '', 'Да', '', 1),
+(32, 'Если хотите узнать о чём-нибудь, то предпочитаете прочитать в книге, чем спросить у друзей?', '', '', 'Нет', 1),
+(33, 'Бывает ли у Вас сильное сердцебиение?', '', 'Да', '', 1),
+(34, 'Нравится ли Вам работа, требующая пристального внимания?', '', '', 'Нет', 1),
+(35, 'Бывают ли у Вас приступы дрожи?', '', 'Да', '', 1),
+(36, 'Если бы Вы знали, что никогда сказанное Вами не будет раскрыто, всегда бы высказывались в духе общепринятого?', 'Да', '', '', 1),
+(37, 'Вам неприятно бывать в компании, где подшучивают друг над другом?', '', '', 'Нет', 1),
+(38, 'Вы раздражительны?', '', 'Да', '', 1),
+(39, 'Вам нравится работа, которая требует быстроты действия?', '', '', 'Да', 1),
+(40, 'Верно ли, что Вам нередко не дают покоя мысли о разных неприятностях и ужасах, которые могли бы произойти, хотя всё закончилось благополучно?', '', 'Да', '', 1),
+(41, 'Вы медлительны и неторопливы в движениях?', '', '', 'Нет', 1),
+(42, 'Вы когда-нибудь опаздывали на свидания или на работу?', 'Нет', '', '', 1),
+(43, 'Часто ли вам снятся кошмары?', '', 'Да', '', 1),
+(44, 'Вы любите поговорить настолько, что никогда не упустите удобный случай с незнакомым человеком?', '', '', 'Да', 1),
+(45, 'Беспокоят ли вас какие-либо боли?', '', 'Да', '', 1),
+(46, 'Вы чувствовали бы себя несчастным, если долго не смогли бы видеться со своими знакомыми, друзьями?', '', '', 'Да', 1),
+(47, 'Можете ли Вы назвать себя нервным человеком?', '', 'Да', '', 1),
+(48, 'Среди людей, которых Вы знаете, есть ли такие, которые Вам явно не нравятся?', 'Нет', '', '', 1),
+(49, 'Можете ли Вы сказать, что Вы уверенный в себе человек?', '', '', 'Да', 1),
+(50, 'Обидитесь ли Вы, если покритиковать недостатки Ваши и Вашей работы?', '', 'Да', '', 1),
+(51, 'Вы считаете, что трудно получить настоящее удовольствие от вечеринки?', '', '', 'Нет', 1),
+(52, 'Беспокоит ли Вас чувство, что Вы чем-то хуже других?', '', 'Да', '', 1),
+(53, 'Вам трудно внести оживление в скучную компанию?', '', '', 'Да', 1),
+(54, 'Бывает ли, что Вы говорите о вещах, в которых совсем не разбираетесь?', 'Нет', '', '', 1),
+(55, 'Вы беспокоитесь о своём здоровье?', '', 'Да', '', 1),
+(56, 'Вы любите подшучивать над другими?', '', '', 'Да', 1),
+(57, 'Страдаете ли Вы от бессонницы?', '', 'Да', '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_t_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `t_t_answer` (
+  `answer` text NOT NULL,
+  `u_id` tinyint(4) NOT NULL,
+  `t_t_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`u_id`,`t_t_id`),
+  KEY `R_20` (`t_t_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `u_id` tinyint(4) NOT NULL,
+  `password` text NOT NULL,
+  `name` text NOT NULL,
+  `gender` text NOT NULL,
+  `age` tinyint(4) DEFAULT NULL,
+  `u_g_id` tinyint(4) NOT NULL,
+  `login` text NOT NULL,
+  PRIMARY KEY (`u_id`),
+  KEY `R_72` (`u_g_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_group`
+--
+
+CREATE TABLE IF NOT EXISTS `user_group` (
+  `u_g_id` tinyint(4) NOT NULL,
+  `group_name` text NOT NULL,
+  PRIMARY KEY (`u_g_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Dumping data for table `user_group`
+--
+
+INSERT INTO `user_group` (`u_g_id`, `group_name`) VALUES
+(1, 'заказчик'),
+(2, 'эксперт'),
+(3, 'инженер по знаниям');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `creator_speculator`
+--
+ALTER TABLE `creator_speculator`
+  ADD CONSTRAINT `creator_speculator_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
+
+--
+-- Constraints for table `c_s_answer`
+--
+ALTER TABLE `c_s_answer`
+  ADD CONSTRAINT `c_s_answer_ibfk_2` FOREIGN KEY (`c_s_id`) REFERENCES `creator_speculator` (`c_s_id`),
+  ADD CONSTRAINT `c_s_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
+
+--
+-- Constraints for table `fielddependence_fieldindependence`
+--
+ALTER TABLE `fielddependence_fieldindependence`
+  ADD CONSTRAINT `fielddependence_fieldindependence_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
+
+--
+-- Constraints for table `f_f_answer`
+--
+ALTER TABLE `f_f_answer`
+  ADD CONSTRAINT `f_f_answer_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
+  ADD CONSTRAINT `f_f_answer_ibfk_1` FOREIGN KEY (`f_f_id`) REFERENCES `fielddependence_fieldindependence` (`f_f_id`);
+
+--
+-- Constraints for table `ideal_expert`
+--
+ALTER TABLE `ideal_expert`
+  ADD CONSTRAINT `ideal_expert_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
+
+--
+-- Constraints for table `ideal_knowledge_ingeneer`
+--
+ALTER TABLE `ideal_knowledge_ingeneer`
+  ADD CONSTRAINT `ideal_knowledge_ingeneer_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
+
+--
+-- Constraints for table `integ_m_answer`
+--
+ALTER TABLE `integ_m_answer`
+  ADD CONSTRAINT `integ_m_answer_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
+  ADD CONSTRAINT `integ_m_answer_ibfk_1` FOREIGN KEY (`integ_m_id`) REFERENCES `integration_means` (`integ_m_id`);
+
+--
+-- Constraints for table `inter_m_answer`
+--
+ALTER TABLE `inter_m_answer`
+  ADD CONSTRAINT `inter_m_answer_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
+  ADD CONSTRAINT `inter_m_answer_ibfk_1` FOREIGN KEY (`inter_m_id`) REFERENCES `interface_means` (`inter_m_id`);
+
+--
+-- Constraints for table `i_e_answer`
+--
+ALTER TABLE `i_e_answer`
+  ADD CONSTRAINT `i_e_answer_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
+  ADD CONSTRAINT `i_e_answer_ibfk_1` FOREIGN KEY (`i_e_id`) REFERENCES `ideal_expert` (`i_e_id`);
+
+--
+-- Constraints for table `i_k_i_answer`
+--
+ALTER TABLE `i_k_i_answer`
+  ADD CONSTRAINT `i_k_i_answer_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
+  ADD CONSTRAINT `i_k_i_answer_ibfk_1` FOREIGN KEY (`i_k_i_id`) REFERENCES `ideal_knowledge_ingeneer` (`i_k_i_id`);
+
+--
+-- Constraints for table `k_r_answer`
+--
+ALTER TABLE `k_r_answer`
+  ADD CONSTRAINT `k_r_answer_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
+  ADD CONSTRAINT `k_r_answer_ibfk_1` FOREIGN KEY (`k_r_id`) REFERENCES `knowledge_representation` (`k_r_id`);
+
+--
+-- Constraints for table `m_c_answer`
+--
+ALTER TABLE `m_c_answer`
+  ADD CONSTRAINT `m_c_answer_ibfk_2` FOREIGN KEY (`m_c_id`) REFERENCES `manufacturing_company` (`m_c_id`),
+  ADD CONSTRAINT `m_c_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
+
+--
+-- Constraints for table `opportunity_research`
+--
+ALTER TABLE `opportunity_research`
+  ADD CONSTRAINT `opportunity_research_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
+
+--
+-- Constraints for table `o_r_answer`
+--
+ALTER TABLE `o_r_answer`
+  ADD CONSTRAINT `o_r_answer_ibfk_2` FOREIGN KEY (`o_r_id`) REFERENCES `opportunity_research` (`o_r_id`),
+  ADD CONSTRAINT `o_r_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
+
+--
+-- Constraints for table `project_group`
+--
+ALTER TABLE `project_group`
+  ADD CONSTRAINT `project_group_ibfk_2` FOREIGN KEY (`pr_id`) REFERENCES `project` (`pr_id`),
+  ADD CONSTRAINT `project_group_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
+
+--
+-- Constraints for table `propriety_research`
+--
+ALTER TABLE `propriety_research`
+  ADD CONSTRAINT `propriety_research_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
+
+--
+-- Constraints for table `p_answer`
+--
+ALTER TABLE `p_answer`
+  ADD CONSTRAINT `p_answer_ibfk_2` FOREIGN KEY (`pl_id`) REFERENCES `platform` (`pl_id`),
+  ADD CONSTRAINT `p_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
+
+--
+-- Constraints for table `p_c_answer`
+--
+ALTER TABLE `p_c_answer`
+  ADD CONSTRAINT `p_c_answer_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
+  ADD CONSTRAINT `p_c_answer_ibfk_1` FOREIGN KEY (`p_c_id`) REFERENCES `producing_country` (`p_c_id`);
+
+--
+-- Constraints for table `p_r_answer`
+--
+ALTER TABLE `p_r_answer`
+  ADD CONSTRAINT `p_r_answer_ibfk_2` FOREIGN KEY (`p_r_id`) REFERENCES `propriety_research` (`p_r_id`),
+  ADD CONSTRAINT `p_r_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
+
+--
+-- Constraints for table `relevance_research`
+--
+ALTER TABLE `relevance_research`
+  ADD CONSTRAINT `relevance_research_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
+
+--
+-- Constraints for table `rigidity_versatility`
+--
+ALTER TABLE `rigidity_versatility`
+  ADD CONSTRAINT `rigidity_versatility_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
+
+--
+-- Constraints for table `r_l_answer`
+--
+ALTER TABLE `r_l_answer`
+  ADD CONSTRAINT `r_l_answer_ibfk_2` FOREIGN KEY (`p_l_id`) REFERENCES `programming_language` (`p_l_id`),
+  ADD CONSTRAINT `r_l_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
+
+--
+-- Constraints for table `r_r_answer`
+--
+ALTER TABLE `r_r_answer`
+  ADD CONSTRAINT `r_r_answer_ibfk_2` FOREIGN KEY (`r_r_id`) REFERENCES `relevance_research` (`r_r_id`),
+  ADD CONSTRAINT `r_r_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
+
+--
+-- Constraints for table `r_v_answer`
+--
+ALTER TABLE `r_v_answer`
+  ADD CONSTRAINT `r_v_answer_ibfk_2` FOREIGN KEY (`r_v_id`) REFERENCES `rigidity_versatility` (`r_v_id`),
+  ADD CONSTRAINT `r_v_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
+
+--
+-- Constraints for table `sol_answer`
+--
+ALTER TABLE `sol_answer`
+  ADD CONSTRAINT `sol_answer_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
+  ADD CONSTRAINT `sol_answer_ibfk_1` FOREIGN KEY (`so_id`) REFERENCES `solver` (`so_id`);
+
+--
+-- Constraints for table `system_integration_means`
+--
+ALTER TABLE `system_integration_means`
+  ADD CONSTRAINT `system_integration_means_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`sy_id`),
+  ADD CONSTRAINT `system_integration_means_ibfk_1` FOREIGN KEY (`integ_m_id`) REFERENCES `integration_means` (`integ_m_id`);
+
+--
+-- Constraints for table `system_interface_means`
+--
+ALTER TABLE `system_interface_means`
+  ADD CONSTRAINT `system_interface_means_ibfk_2` FOREIGN KEY (`inter_m_id`) REFERENCES `interface_means` (`inter_m_id`),
+  ADD CONSTRAINT `system_interface_means_ibfk_1` FOREIGN KEY (`sy_id`) REFERENCES `system` (`sy_id`);
+
+--
+-- Constraints for table `system_knowledge_representation`
+--
+ALTER TABLE `system_knowledge_representation`
+  ADD CONSTRAINT `system_knowledge_representation_ibfk_2` FOREIGN KEY (`k_r_id`) REFERENCES `knowledge_representation` (`k_r_id`),
+  ADD CONSTRAINT `system_knowledge_representation_ibfk_1` FOREIGN KEY (`sy_id`) REFERENCES `system` (`sy_id`);
+
+--
+-- Constraints for table `system_manufacturing_company`
+--
+ALTER TABLE `system_manufacturing_company`
+  ADD CONSTRAINT `system_manufacturing_company_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`sy_id`),
+  ADD CONSTRAINT `system_manufacturing_company_ibfk_1` FOREIGN KEY (`m_c_id`) REFERENCES `manufacturing_company` (`m_c_id`);
+
+--
+-- Constraints for table `system_platform`
+--
+ALTER TABLE `system_platform`
+  ADD CONSTRAINT `system_platform_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`sy_id`),
+  ADD CONSTRAINT `system_platform_ibfk_1` FOREIGN KEY (`pl_id`) REFERENCES `platform` (`pl_id`);
+
+--
+-- Constraints for table `system_producing_country`
+--
+ALTER TABLE `system_producing_country`
+  ADD CONSTRAINT `system_producing_country_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`sy_id`),
+  ADD CONSTRAINT `system_producing_country_ibfk_1` FOREIGN KEY (`p_c_id`) REFERENCES `producing_country` (`p_c_id`);
+
+--
+-- Constraints for table `system_realization_language`
+--
+ALTER TABLE `system_realization_language`
+  ADD CONSTRAINT `system_realization_language_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`sy_id`),
+  ADD CONSTRAINT `system_realization_language_ibfk_1` FOREIGN KEY (`p_l_id`) REFERENCES `programming_language` (`p_l_id`);
+
+--
+-- Constraints for table `system_solver`
+--
+ALTER TABLE `system_solver`
+  ADD CONSTRAINT `system_solver_ibfk_2` FOREIGN KEY (`so_id`) REFERENCES `solver` (`so_id`),
+  ADD CONSTRAINT `system_solver_ibfk_1` FOREIGN KEY (`sy_id`) REFERENCES `system` (`sy_id`);
+
+--
+-- Constraints for table `system_supported_language`
+--
+ALTER TABLE `system_supported_language`
+  ADD CONSTRAINT `system_supported_language_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`sy_id`),
+  ADD CONSTRAINT `system_supported_language_ibfk_1` FOREIGN KEY (`p_l_id`) REFERENCES `programming_language` (`p_l_id`);
+
+--
+-- Constraints for table `sys_answer`
+--
+ALTER TABLE `sys_answer`
+  ADD CONSTRAINT `sys_answer_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
+  ADD CONSTRAINT `sys_answer_ibfk_1` FOREIGN KEY (`sy_id`) REFERENCES `system` (`sy_id`);
+
+--
+-- Constraints for table `s_l_answer`
+--
+ALTER TABLE `s_l_answer`
+  ADD CONSTRAINT `s_l_answer_ibfk_2` FOREIGN KEY (`p_l_id`) REFERENCES `programming_language` (`p_l_id`),
+  ADD CONSTRAINT `s_l_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
+
+--
+-- Constraints for table `temperament_type`
+--
+ALTER TABLE `temperament_type`
+  ADD CONSTRAINT `temperament_type_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
+
+--
+-- Constraints for table `t_t_answer`
+--
+ALTER TABLE `t_t_answer`
+  ADD CONSTRAINT `t_t_answer_ibfk_2` FOREIGN KEY (`t_t_id`) REFERENCES `temperament_type` (`t_t_id`),
+  ADD CONSTRAINT `t_t_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
+
+--
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`u_g_id`) REFERENCES `user_group` (`u_g_id`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
