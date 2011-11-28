@@ -25,14 +25,14 @@ ADD PRIMARY KEY (a_v_id);
 CREATE TABLE c_s_answer
 (
 	answer               TEXT NOT NULL,
-	login                VARCHAR(30) NOT NULL,
+	u_id                 TINYINT NOT NULL,
 	c_s_id               TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE c_s_answer
-ADD PRIMARY KEY (login,c_s_id);
+ADD PRIMARY KEY (u_id,c_s_id);
 
 
 
@@ -55,13 +55,13 @@ CREATE TABLE f_f_answer
 (
 	answer               TEXT NOT NULL,
 	f_f_id               TINYINT NOT NULL,
-	login                VARCHAR(30) NOT NULL
+	u_id                 TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE f_f_answer
-ADD PRIMARY KEY (f_f_id,login);
+ADD PRIMARY KEY (f_f_id,u_id);
 
 
 
@@ -98,13 +98,13 @@ CREATE TABLE i_e_answer
 (
 	answer               TEXT NOT NULL,
 	i_e_id               TINYINT NOT NULL,
-	login                VARCHAR(30) NOT NULL
+	u_id                 TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE i_e_answer
-ADD PRIMARY KEY (i_e_id,login);
+ADD PRIMARY KEY (i_e_id,u_id);
 
 
 
@@ -112,13 +112,13 @@ CREATE TABLE i_k_i_answer
 (
 	answer               TEXT NOT NULL,
 	i_k_i_id             TINYINT NOT NULL,
-	login                VARCHAR(30) NOT NULL
+	u_id                 TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE i_k_i_answer
-ADD PRIMARY KEY (i_k_i_id,login);
+ADD PRIMARY KEY (i_k_i_id,u_id);
 
 
 
@@ -155,118 +155,122 @@ ADD PRIMARY KEY (i_k_i_id);
 CREATE TABLE integ_m_answer
 (
 	answer               TEXT NOT NULL,
-	integration_mean     VARCHAR(30) NOT NULL,
-	login                VARCHAR(30) NOT NULL
+	integ_m_id           TINYINT NOT NULL,
+	u_id                 TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE integ_m_answer
-ADD PRIMARY KEY (integration_mean,login);
+ADD PRIMARY KEY (integ_m_id,u_id);
 
 
 
 CREATE TABLE integration_means
 (
-	integration_mean     VARCHAR(30) NOT NULL
+	integ_m_id           TINYINT NOT NULL,
+	integration_mean     TEXT NOT NULL
 );
 
 
 
 ALTER TABLE integration_means
-ADD PRIMARY KEY (integration_mean);
+ADD PRIMARY KEY (integ_m_id);
 
 
 
 CREATE TABLE inter_m_answer
 (
 	answer               TEXT NOT NULL,
-	interface_mean       VARCHAR(30) NOT NULL,
-	login                VARCHAR(30) NOT NULL
+	inter_m_id           TINYINT NOT NULL,
+	u_id                 TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE inter_m_answer
-ADD PRIMARY KEY (interface_mean,login);
+ADD PRIMARY KEY (inter_m_id,u_id);
 
 
 
 CREATE TABLE interface_means
 (
-	interface_mean       VARCHAR(30) NOT NULL
+	inter_m_id           TINYINT NOT NULL,
+	interface_mean       TEXT NOT NULL
 );
 
 
 
 ALTER TABLE interface_means
-ADD PRIMARY KEY (interface_mean);
+ADD PRIMARY KEY (inter_m_id);
 
 
 
 CREATE TABLE k_r_answer
 (
 	answer               TEXT NOT NULL,
-	knowledge_representation VARCHAR(30) NOT NULL,
-	login                VARCHAR(30) NOT NULL
+	k_r_id               TINYINT NOT NULL,
+	u_id                 TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE k_r_answer
-ADD PRIMARY KEY (knowledge_representation,login);
+ADD PRIMARY KEY (k_r_id,u_id);
 
 
 
 CREATE TABLE knowledge_representation
 (
-	knowledge_representation VARCHAR(30) NOT NULL
+	k_r_id               TINYINT NOT NULL,
+	knowledge_representation TEXT NOT NULL
 );
 
 
 
 ALTER TABLE knowledge_representation
-ADD PRIMARY KEY (knowledge_representation);
+ADD PRIMARY KEY (k_r_id);
 
 
 
 CREATE TABLE m_c_answer
 (
 	answer               TEXT NOT NULL,
-	login                VARCHAR(30) NOT NULL,
-	company              VARCHAR(30) NOT NULL
+	u_id                 TINYINT NOT NULL,
+	m_c_id               TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE m_c_answer
-ADD PRIMARY KEY (login,company);
+ADD PRIMARY KEY (u_id,m_c_id);
 
 
 
 CREATE TABLE manufacturing_company
 (
-	company              VARCHAR(30) NOT NULL
+	m_c_id               TINYINT NOT NULL,
+	company              TEXT NOT NULL
 );
 
 
 
 ALTER TABLE manufacturing_company
-ADD PRIMARY KEY (company);
+ADD PRIMARY KEY (m_c_id);
 
 
 
 CREATE TABLE o_r_answer
 (
 	answer               TEXT NOT NULL,
-	login                VARCHAR(30) NOT NULL,
+	u_id                 TINYINT NOT NULL,
 	o_r_id               TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE o_r_answer
-ADD PRIMARY KEY (login,o_r_id);
+ADD PRIMARY KEY (u_id,o_r_id);
 
 
 
@@ -288,103 +292,107 @@ ADD PRIMARY KEY (o_r_id);
 CREATE TABLE p_answer
 (
 	answer               TEXT NOT NULL,
-	login                VARCHAR(30) NOT NULL,
-	platform_name        VARCHAR(30) NOT NULL
+	u_id                 TINYINT NOT NULL,
+	pl_id                TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE p_answer
-ADD PRIMARY KEY (login,platform_name);
+ADD PRIMARY KEY (u_id,pl_id);
 
 
 
 CREATE TABLE p_c_answer
 (
 	answer               TEXT NOT NULL,
-	country              VARCHAR(30) NOT NULL,
-	login                VARCHAR(30) NOT NULL
+	p_c_id               TINYINT NOT NULL,
+	u_id                 TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE p_c_answer
-ADD PRIMARY KEY (country,login);
+ADD PRIMARY KEY (p_c_id,u_id);
 
 
 
 CREATE TABLE p_r_answer
 (
 	answer               TEXT NOT NULL,
-	login                VARCHAR(30) NOT NULL,
+	u_id                 TINYINT NOT NULL,
 	p_r_id               TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE p_r_answer
-ADD PRIMARY KEY (login,p_r_id);
+ADD PRIMARY KEY (u_id,p_r_id);
 
 
 
 CREATE TABLE platform
 (
-	platform_name        VARCHAR(30) NOT NULL
+	pl_id                TINYINT NOT NULL,
+	platform_name        TEXT NOT NULL
 );
 
 
 
 ALTER TABLE platform
-ADD PRIMARY KEY (platform_name);
+ADD PRIMARY KEY (pl_id);
 
 
 
 CREATE TABLE producing_country
 (
-	country              VARCHAR(30) NOT NULL
+	p_c_id               TINYINT NOT NULL,
+	country              TEXT NOT NULL
 );
 
 
 
 ALTER TABLE producing_country
-ADD PRIMARY KEY (country);
+ADD PRIMARY KEY (p_c_id);
 
 
 
 CREATE TABLE programming_language
 (
-	language             VARCHAR(30) NOT NULL
+	p_l_id               TINYINT NOT NULL,
+	language             TEXT NOT NULL
 );
 
 
 
 ALTER TABLE programming_language
-ADD PRIMARY KEY (language);
+ADD PRIMARY KEY (p_l_id);
 
 
 
 CREATE TABLE project
 (
-	project_name         VARCHAR(30) NOT NULL
+	pr_id                TINYINT NOT NULL,
+	project_name         TEXT NOT NULL
 );
 
 
 
 ALTER TABLE project
-ADD PRIMARY KEY (project_name);
+ADD PRIMARY KEY (pr_id);
 
 
 
 CREATE TABLE project_group
 (
-	login                VARCHAR(30) NOT NULL,
-	project_name         VARCHAR(30) NOT NULL
+	u_id                 TINYINT NOT NULL,
+	pr_id                TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE project_group
-ADD PRIMARY KEY (login,project_name);
+ADD PRIMARY KEY (u_id,pr_id);
 
 
 
@@ -406,42 +414,42 @@ ADD PRIMARY KEY (p_r_id);
 CREATE TABLE r_l_answer
 (
 	answer               TEXT NOT NULL,
-	login                VARCHAR(30) NOT NULL,
-	language             VARCHAR(30) NOT NULL
+	u_id                 TINYINT NOT NULL,
+	p_l_id               TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE r_l_answer
-ADD PRIMARY KEY (login,language);
+ADD PRIMARY KEY (u_id,p_l_id);
 
 
 
 CREATE TABLE r_r_answer
 (
 	answer               TEXT NOT NULL,
-	login                VARCHAR(30) NOT NULL,
+	u_id                 TINYINT NOT NULL,
 	r_r_id               TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE r_r_answer
-ADD PRIMARY KEY (login,r_r_id);
+ADD PRIMARY KEY (u_id,r_r_id);
 
 
 
 CREATE TABLE r_v_answer
 (
 	answer               TEXT NOT NULL,
-	login                VARCHAR(30) NOT NULL,
+	u_id                 TINYINT NOT NULL,
 	r_v_id               TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE r_v_answer
-ADD PRIMARY KEY (login,r_v_id);
+ADD PRIMARY KEY (u_id,r_v_id);
 
 
 
@@ -491,197 +499,199 @@ ADD PRIMARY KEY (r_v_id);
 CREATE TABLE s_l_answer
 (
 	answer               TEXT NOT NULL,
-	login                VARCHAR(30) NOT NULL,
-	language             VARCHAR(30) NOT NULL
+	u_id                 TINYINT NOT NULL,
+	p_l_id               TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE s_l_answer
-ADD PRIMARY KEY (login,language);
+ADD PRIMARY KEY (u_id,p_l_id);
 
 
 
 CREATE TABLE sol_answer
 (
 	answer               TEXT NOT NULL,
-	solver               VARCHAR(30) NOT NULL,
-	login                VARCHAR(30) NOT NULL
+	so_id                TINYINT NOT NULL,
+	u_id                 TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE sol_answer
-ADD PRIMARY KEY (solver,login);
+ADD PRIMARY KEY (so_id,u_id);
 
 
 
 CREATE TABLE solver
 (
-	solver               VARCHAR(30) NOT NULL
+	so_id                TINYINT NOT NULL,
+	solver               TEXT NOT NULL
 );
 
 
 
 ALTER TABLE solver
-ADD PRIMARY KEY (solver);
+ADD PRIMARY KEY (so_id);
 
 
 
 CREATE TABLE sys_answer
 (
 	answer               TEXT NOT NULL,
-	system_name          VARCHAR(30) NOT NULL,
-	login                VARCHAR(30) NOT NULL
+	sy_id                TINYINT NOT NULL,
+	u_id                 TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE sys_answer
-ADD PRIMARY KEY (system_name,login);
+ADD PRIMARY KEY (sy_id,u_id);
 
 
 
 CREATE TABLE system
 (
-	system_name          VARCHAR(30) NOT NULL
+	sy_id                TINYINT NOT NULL,
+	system_name          TEXT NOT NULL
 );
 
 
 
 ALTER TABLE system
-ADD PRIMARY KEY (system_name);
+ADD PRIMARY KEY (sy_id);
 
 
 
 CREATE TABLE system_integration_means
 (
-	integration_mean     VARCHAR(30) NOT NULL,
-	system_name          VARCHAR(30) NOT NULL
+	integ_m_id           TINYINT NOT NULL,
+	sy_id                TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE system_integration_means
-ADD PRIMARY KEY (integration_mean,system_name);
+ADD PRIMARY KEY (integ_m_id,sy_id);
 
 
 
 CREATE TABLE system_interface_means
 (
-	system_name          VARCHAR(30) NOT NULL,
-	interface_mean       VARCHAR(30) NOT NULL
+	sy_id                TINYINT NOT NULL,
+	inter_m_id           TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE system_interface_means
-ADD PRIMARY KEY (system_name,interface_mean);
+ADD PRIMARY KEY (sy_id,inter_m_id);
 
 
 
 CREATE TABLE system_knowledge_representation
 (
-	system_name          VARCHAR(30) NOT NULL,
-	knowledge_representation VARCHAR(30) NOT NULL
+	sy_id                TINYINT NOT NULL,
+	k_r_id               TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE system_knowledge_representation
-ADD PRIMARY KEY (system_name,knowledge_representation);
+ADD PRIMARY KEY (sy_id,k_r_id);
 
 
 
 CREATE TABLE system_manufacturing_company
 (
-	company              VARCHAR(30) NOT NULL,
-	system_name          VARCHAR(30) NOT NULL
+	m_c_id               TINYINT NOT NULL,
+	sy_id                TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE system_manufacturing_company
-ADD PRIMARY KEY (company,system_name);
+ADD PRIMARY KEY (m_c_id,sy_id);
 
 
 
 CREATE TABLE system_platform
 (
-	platform_name        VARCHAR(30) NOT NULL,
-	system_name          VARCHAR(30) NOT NULL
+	pl_id                TINYINT NOT NULL,
+	sy_id                TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE system_platform
-ADD PRIMARY KEY (platform_name,system_name);
+ADD PRIMARY KEY (pl_id,sy_id);
 
 
 
 CREATE TABLE system_producing_country
 (
-	country              VARCHAR(30) NOT NULL,
-	system_name          VARCHAR(30) NOT NULL
+	p_c_id               TINYINT NOT NULL,
+	sy_id                TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE system_producing_country
-ADD PRIMARY KEY (country,system_name);
+ADD PRIMARY KEY (p_c_id,sy_id);
 
 
 
 CREATE TABLE system_realization_language
 (
-	language             VARCHAR(30) NOT NULL,
-	system_name          VARCHAR(30) NOT NULL
+	p_l_id               TINYINT NOT NULL,
+	sy_id                TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE system_realization_language
-ADD PRIMARY KEY (language,system_name);
+ADD PRIMARY KEY (p_l_id,sy_id);
 
 
 
 CREATE TABLE system_solver
 (
-	system_name          VARCHAR(30) NOT NULL,
-	solver               VARCHAR(30) NOT NULL
+	sy_id                TINYINT NOT NULL,
+	so_id                TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE system_solver
-ADD PRIMARY KEY (system_name,solver);
+ADD PRIMARY KEY (sy_id,so_id);
 
 
 
 CREATE TABLE system_supported_language
 (
-	language             VARCHAR(30) NOT NULL,
-	system_name          VARCHAR(30) NOT NULL
+	p_l_id               TINYINT NOT NULL,
+	sy_id                TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE system_supported_language
-ADD PRIMARY KEY (language,system_name);
+ADD PRIMARY KEY (p_l_id,sy_id);
 
 
 
 CREATE TABLE t_t_answer
 (
 	answer               TEXT NOT NULL,
-	login                VARCHAR(30) NOT NULL,
+	u_id                 TINYINT NOT NULL,
 	t_t_id               TINYINT NOT NULL
 );
 
 
 
 ALTER TABLE t_t_answer
-ADD PRIMARY KEY (login,t_t_id);
+ADD PRIMARY KEY (u_id,t_t_id);
 
 
 
@@ -704,35 +714,37 @@ ADD PRIMARY KEY (t_t_id);
 
 CREATE TABLE user
 (
-	login                VARCHAR(30) NOT NULL,
+	u_id                 TINYINT NOT NULL,
 	password             TEXT NOT NULL,
 	name                 TEXT NOT NULL,
 	gender               TEXT NOT NULL,
 	age                  tinyint NULL,
-	group_name           VARCHAR(30) NOT NULL
+	u_g_id               TINYINT NOT NULL,
+	login                TEXT NOT NULL
 );
 
 
 
 ALTER TABLE user
-ADD PRIMARY KEY (login);
+ADD PRIMARY KEY (u_id);
 
 
 
 CREATE TABLE user_group
 (
-	group_name           VARCHAR(30) NOT NULL
+	u_g_id               TINYINT NOT NULL,
+	group_name           TEXT NOT NULL
 );
 
 
 
 ALTER TABLE user_group
-ADD PRIMARY KEY (group_name);
+ADD PRIMARY KEY (u_g_id);
 
 
 
 ALTER TABLE c_s_answer
-ADD FOREIGN KEY R_4 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_4 (u_id) REFERENCES user (u_id);
 
 
 
@@ -752,7 +764,7 @@ ADD FOREIGN KEY R_15 (f_f_id) REFERENCES fielddependence_fieldindependence (f_f_
 
 
 ALTER TABLE f_f_answer
-ADD FOREIGN KEY R_16 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_16 (u_id) REFERENCES user (u_id);
 
 
 
@@ -767,7 +779,7 @@ ADD FOREIGN KEY R_28 (i_e_id) REFERENCES ideal_expert (i_e_id);
 
 
 ALTER TABLE i_e_answer
-ADD FOREIGN KEY R_29 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_29 (u_id) REFERENCES user (u_id);
 
 
 
@@ -777,7 +789,7 @@ ADD FOREIGN KEY R_27 (i_k_i_id) REFERENCES ideal_knowledge_ingeneer (i_k_i_id);
 
 
 ALTER TABLE i_k_i_answer
-ADD FOREIGN KEY R_30 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_30 (u_id) REFERENCES user (u_id);
 
 
 
@@ -792,47 +804,47 @@ ADD FOREIGN KEY R_7 (a_v_id) REFERENCES answer_variant_list (a_v_id);
 
 
 ALTER TABLE integ_m_answer
-ADD FOREIGN KEY R_64 (integration_mean) REFERENCES integration_means (integration_mean);
+ADD FOREIGN KEY R_64 (integ_m_id) REFERENCES integration_means (integ_m_id);
 
 
 
 ALTER TABLE integ_m_answer
-ADD FOREIGN KEY R_65 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_65 (u_id) REFERENCES user (u_id);
 
 
 
 ALTER TABLE inter_m_answer
-ADD FOREIGN KEY R_66 (interface_mean) REFERENCES interface_means (interface_mean);
+ADD FOREIGN KEY R_66 (inter_m_id) REFERENCES interface_means (inter_m_id);
 
 
 
 ALTER TABLE inter_m_answer
-ADD FOREIGN KEY R_67 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_67 (u_id) REFERENCES user (u_id);
 
 
 
 ALTER TABLE k_r_answer
-ADD FOREIGN KEY R_68 (knowledge_representation) REFERENCES knowledge_representation (knowledge_representation);
+ADD FOREIGN KEY R_68 (k_r_id) REFERENCES knowledge_representation (k_r_id);
 
 
 
 ALTER TABLE k_r_answer
-ADD FOREIGN KEY R_69 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_69 (u_id) REFERENCES user (u_id);
 
 
 
 ALTER TABLE m_c_answer
-ADD FOREIGN KEY R_56 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_56 (u_id) REFERENCES user (u_id);
 
 
 
 ALTER TABLE m_c_answer
-ADD FOREIGN KEY R_57 (company) REFERENCES manufacturing_company (company);
+ADD FOREIGN KEY R_57 (m_c_id) REFERENCES manufacturing_company (m_c_id);
 
 
 
 ALTER TABLE o_r_answer
-ADD FOREIGN KEY R_21 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_21 (u_id) REFERENCES user (u_id);
 
 
 
@@ -847,27 +859,27 @@ ADD FOREIGN KEY R_10 (a_v_id) REFERENCES answer_variant_list (a_v_id);
 
 
 ALTER TABLE p_answer
-ADD FOREIGN KEY R_58 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_58 (u_id) REFERENCES user (u_id);
 
 
 
 ALTER TABLE p_answer
-ADD FOREIGN KEY R_59 (platform_name) REFERENCES platform (platform_name);
+ADD FOREIGN KEY R_59 (pl_id) REFERENCES platform (pl_id);
 
 
 
 ALTER TABLE p_c_answer
-ADD FOREIGN KEY R_54 (country) REFERENCES producing_country (country);
+ADD FOREIGN KEY R_54 (p_c_id) REFERENCES producing_country (p_c_id);
 
 
 
 ALTER TABLE p_c_answer
-ADD FOREIGN KEY R_55 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_55 (u_id) REFERENCES user (u_id);
 
 
 
 ALTER TABLE p_r_answer
-ADD FOREIGN KEY R_22 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_22 (u_id) REFERENCES user (u_id);
 
 
 
@@ -877,12 +889,12 @@ ADD FOREIGN KEY R_25 (p_r_id) REFERENCES propriety_research (p_r_id);
 
 
 ALTER TABLE project_group
-ADD FOREIGN KEY R_74 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_74 (u_id) REFERENCES user (u_id);
 
 
 
 ALTER TABLE project_group
-ADD FOREIGN KEY R_73 (project_name) REFERENCES project (project_name);
+ADD FOREIGN KEY R_73 (pr_id) REFERENCES project (pr_id);
 
 
 
@@ -892,17 +904,17 @@ ADD FOREIGN KEY R_12 (a_v_id) REFERENCES answer_variant_list (a_v_id);
 
 
 ALTER TABLE r_l_answer
-ADD FOREIGN KEY R_60 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_60 (u_id) REFERENCES user (u_id);
 
 
 
 ALTER TABLE r_l_answer
-ADD FOREIGN KEY R_61 (language) REFERENCES programming_language (language);
+ADD FOREIGN KEY R_61 (p_l_id) REFERENCES programming_language (p_l_id);
 
 
 
 ALTER TABLE r_r_answer
-ADD FOREIGN KEY R_23 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_23 (u_id) REFERENCES user (u_id);
 
 
 
@@ -912,7 +924,7 @@ ADD FOREIGN KEY R_24 (r_r_id) REFERENCES relevance_research (r_r_id);
 
 
 ALTER TABLE r_v_answer
-ADD FOREIGN KEY R_17 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_17 (u_id) REFERENCES user (u_id);
 
 
 
@@ -932,127 +944,127 @@ ADD FOREIGN KEY R_14 (a_v_id) REFERENCES answer_variant_list (a_v_id);
 
 
 ALTER TABLE s_l_answer
-ADD FOREIGN KEY R_62 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_62 (u_id) REFERENCES user (u_id);
 
 
 
 ALTER TABLE s_l_answer
-ADD FOREIGN KEY R_63 (language) REFERENCES programming_language (language);
+ADD FOREIGN KEY R_63 (p_l_id) REFERENCES programming_language (p_l_id);
 
 
 
 ALTER TABLE sol_answer
-ADD FOREIGN KEY R_70 (solver) REFERENCES solver (solver);
+ADD FOREIGN KEY R_70 (so_id) REFERENCES solver (so_id);
 
 
 
 ALTER TABLE sol_answer
-ADD FOREIGN KEY R_71 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_71 (u_id) REFERENCES user (u_id);
 
 
 
 ALTER TABLE sys_answer
-ADD FOREIGN KEY R_52 (system_name) REFERENCES system (system_name);
+ADD FOREIGN KEY R_52 (sy_id) REFERENCES system (sy_id);
 
 
 
 ALTER TABLE sys_answer
-ADD FOREIGN KEY R_53 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_53 (u_id) REFERENCES user (u_id);
 
 
 
 ALTER TABLE system_integration_means
-ADD FOREIGN KEY R_37 (integration_mean) REFERENCES integration_means (integration_mean);
+ADD FOREIGN KEY R_37 (integ_m_id) REFERENCES integration_means (integ_m_id);
 
 
 
 ALTER TABLE system_integration_means
-ADD FOREIGN KEY R_38 (system_name) REFERENCES system (system_name);
+ADD FOREIGN KEY R_38 (sy_id) REFERENCES system (sy_id);
 
 
 
 ALTER TABLE system_interface_means
-ADD FOREIGN KEY R_39 (system_name) REFERENCES system (system_name);
+ADD FOREIGN KEY R_39 (sy_id) REFERENCES system (sy_id);
 
 
 
 ALTER TABLE system_interface_means
-ADD FOREIGN KEY R_40 (interface_mean) REFERENCES interface_means (interface_mean);
+ADD FOREIGN KEY R_40 (inter_m_id) REFERENCES interface_means (inter_m_id);
 
 
 
 ALTER TABLE system_knowledge_representation
-ADD FOREIGN KEY R_32 (system_name) REFERENCES system (system_name);
+ADD FOREIGN KEY R_32 (sy_id) REFERENCES system (sy_id);
 
 
 
 ALTER TABLE system_knowledge_representation
-ADD FOREIGN KEY R_33 (knowledge_representation) REFERENCES knowledge_representation (knowledge_representation);
+ADD FOREIGN KEY R_33 (k_r_id) REFERENCES knowledge_representation (k_r_id);
 
 
 
 ALTER TABLE system_manufacturing_company
-ADD FOREIGN KEY R_41 (company) REFERENCES manufacturing_company (company);
+ADD FOREIGN KEY R_41 (m_c_id) REFERENCES manufacturing_company (m_c_id);
 
 
 
 ALTER TABLE system_manufacturing_company
-ADD FOREIGN KEY R_42 (system_name) REFERENCES system (system_name);
+ADD FOREIGN KEY R_42 (sy_id) REFERENCES system (sy_id);
 
 
 
 ALTER TABLE system_platform
-ADD FOREIGN KEY R_43 (platform_name) REFERENCES platform (platform_name);
+ADD FOREIGN KEY R_43 (pl_id) REFERENCES platform (pl_id);
 
 
 
 ALTER TABLE system_platform
-ADD FOREIGN KEY R_45 (system_name) REFERENCES system (system_name);
+ADD FOREIGN KEY R_45 (sy_id) REFERENCES system (sy_id);
 
 
 
 ALTER TABLE system_producing_country
-ADD FOREIGN KEY R_46 (country) REFERENCES producing_country (country);
+ADD FOREIGN KEY R_46 (p_c_id) REFERENCES producing_country (p_c_id);
 
 
 
 ALTER TABLE system_producing_country
-ADD FOREIGN KEY R_47 (system_name) REFERENCES system (system_name);
+ADD FOREIGN KEY R_47 (sy_id) REFERENCES system (sy_id);
 
 
 
 ALTER TABLE system_realization_language
-ADD FOREIGN KEY R_48 (language) REFERENCES programming_language (language);
+ADD FOREIGN KEY R_48 (p_l_id) REFERENCES programming_language (p_l_id);
 
 
 
 ALTER TABLE system_realization_language
-ADD FOREIGN KEY R_49 (system_name) REFERENCES system (system_name);
+ADD FOREIGN KEY R_49 (sy_id) REFERENCES system (sy_id);
 
 
 
 ALTER TABLE system_solver
-ADD FOREIGN KEY R_34 (system_name) REFERENCES system (system_name);
+ADD FOREIGN KEY R_34 (sy_id) REFERENCES system (sy_id);
 
 
 
 ALTER TABLE system_solver
-ADD FOREIGN KEY R_35 (solver) REFERENCES solver (solver);
+ADD FOREIGN KEY R_35 (so_id) REFERENCES solver (so_id);
 
 
 
 ALTER TABLE system_supported_language
-ADD FOREIGN KEY R_50 (language) REFERENCES programming_language (language);
+ADD FOREIGN KEY R_50 (p_l_id) REFERENCES programming_language (p_l_id);
 
 
 
 ALTER TABLE system_supported_language
-ADD FOREIGN KEY R_51 (system_name) REFERENCES system (system_name);
+ADD FOREIGN KEY R_51 (sy_id) REFERENCES system (sy_id);
 
 
 
 ALTER TABLE t_t_answer
-ADD FOREIGN KEY R_18 (login) REFERENCES user (login);
+ADD FOREIGN KEY R_18 (u_id) REFERENCES user (u_id);
 
 
 
@@ -1067,6 +1079,6 @@ ADD FOREIGN KEY R_13 (a_v_id) REFERENCES answer_variant_list (a_v_id);
 
 
 ALTER TABLE user
-ADD FOREIGN KEY R_72 (group_name) REFERENCES user_group (group_name);
+ADD FOREIGN KEY R_72 (u_g_id) REFERENCES user_group (u_g_id);
 
 
