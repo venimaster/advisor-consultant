@@ -34,6 +34,10 @@ HEADERS  += mainwindow.h \
     simplebutton.h \
     dbwork.h
 
+RESOURCES += \
+    images.qrc
+
+
 
 
 

@@ -61,7 +61,7 @@ QVector<QString> dbWork::GetAnswerVariants(QString questionTableName, int questi
     QSqlQuery query;
     query.exec("SELECT `answer_variant_1`, `answer_variant_2`, `answer_variant_3`, `answer_variant_4`, `answer_variant_5`, `answer_variant_6`, `answer_variant_7`, `answer_variant_8`, `answer_variant_9`, `answer_variant_10`, `answer_variant_11`"
                "FROM `answer_variant_list` , `"+questionTableName+"`"
-               "WHERE `"+questionTableName+"`.`r_r_id` = '"+QString::number(question_id)+"'"
+               "WHERE `"+questionTableName+"`.`id` = '"+QString::number(question_id)+"'"
                "AND `"+questionTableName+"`.`a_v_id` = `answer_variant_list`.`a_v_id`");
 
     int i=0;
