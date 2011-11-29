@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/images">
+        <file alias="brain">Images/Start.jpg</file>
+        <file alias="help">Images/Help.jpg</file>
+    </qresource>
+</RCC>

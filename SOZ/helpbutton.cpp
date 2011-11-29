@@ -11,7 +11,7 @@ void HelpButton::paintEvent(QPaintEvent *)
     QPen pen(Qt::black);
     QBrush Brs(Qt::black);
 
-    QPixmap pixmap("C:/Projects/SOZ/Images/Help.png");
+    QPixmap pixmap(":/images/help");
     pixmap=pixmap.scaled(width(),height());
 
     QPainter painter(this);
