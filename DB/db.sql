@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 29, 2011 at 09:09 PM
+-- Generation Time: Nov 30, 2011 at 06:30 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -101,20 +101,6 @@ INSERT INTO `creator_speculator` (`id`, `question`, `hemisphere`, `a_v_id`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `c_s_answer`
---
-
-CREATE TABLE IF NOT EXISTS `c_s_answer` (
-  `answer` text NOT NULL,
-  `u_id` tinyint(4) NOT NULL,
-  `id` tinyint(4) NOT NULL,
-  PRIMARY KEY (`u_id`,`id`),
-  KEY `R_6` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `equivalents`
 --
 
@@ -192,20 +178,6 @@ INSERT INTO `fielddependence_fieldindependence` (`id`, `right_answer`, `a_v_id`)
 (28, 'Д', 17),
 (29, 'В', 17),
 (30, 'Б', 17);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `f_f_answer`
---
-
-CREATE TABLE IF NOT EXISTS `f_f_answer` (
-  `answer` text NOT NULL,
-  `id` tinyint(4) NOT NULL,
-  `u_id` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id`,`u_id`),
-  KEY `R_16` (`u_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 -- --------------------------------------------------------
 
@@ -404,20 +376,6 @@ INSERT INTO `integration_means` (`id`, `integration_mean`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `integ_m_answer`
---
-
-CREATE TABLE IF NOT EXISTS `integ_m_answer` (
-  `answer` text NOT NULL,
-  `id` tinyint(4) NOT NULL,
-  `u_id` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id`,`u_id`),
-  KEY `R_65` (`u_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `interface_means`
 --
 
@@ -446,48 +404,6 @@ INSERT INTO `interface_means` (`id`, `interface_mean`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `inter_m_answer`
---
-
-CREATE TABLE IF NOT EXISTS `inter_m_answer` (
-  `answer` text NOT NULL,
-  `id` tinyint(4) NOT NULL,
-  `u_id` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id`,`u_id`),
-  KEY `R_67` (`u_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `i_e_answer`
---
-
-CREATE TABLE IF NOT EXISTS `i_e_answer` (
-  `answer` text NOT NULL,
-  `id` tinyint(4) NOT NULL,
-  `u_id` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id`,`u_id`),
-  KEY `R_29` (`u_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `i_k_i_answer`
---
-
-CREATE TABLE IF NOT EXISTS `i_k_i_answer` (
-  `answer` text NOT NULL,
-  `id` tinyint(4) NOT NULL,
-  `u_id` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id`,`u_id`),
-  KEY `R_30` (`u_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `knowledge_representation`
 --
 
@@ -503,23 +419,24 @@ CREATE TABLE IF NOT EXISTS `knowledge_representation` (
 
 INSERT INTO `knowledge_representation` (`id`, `knowledge_representation`) VALUES
 (1, 'примеры'),
-(2, 'объекты'),
-(3, 'логические модели'),
-(4, 'продукционные правила'),
-(5, 'фреймы');
+(2, 'объектно-ориентированная модель представления знаний'),
+(3, 'дедуктивная модель представления знаний'),
+(4, 'продукционная модель представления знаний'),
+(5, 'фреймы'),
+(6, 'индуктивная модель представления знаний'),
+(7, 'псевдофизические логики');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `k_r_answer`
+-- Table structure for table `k_r_result`
 --
 
-CREATE TABLE IF NOT EXISTS `k_r_answer` (
-  `answer` text NOT NULL,
-  `id` tinyint(4) NOT NULL,
+CREATE TABLE IF NOT EXISTS `k_r_result` (
   `u_id` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id`,`u_id`),
-  KEY `R_69` (`u_id`)
+  `id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`u_id`,`id`),
+  KEY `R_145` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 -- --------------------------------------------------------
@@ -615,20 +532,6 @@ INSERT INTO `manufacturing_company` (`id`, `company`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `m_c_answer`
---
-
-CREATE TABLE IF NOT EXISTS `m_c_answer` (
-  `answer` text NOT NULL,
-  `u_id` tinyint(4) NOT NULL,
-  `id` tinyint(4) NOT NULL,
-  PRIMARY KEY (`u_id`,`id`),
-  KEY `R_57` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `opportunity_research`
 --
 
@@ -653,20 +556,6 @@ INSERT INTO `opportunity_research` (`id`, `measure`, `weight`, `a_v_id`) VALUES
 (5, 'Эксперты единодушны в применяемых ими решениях (сходятся в оценке предлагаемого решения).', 8, 2),
 (6, 'Задача не слишком трудна (т.е. эксперту не нужны недели или месяцы для ее решения).', 7, 2),
 (7, 'Решаемая задача достаточно понятна (т.е. не требует разработки новых методов решения).', 7, 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `o_r_answer`
---
-
-CREATE TABLE IF NOT EXISTS `o_r_answer` (
-  `answer` text NOT NULL,
-  `u_id` tinyint(4) NOT NULL,
-  `id` tinyint(4) NOT NULL,
-  PRIMARY KEY (`u_id`,`id`),
-  KEY `R_26` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 -- --------------------------------------------------------
 
@@ -818,48 +707,6 @@ INSERT INTO `propriety_research` (`id`, `measure`, `weight`, `a_v_id`) VALUES
 (3, 'Экспертов в данной области явно недостаточно.', 6, 2),
 (4, 'Сходные специалисты нужны во многих физически разнесенных местах.', 7, 2),
 (5, 'Условия, в которых решается задача, опасны для человека (т.е. окружение враждебно для человека).', 8, 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `p_answer`
---
-
-CREATE TABLE IF NOT EXISTS `p_answer` (
-  `answer` text NOT NULL,
-  `u_id` tinyint(4) NOT NULL,
-  `id` tinyint(4) NOT NULL,
-  PRIMARY KEY (`u_id`,`id`),
-  KEY `R_59` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `p_c_answer`
---
-
-CREATE TABLE IF NOT EXISTS `p_c_answer` (
-  `answer` text NOT NULL,
-  `id` tinyint(4) NOT NULL,
-  `u_id` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id`,`u_id`),
-  KEY `R_55` (`u_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `p_r_answer`
---
-
-CREATE TABLE IF NOT EXISTS `p_r_answer` (
-  `answer` text NOT NULL,
-  `u_id` tinyint(4) NOT NULL,
-  `id` tinyint(4) NOT NULL,
-  PRIMARY KEY (`u_id`,`id`),
-  KEY `R_25` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 -- --------------------------------------------------------
 
@@ -1021,48 +868,6 @@ INSERT INTO `rigidity_versatility` (`id`, `statement`, `right_answer`, `a_v_id`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `r_l_answer`
---
-
-CREATE TABLE IF NOT EXISTS `r_l_answer` (
-  `answer` text NOT NULL,
-  `u_id` tinyint(4) NOT NULL,
-  `id` tinyint(4) NOT NULL,
-  PRIMARY KEY (`u_id`,`id`),
-  KEY `R_61` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `r_r_answer`
---
-
-CREATE TABLE IF NOT EXISTS `r_r_answer` (
-  `answer` text NOT NULL,
-  `u_id` tinyint(4) NOT NULL,
-  `id` tinyint(4) NOT NULL,
-  PRIMARY KEY (`u_id`,`id`),
-  KEY `R_24` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `r_v_answer`
---
-
-CREATE TABLE IF NOT EXISTS `r_v_answer` (
-  `answer` text NOT NULL,
-  `u_id` tinyint(4) NOT NULL,
-  `id` tinyint(4) NOT NULL,
-  PRIMARY KEY (`u_id`,`id`),
-  KEY `R_19` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `solver`
 --
 
@@ -1087,20 +892,6 @@ INSERT INTO `solver` (`id`, `solver`) VALUES
 (8, 'обработка недостоверности'),
 (9, 'математические операции'),
 (10, 'наследование свойств');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sol_answer`
---
-
-CREATE TABLE IF NOT EXISTS `sol_answer` (
-  `answer` text NOT NULL,
-  `id` tinyint(4) NOT NULL,
-  `u_id` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id`,`u_id`),
-  KEY `R_71` (`u_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 -- --------------------------------------------------------
 
@@ -1793,6 +1584,8 @@ INSERT INTO `system_knowledge_representation` (`id`, `sy_id`) VALUES
 (3, 1),
 (4, 1),
 (5, 1),
+(6, 1),
+(7, 1),
 (2, 2),
 (4, 2),
 (5, 2),
@@ -1804,16 +1597,24 @@ INSERT INTO `system_knowledge_representation` (`id`, `sy_id`) VALUES
 (3, 5),
 (4, 5),
 (5, 5),
+(6, 5),
+(7, 5),
 (2, 6),
 (3, 7),
 (4, 7),
+(6, 7),
+(7, 7),
 (3, 8),
 (4, 8),
 (5, 8),
+(6, 8),
+(7, 8),
 (2, 9),
 (3, 9),
 (4, 9),
 (5, 9),
+(6, 9),
+(7, 9),
 (4, 10),
 (1, 11),
 (4, 11),
@@ -1824,6 +1625,8 @@ INSERT INTO `system_knowledge_representation` (`id`, `sy_id`) VALUES
 (1, 14),
 (3, 15),
 (4, 15),
+(6, 15),
+(7, 15),
 (2, 17),
 (4, 17),
 (4, 18),
@@ -1833,6 +1636,8 @@ INSERT INTO `system_knowledge_representation` (`id`, `sy_id`) VALUES
 (4, 21),
 (3, 22),
 (4, 22),
+(6, 22),
+(7, 22),
 (2, 23),
 (4, 23),
 (5, 23),
@@ -1843,6 +1648,8 @@ INSERT INTO `system_knowledge_representation` (`id`, `sy_id`) VALUES
 (3, 27),
 (4, 27),
 (5, 27),
+(6, 27),
+(7, 27),
 (2, 28),
 (4, 28),
 (5, 28),
@@ -1858,6 +1665,8 @@ INSERT INTO `system_knowledge_representation` (`id`, `sy_id`) VALUES
 (4, 33),
 (3, 34),
 (4, 34),
+(6, 34),
+(7, 34),
 (2, 35),
 (4, 35),
 (5, 35),
@@ -1872,11 +1681,15 @@ INSERT INTO `system_knowledge_representation` (`id`, `sy_id`) VALUES
 (4, 40),
 (3, 41),
 (4, 41),
+(6, 41),
+(7, 41),
 (4, 42),
 (2, 43),
 (3, 43),
 (4, 43),
 (5, 43),
+(6, 43),
+(7, 43),
 (1, 44),
 (2, 44),
 (4, 44),
@@ -1885,6 +1698,8 @@ INSERT INTO `system_knowledge_representation` (`id`, `sy_id`) VALUES
 (3, 45),
 (4, 45),
 (5, 45),
+(6, 45),
+(7, 45),
 (2, 46),
 (4, 46),
 (2, 47),
@@ -1896,6 +1711,8 @@ INSERT INTO `system_knowledge_representation` (`id`, `sy_id`) VALUES
 (3, 49),
 (4, 49),
 (5, 49),
+(6, 49),
+(7, 49),
 (4, 50),
 (1, 51),
 (4, 51),
@@ -1908,6 +1725,8 @@ INSERT INTO `system_knowledge_representation` (`id`, `sy_id`) VALUES
 (4, 55),
 (3, 56),
 (4, 56),
+(6, 56),
+(7, 56),
 (1, 57),
 (2, 57),
 (4, 57),
@@ -1932,6 +1751,8 @@ INSERT INTO `system_knowledge_representation` (`id`, `sy_id`) VALUES
 (3, 66),
 (4, 66),
 (5, 66),
+(6, 66),
+(7, 66),
 (1, 73),
 (4, 73),
 (1, 74),
@@ -2873,29 +2694,14 @@ INSERT INTO `system_supported_language` (`id`, `sy_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sys_answer`
+-- Table structure for table `s_result`
 --
 
-CREATE TABLE IF NOT EXISTS `sys_answer` (
-  `answer` text NOT NULL,
+CREATE TABLE IF NOT EXISTS `s_result` (
   `id` tinyint(4) NOT NULL,
   `u_id` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`,`u_id`),
   KEY `R_53` (`u_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `s_l_answer`
---
-
-CREATE TABLE IF NOT EXISTS `s_l_answer` (
-  `answer` text NOT NULL,
-  `u_id` tinyint(4) NOT NULL,
-  `id` tinyint(4) NOT NULL,
-  PRIMARY KEY (`u_id`,`id`),
-  KEY `R_63` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 -- --------------------------------------------------------
@@ -2981,20 +2787,6 @@ INSERT INTO `temperament_type` (`id`, `question`, `sincerity`, `instability`, `e
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_t_answer`
---
-
-CREATE TABLE IF NOT EXISTS `t_t_answer` (
-  `answer` text NOT NULL,
-  `u_id` tinyint(4) NOT NULL,
-  `id` tinyint(4) NOT NULL,
-  PRIMARY KEY (`u_id`,`id`),
-  KEY `R_20` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user`
 --
 
@@ -3002,10 +2794,20 @@ CREATE TABLE IF NOT EXISTS `user` (
   `u_id` tinyint(4) NOT NULL,
   `password` text NOT NULL,
   `name` text NOT NULL,
-  `gender` enum('??','?') DEFAULT NULL,
+  `gender` enum('муж','жен') DEFAULT NULL,
   `age` tinyint(4) DEFAULT NULL,
   `u_g_id` tinyint(4) NOT NULL,
   `login` text NOT NULL,
+  `competience_result` tinyint(1) DEFAULT NULL,
+  `r_r_result` tinyint(1) DEFAULT NULL,
+  `p_r_result` tinyint(1) DEFAULT NULL,
+  `o_r_result` tinyint(1) DEFAULT NULL,
+  `research_result` tinyint(1) DEFAULT NULL,
+  `f_f_result` enum('полезависимость','поленезависимость') NOT NULL,
+  `c_s_result` enum('художник','логическое и художественное мышление','мыслитель') DEFAULT NULL,
+  `r_v_result` enum('ригидный','черты ригидности и гибкости','гибкий') DEFAULT NULL,
+  `t_t_result` enum('меланхолик','холерик','сангвиник','флегматик') DEFAULT NULL,
+  `prototyping_strategy_result` enum('1','2','3') DEFAULT NULL,
   PRIMARY KEY (`u_id`),
   KEY `R_72` (`u_g_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
@@ -3023,15 +2825,6 @@ CREATE TABLE IF NOT EXISTS `user_group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `user_group`
---
-
-INSERT INTO `user_group` (`id`, `group_name`) VALUES
-(1, 'заказчик'),
-(2, 'эксперт'),
-(3, 'инженер по знаниям');
-
---
 -- Constraints for dumped tables
 --
 
@@ -3040,13 +2833,6 @@ INSERT INTO `user_group` (`id`, `group_name`) VALUES
 --
 ALTER TABLE `creator_speculator`
   ADD CONSTRAINT `creator_speculator_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
-
---
--- Constraints for table `c_s_answer`
---
-ALTER TABLE `c_s_answer`
-  ADD CONSTRAINT `c_s_answer_ibfk_2` FOREIGN KEY (`id`) REFERENCES `creator_speculator` (`id`),
-  ADD CONSTRAINT `c_s_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
 
 --
 -- Constraints for table `equivalents`
@@ -3062,13 +2848,6 @@ ALTER TABLE `fielddependence_fieldindependence`
   ADD CONSTRAINT `fielddependence_fieldindependence_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
 
 --
--- Constraints for table `f_f_answer`
---
-ALTER TABLE `f_f_answer`
-  ADD CONSTRAINT `f_f_answer_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
-  ADD CONSTRAINT `f_f_answer_ibfk_1` FOREIGN KEY (`id`) REFERENCES `fielddependence_fieldindependence` (`id`);
-
---
 -- Constraints for table `ideal_expert`
 --
 ALTER TABLE `ideal_expert`
@@ -3081,59 +2860,17 @@ ALTER TABLE `ideal_knowledge_ingeneer`
   ADD CONSTRAINT `ideal_knowledge_ingeneer_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
 
 --
--- Constraints for table `integ_m_answer`
+-- Constraints for table `k_r_result`
 --
-ALTER TABLE `integ_m_answer`
-  ADD CONSTRAINT `integ_m_answer_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
-  ADD CONSTRAINT `integ_m_answer_ibfk_1` FOREIGN KEY (`id`) REFERENCES `integration_means` (`id`);
-
---
--- Constraints for table `inter_m_answer`
---
-ALTER TABLE `inter_m_answer`
-  ADD CONSTRAINT `inter_m_answer_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
-  ADD CONSTRAINT `inter_m_answer_ibfk_1` FOREIGN KEY (`id`) REFERENCES `interface_means` (`id`);
-
---
--- Constraints for table `i_e_answer`
---
-ALTER TABLE `i_e_answer`
-  ADD CONSTRAINT `i_e_answer_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
-  ADD CONSTRAINT `i_e_answer_ibfk_1` FOREIGN KEY (`id`) REFERENCES `ideal_expert` (`id`);
-
---
--- Constraints for table `i_k_i_answer`
---
-ALTER TABLE `i_k_i_answer`
-  ADD CONSTRAINT `i_k_i_answer_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
-  ADD CONSTRAINT `i_k_i_answer_ibfk_1` FOREIGN KEY (`id`) REFERENCES `ideal_knowledge_ingeneer` (`id`);
-
---
--- Constraints for table `k_r_answer`
---
-ALTER TABLE `k_r_answer`
-  ADD CONSTRAINT `k_r_answer_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
-  ADD CONSTRAINT `k_r_answer_ibfk_1` FOREIGN KEY (`id`) REFERENCES `knowledge_representation` (`id`);
-
---
--- Constraints for table `m_c_answer`
---
-ALTER TABLE `m_c_answer`
-  ADD CONSTRAINT `m_c_answer_ibfk_2` FOREIGN KEY (`id`) REFERENCES `manufacturing_company` (`id`),
-  ADD CONSTRAINT `m_c_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
+ALTER TABLE `k_r_result`
+  ADD CONSTRAINT `k_r_result_ibfk_2` FOREIGN KEY (`id`) REFERENCES `knowledge_representation` (`id`),
+  ADD CONSTRAINT `k_r_result_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
 
 --
 -- Constraints for table `opportunity_research`
 --
 ALTER TABLE `opportunity_research`
   ADD CONSTRAINT `opportunity_research_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
-
---
--- Constraints for table `o_r_answer`
---
-ALTER TABLE `o_r_answer`
-  ADD CONSTRAINT `o_r_answer_ibfk_2` FOREIGN KEY (`id`) REFERENCES `opportunity_research` (`id`),
-  ADD CONSTRAINT `o_r_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
 
 --
 -- Constraints for table `project_group`
@@ -3149,27 +2886,6 @@ ALTER TABLE `propriety_research`
   ADD CONSTRAINT `propriety_research_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
 
 --
--- Constraints for table `p_answer`
---
-ALTER TABLE `p_answer`
-  ADD CONSTRAINT `p_answer_ibfk_2` FOREIGN KEY (`id`) REFERENCES `platform` (`id`),
-  ADD CONSTRAINT `p_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
-
---
--- Constraints for table `p_c_answer`
---
-ALTER TABLE `p_c_answer`
-  ADD CONSTRAINT `p_c_answer_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
-  ADD CONSTRAINT `p_c_answer_ibfk_1` FOREIGN KEY (`id`) REFERENCES `producing_country` (`id`);
-
---
--- Constraints for table `p_r_answer`
---
-ALTER TABLE `p_r_answer`
-  ADD CONSTRAINT `p_r_answer_ibfk_2` FOREIGN KEY (`id`) REFERENCES `propriety_research` (`id`),
-  ADD CONSTRAINT `p_r_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
-
---
 -- Constraints for table `relevance_research`
 --
 ALTER TABLE `relevance_research`
@@ -3180,34 +2896,6 @@ ALTER TABLE `relevance_research`
 --
 ALTER TABLE `rigidity_versatility`
   ADD CONSTRAINT `rigidity_versatility_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
-
---
--- Constraints for table `r_l_answer`
---
-ALTER TABLE `r_l_answer`
-  ADD CONSTRAINT `r_l_answer_ibfk_2` FOREIGN KEY (`id`) REFERENCES `programming_language` (`id`),
-  ADD CONSTRAINT `r_l_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
-
---
--- Constraints for table `r_r_answer`
---
-ALTER TABLE `r_r_answer`
-  ADD CONSTRAINT `r_r_answer_ibfk_2` FOREIGN KEY (`id`) REFERENCES `relevance_research` (`id`),
-  ADD CONSTRAINT `r_r_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
-
---
--- Constraints for table `r_v_answer`
---
-ALTER TABLE `r_v_answer`
-  ADD CONSTRAINT `r_v_answer_ibfk_2` FOREIGN KEY (`id`) REFERENCES `rigidity_versatility` (`id`),
-  ADD CONSTRAINT `r_v_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
-
---
--- Constraints for table `sol_answer`
---
-ALTER TABLE `sol_answer`
-  ADD CONSTRAINT `sol_answer_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
-  ADD CONSTRAINT `sol_answer_ibfk_1` FOREIGN KEY (`id`) REFERENCES `solver` (`id`);
 
 --
 -- Constraints for table `system_integration_means`
@@ -3273,31 +2961,17 @@ ALTER TABLE `system_supported_language`
   ADD CONSTRAINT `system_supported_language_ibfk_1` FOREIGN KEY (`id`) REFERENCES `programming_language` (`id`);
 
 --
--- Constraints for table `sys_answer`
+-- Constraints for table `s_result`
 --
-ALTER TABLE `sys_answer`
-  ADD CONSTRAINT `sys_answer_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
-  ADD CONSTRAINT `sys_answer_ibfk_1` FOREIGN KEY (`id`) REFERENCES `system` (`id`);
-
---
--- Constraints for table `s_l_answer`
---
-ALTER TABLE `s_l_answer`
-  ADD CONSTRAINT `s_l_answer_ibfk_2` FOREIGN KEY (`id`) REFERENCES `programming_language` (`id`),
-  ADD CONSTRAINT `s_l_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
+ALTER TABLE `s_result`
+  ADD CONSTRAINT `s_result_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
+  ADD CONSTRAINT `s_result_ibfk_1` FOREIGN KEY (`id`) REFERENCES `system` (`id`);
 
 --
 -- Constraints for table `temperament_type`
 --
 ALTER TABLE `temperament_type`
   ADD CONSTRAINT `temperament_type_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
-
---
--- Constraints for table `t_t_answer`
---
-ALTER TABLE `t_t_answer`
-  ADD CONSTRAINT `t_t_answer_ibfk_2` FOREIGN KEY (`id`) REFERENCES `temperament_type` (`id`),
-  ADD CONSTRAINT `t_t_answer_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
 
 --
 -- Constraints for table `user`
