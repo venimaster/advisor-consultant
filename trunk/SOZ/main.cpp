@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("Windows-1251"));
 
-    QPixmap pixmap(":/images/brain");
+    QPixmap pixmap(":/backgrounds/brain");
 
     QSplashScreen* splash = new QSplashScreen(pixmap);
 

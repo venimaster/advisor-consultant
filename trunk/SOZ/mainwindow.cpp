@@ -108,6 +108,11 @@ void MainWindow::SetEtap(int _num)
     LeftPnl->setLabel(Label);
 
 
+    MyLineEdit* LineEdit = new MyLineEdit();
+    LineEdit->setText("AAA");
+    LineEdit->show();
+
+
 
 
 }
