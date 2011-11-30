@@ -22,20 +22,6 @@ ADD PRIMARY KEY (a_v_id);
 
 
 
-CREATE TABLE c_s_answer
-(
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	id                   TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE c_s_answer
-ADD PRIMARY KEY (u_id,id);
-
-
-
 CREATE TABLE creator_speculator
 (
 	id                   TINYINT NOT NULL,
@@ -61,20 +47,6 @@ CREATE TABLE equivalents
 
 ALTER TABLE equivalents
 ADD PRIMARY KEY (id,equivalent);
-
-
-
-CREATE TABLE f_f_answer
-(
-	answer               TEXT NOT NULL,
-	id                   TINYINT NOT NULL,
-	u_id                 TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE f_f_answer
-ADD PRIMARY KEY (id,u_id);
 
 
 
@@ -104,34 +76,6 @@ CREATE TABLE glossary
 
 ALTER TABLE glossary
 ADD PRIMARY KEY (id);
-
-
-
-CREATE TABLE i_e_answer
-(
-	answer               TEXT NOT NULL,
-	id                   TINYINT NOT NULL,
-	u_id                 TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE i_e_answer
-ADD PRIMARY KEY (id,u_id);
-
-
-
-CREATE TABLE i_k_i_answer
-(
-	answer               TEXT NOT NULL,
-	id                   TINYINT NOT NULL,
-	u_id                 TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE i_k_i_answer
-ADD PRIMARY KEY (id,u_id);
 
 
 
@@ -165,20 +109,6 @@ ADD PRIMARY KEY (id);
 
 
 
-CREATE TABLE integ_m_answer
-(
-	answer               TEXT NOT NULL,
-	id                   TINYINT NOT NULL,
-	u_id                 TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE integ_m_answer
-ADD PRIMARY KEY (id,u_id);
-
-
-
 CREATE TABLE integration_means
 (
 	id                   TINYINT NOT NULL,
@@ -189,20 +119,6 @@ CREATE TABLE integration_means
 
 ALTER TABLE integration_means
 ADD PRIMARY KEY (id);
-
-
-
-CREATE TABLE inter_m_answer
-(
-	answer               TEXT NOT NULL,
-	id                   TINYINT NOT NULL,
-	u_id                 TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE inter_m_answer
-ADD PRIMARY KEY (id,u_id);
 
 
 
@@ -219,17 +135,16 @@ ADD PRIMARY KEY (id);
 
 
 
-CREATE TABLE k_r_answer
+CREATE TABLE k_r_result
 (
-	answer               TEXT NOT NULL,
-	id                   TINYINT NOT NULL,
-	u_id                 TINYINT NOT NULL
+	u_id                 TINYINT NOT NULL,
+	id                   TINYINT NOT NULL
 );
 
 
 
-ALTER TABLE k_r_answer
-ADD PRIMARY KEY (id,u_id);
+ALTER TABLE k_r_result
+ADD PRIMARY KEY (u_id,id);
 
 
 
@@ -246,20 +161,6 @@ ADD PRIMARY KEY (id);
 
 
 
-CREATE TABLE m_c_answer
-(
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	id                   TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE m_c_answer
-ADD PRIMARY KEY (u_id,id);
-
-
-
 CREATE TABLE manufacturing_company
 (
 	id                   TINYINT NOT NULL,
@@ -270,20 +171,6 @@ CREATE TABLE manufacturing_company
 
 ALTER TABLE manufacturing_company
 ADD PRIMARY KEY (id);
-
-
-
-CREATE TABLE o_r_answer
-(
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	id                   TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE o_r_answer
-ADD PRIMARY KEY (u_id,id);
 
 
 
@@ -299,48 +186,6 @@ CREATE TABLE opportunity_research
 
 ALTER TABLE opportunity_research
 ADD PRIMARY KEY (id);
-
-
-
-CREATE TABLE p_answer
-(
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	id                   TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE p_answer
-ADD PRIMARY KEY (u_id,id);
-
-
-
-CREATE TABLE p_c_answer
-(
-	answer               TEXT NOT NULL,
-	id                   TINYINT NOT NULL,
-	u_id                 TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE p_c_answer
-ADD PRIMARY KEY (id,u_id);
-
-
-
-CREATE TABLE p_r_answer
-(
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	id                   TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE p_r_answer
-ADD PRIMARY KEY (u_id,id);
 
 
 
@@ -424,48 +269,6 @@ ADD PRIMARY KEY (id);
 
 
 
-CREATE TABLE r_l_answer
-(
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	id                   TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE r_l_answer
-ADD PRIMARY KEY (u_id,id);
-
-
-
-CREATE TABLE r_r_answer
-(
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	id                   TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE r_r_answer
-ADD PRIMARY KEY (u_id,id);
-
-
-
-CREATE TABLE r_v_answer
-(
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	id                   TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE r_v_answer
-ADD PRIMARY KEY (u_id,id);
-
-
-
 CREATE TABLE references_
 (
 	id                   TINYINT NOT NULL,
@@ -509,30 +312,15 @@ ADD PRIMARY KEY (id);
 
 
 
-CREATE TABLE s_l_answer
+CREATE TABLE s_result
 (
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	id                   TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE s_l_answer
-ADD PRIMARY KEY (u_id,id);
-
-
-
-CREATE TABLE sol_answer
-(
-	answer               TEXT NOT NULL,
 	id                   TINYINT NOT NULL,
 	u_id                 TINYINT NOT NULL
 );
 
 
 
-ALTER TABLE sol_answer
+ALTER TABLE s_result
 ADD PRIMARY KEY (id,u_id);
 
 
@@ -547,20 +335,6 @@ CREATE TABLE solver
 
 ALTER TABLE solver
 ADD PRIMARY KEY (id);
-
-
-
-CREATE TABLE sys_answer
-(
-	answer               TEXT NOT NULL,
-	id                   TINYINT NOT NULL,
-	u_id                 TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE sys_answer
-ADD PRIMARY KEY (id,u_id);
 
 
 
@@ -694,20 +468,6 @@ ADD PRIMARY KEY (id,sy_id);
 
 
 
-CREATE TABLE t_t_answer
-(
-	answer               TEXT NOT NULL,
-	u_id                 TINYINT NOT NULL,
-	id                   TINYINT NOT NULL
-);
-
-
-
-ALTER TABLE t_t_answer
-ADD PRIMARY KEY (u_id,id);
-
-
-
 CREATE TABLE temperament_type
 (
 	id                   TINYINT NOT NULL,
@@ -733,7 +493,17 @@ CREATE TABLE user
 	gender               ENUM('муж','жен') NULL,
 	age                  tinyint NULL,
 	u_g_id               TINYINT NOT NULL,
-	login                TEXT NOT NULL
+	login                TEXT NOT NULL,
+	competience_result   bool NULL,
+	r_r_result           bool NULL,
+	p_r_result           bool NULL,
+	o_r_result           bool NULL,
+	research_result      bool NULL,
+	f_f_result           enum('полезависимость','поленезависимость') NOT NULL,
+	c_s_result           ENUM('художник','логическое и художественное мышление','мыслитель') NULL,
+	r_v_result           ENUM('ригидный','черты ригидности и гибкости','гибкий') NULL,
+	t_t_result           ENUM('меланхолик','холерик','сангвиник','флегматик') NULL,
+	prototyping_strategy_result enum(1,2,3) NULL
 );
 
 
@@ -756,16 +526,6 @@ ADD PRIMARY KEY (id);
 
 
 
-ALTER TABLE c_s_answer
-ADD FOREIGN KEY R_4 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE c_s_answer
-ADD FOREIGN KEY R_6 (id) REFERENCES creator_speculator (id);
-
-
-
 ALTER TABLE creator_speculator
 ADD FOREIGN KEY R_3 (a_v_id) REFERENCES answer_variant_list (a_v_id);
 
@@ -781,38 +541,8 @@ ADD FOREIGN KEY R_143 (equivalent) REFERENCES glossary (id);
 
 
 
-ALTER TABLE f_f_answer
-ADD FOREIGN KEY R_15 (id) REFERENCES fielddependence_fieldindependence (id);
-
-
-
-ALTER TABLE f_f_answer
-ADD FOREIGN KEY R_16 (u_id) REFERENCES user (u_id);
-
-
-
 ALTER TABLE fielddependence_fieldindependence
 ADD FOREIGN KEY R_9 (a_v_id) REFERENCES answer_variant_list (a_v_id);
-
-
-
-ALTER TABLE i_e_answer
-ADD FOREIGN KEY R_28 (id) REFERENCES ideal_expert (id);
-
-
-
-ALTER TABLE i_e_answer
-ADD FOREIGN KEY R_29 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE i_k_i_answer
-ADD FOREIGN KEY R_27 (id) REFERENCES ideal_knowledge_ingeneer (id);
-
-
-
-ALTER TABLE i_k_i_answer
-ADD FOREIGN KEY R_30 (u_id) REFERENCES user (u_id);
 
 
 
@@ -826,88 +556,18 @@ ADD FOREIGN KEY R_7 (a_v_id) REFERENCES answer_variant_list (a_v_id);
 
 
 
-ALTER TABLE integ_m_answer
-ADD FOREIGN KEY R_64 (id) REFERENCES integration_means (id);
+ALTER TABLE k_r_result
+ADD FOREIGN KEY R_144 (u_id) REFERENCES user (u_id);
 
 
 
-ALTER TABLE integ_m_answer
-ADD FOREIGN KEY R_65 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE inter_m_answer
-ADD FOREIGN KEY R_66 (id) REFERENCES interface_means (id);
-
-
-
-ALTER TABLE inter_m_answer
-ADD FOREIGN KEY R_67 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE k_r_answer
-ADD FOREIGN KEY R_68 (id) REFERENCES knowledge_representation (id);
-
-
-
-ALTER TABLE k_r_answer
-ADD FOREIGN KEY R_69 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE m_c_answer
-ADD FOREIGN KEY R_56 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE m_c_answer
-ADD FOREIGN KEY R_57 (id) REFERENCES manufacturing_company (id);
-
-
-
-ALTER TABLE o_r_answer
-ADD FOREIGN KEY R_21 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE o_r_answer
-ADD FOREIGN KEY R_26 (id) REFERENCES opportunity_research (id);
+ALTER TABLE k_r_result
+ADD FOREIGN KEY R_145 (id) REFERENCES knowledge_representation (id);
 
 
 
 ALTER TABLE opportunity_research
 ADD FOREIGN KEY R_10 (a_v_id) REFERENCES answer_variant_list (a_v_id);
-
-
-
-ALTER TABLE p_answer
-ADD FOREIGN KEY R_58 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE p_answer
-ADD FOREIGN KEY R_59 (id) REFERENCES platform (id);
-
-
-
-ALTER TABLE p_c_answer
-ADD FOREIGN KEY R_54 (id) REFERENCES producing_country (id);
-
-
-
-ALTER TABLE p_c_answer
-ADD FOREIGN KEY R_55 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE p_r_answer
-ADD FOREIGN KEY R_22 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE p_r_answer
-ADD FOREIGN KEY R_25 (id) REFERENCES propriety_research (id);
 
 
 
@@ -926,36 +586,6 @@ ADD FOREIGN KEY R_12 (a_v_id) REFERENCES answer_variant_list (a_v_id);
 
 
 
-ALTER TABLE r_l_answer
-ADD FOREIGN KEY R_60 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE r_l_answer
-ADD FOREIGN KEY R_61 (id) REFERENCES programming_language (id);
-
-
-
-ALTER TABLE r_r_answer
-ADD FOREIGN KEY R_23 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE r_r_answer
-ADD FOREIGN KEY R_24 (id) REFERENCES relevance_research (id);
-
-
-
-ALTER TABLE r_v_answer
-ADD FOREIGN KEY R_17 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE r_v_answer
-ADD FOREIGN KEY R_19 (id) REFERENCES rigidity_versatility (id);
-
-
-
 ALTER TABLE relevance_research
 ADD FOREIGN KEY R_11 (a_v_id) REFERENCES answer_variant_list (a_v_id);
 
@@ -966,32 +596,12 @@ ADD FOREIGN KEY R_14 (a_v_id) REFERENCES answer_variant_list (a_v_id);
 
 
 
-ALTER TABLE s_l_answer
-ADD FOREIGN KEY R_62 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE s_l_answer
-ADD FOREIGN KEY R_63 (id) REFERENCES programming_language (id);
-
-
-
-ALTER TABLE sol_answer
-ADD FOREIGN KEY R_70 (id) REFERENCES solver (id);
-
-
-
-ALTER TABLE sol_answer
-ADD FOREIGN KEY R_71 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE sys_answer
+ALTER TABLE s_result
 ADD FOREIGN KEY R_52 (id) REFERENCES system (id);
 
 
 
-ALTER TABLE sys_answer
+ALTER TABLE s_result
 ADD FOREIGN KEY R_53 (u_id) REFERENCES user (u_id);
 
 
@@ -1083,16 +693,6 @@ ADD FOREIGN KEY R_50 (id) REFERENCES programming_language (id);
 
 ALTER TABLE system_supported_language
 ADD FOREIGN KEY R_51 (sy_id) REFERENCES system (id);
-
-
-
-ALTER TABLE t_t_answer
-ADD FOREIGN KEY R_18 (u_id) REFERENCES user (u_id);
-
-
-
-ALTER TABLE t_t_answer
-ADD FOREIGN KEY R_20 (id) REFERENCES temperament_type (id);
 
 
 
