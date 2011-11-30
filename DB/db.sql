@@ -2,10 +2,10 @@
 -- version 3.4.5
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Nov 30, 2011 at 07:02 AM
--- Server version: 5.5.16
--- PHP Version: 5.3.8
+-- Хост: localhost
+-- Время создания: Ноя 30 2011 г., 20:25
+-- Версия сервера: 5.5.16
+-- Версия PHP: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `db`
+-- База данных: `db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `answer_variant_list`
+-- Структура таблицы `answer_variant_list`
 --
 
 CREATE TABLE IF NOT EXISTS `answer_variant_list` (
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `answer_variant_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `answer_variant_list`
+-- Дамп данных таблицы `answer_variant_list`
 --
 
 INSERT INTO `answer_variant_list` (`a_v_id`, `answer_variant_1`, `answer_variant_2`, `answer_variant_3`, `answer_variant_4`, `answer_variant_5`, `answer_variant_6`, `answer_variant_7`, `answer_variant_8`, `answer_variant_9`, `answer_variant_10`, `answer_variant_11`) VALUES
@@ -70,7 +70,7 @@ INSERT INTO `answer_variant_list` (`a_v_id`, `answer_variant_1`, `answer_variant
 -- --------------------------------------------------------
 
 --
--- Table structure for table `creator_speculator`
+-- Структура таблицы `creator_speculator`
 --
 
 CREATE TABLE IF NOT EXISTS `creator_speculator` (
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `creator_speculator` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `creator_speculator`
+-- Дамп данных таблицы `creator_speculator`
 --
 
 INSERT INTO `creator_speculator` (`id`, `question`, `hemisphere`, `a_v_id`) VALUES
@@ -101,7 +101,7 @@ INSERT INTO `creator_speculator` (`id`, `question`, `hemisphere`, `a_v_id`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `equivalents`
+-- Структура таблицы `equivalents`
 --
 
 CREATE TABLE IF NOT EXISTS `equivalents` (
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `equivalents` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `equivalents`
+-- Дамп данных таблицы `equivalents`
 --
 
 INSERT INTO `equivalents` (`id`, `equivalent`) VALUES
@@ -132,7 +132,7 @@ INSERT INTO `equivalents` (`id`, `equivalent`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fielddependence_fieldindependence`
+-- Структура таблицы `fielddependence_fieldindependence`
 --
 
 CREATE TABLE IF NOT EXISTS `fielddependence_fieldindependence` (
@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `fielddependence_fieldindependence` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `fielddependence_fieldindependence`
+-- Дамп данных таблицы `fielddependence_fieldindependence`
 --
 
 INSERT INTO `fielddependence_fieldindependence` (`id`, `right_answer`, `a_v_id`) VALUES
@@ -182,19 +182,20 @@ INSERT INTO `fielddependence_fieldindependence` (`id`, `right_answer`, `a_v_id`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `glossary`
+-- Структура таблицы `glossary`
 --
 
 CREATE TABLE IF NOT EXISTS `glossary` (
   `id` tinyint(4) NOT NULL,
-  `termin` text NOT NULL,
-  `abbreviation` text,
+  `termin` varchar(100) NOT NULL,
+  `abbreviation` varchar(15) DEFAULT NULL,
   `definition` text,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `termin` (`termin`,`abbreviation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `glossary`
+-- Дамп данных таблицы `glossary`
 --
 
 INSERT INTO `glossary` (`id`, `termin`, `abbreviation`, `definition`) VALUES
@@ -279,7 +280,7 @@ INSERT INTO `glossary` (`id`, `termin`, `abbreviation`, `definition`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ideal_expert`
+-- Структура таблицы `ideal_expert`
 --
 
 CREATE TABLE IF NOT EXISTS `ideal_expert` (
@@ -292,7 +293,7 @@ CREATE TABLE IF NOT EXISTS `ideal_expert` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `ideal_expert`
+-- Дамп данных таблицы `ideal_expert`
 --
 
 INSERT INTO `ideal_expert` (`id`, `question`, `weight`, `a_v_id`) VALUES
@@ -320,7 +321,7 @@ INSERT INTO `ideal_expert` (`id`, `question`, `weight`, `a_v_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ideal_knowledge_ingeneer`
+-- Структура таблицы `ideal_knowledge_ingeneer`
 --
 
 CREATE TABLE IF NOT EXISTS `ideal_knowledge_ingeneer` (
@@ -333,7 +334,7 @@ CREATE TABLE IF NOT EXISTS `ideal_knowledge_ingeneer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `ideal_knowledge_ingeneer`
+-- Дамп данных таблицы `ideal_knowledge_ingeneer`
 --
 
 INSERT INTO `ideal_knowledge_ingeneer` (`id`, `question`, `weight`, `a_v_id`) VALUES
@@ -359,85 +360,88 @@ INSERT INTO `ideal_knowledge_ingeneer` (`id`, `question`, `weight`, `a_v_id`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `integration_means`
+-- Структура таблицы `integration_means`
 --
 
 CREATE TABLE IF NOT EXISTS `integration_means` (
   `id` tinyint(4) NOT NULL,
-  `integration_mean` text NOT NULL,
-  PRIMARY KEY (`id`)
+  `integration_mean` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `integration_mean` (`integration_mean`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `integration_means`
+-- Дамп данных таблицы `integration_means`
 --
 
 INSERT INTO `integration_means` (`id`, `integration_mean`) VALUES
-(1, 'доступ к базе данных'),
 (2, 'вызов внешних функций'),
+(1, 'доступ к базе данных'),
 (3, 'доступ к оборудованию'),
 (4, 'связь с другими языками');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `interface_means`
+-- Структура таблицы `interface_means`
 --
 
 CREATE TABLE IF NOT EXISTS `interface_means` (
   `id` tinyint(4) NOT NULL,
-  `interface_mean` text NOT NULL,
-  PRIMARY KEY (`id`)
+  `interface_mean` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `interface_mean` (`interface_mean`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `interface_means`
+-- Дамп данных таблицы `interface_means`
 --
 
 INSERT INTO `interface_means` (`id`, `interface_mean`) VALUES
+(4, 'интерактивная графика'),
+(8, 'объяснение КАК'),
+(7, 'объяснение ПОЧЕМУ'),
+(9, 'объяснение ЧТО ЕСЛИ'),
+(3, 'оконные средства'),
+(6, 'оперативная подсказка'),
 (1, 'отладочные возможности'),
 (2, 'поддержка меню'),
-(3, 'оконные средства'),
-(4, 'интерактивная графика'),
-(5, 'цветовая гамма'),
-(6, 'оперативная подсказка'),
-(7, 'объяснение ПОЧЕМУ'),
-(8, 'объяснение КАК'),
-(9, 'объяснение ЧТО ЕСЛИ'),
-(10, 'сохранение случаев');
+(10, 'сохранение случаев'),
+(5, 'цветовая гамма');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `knowledge_representation`
+-- Структура таблицы `knowledge_representation`
 --
 
 CREATE TABLE IF NOT EXISTS `knowledge_representation` (
   `id` tinyint(4) NOT NULL,
-  `knowledge_representation` text NOT NULL,
-  PRIMARY KEY (`id`)
+  `knowledge_representation` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `knowledge_representation` (`knowledge_representation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `knowledge_representation`
+-- Дамп данных таблицы `knowledge_representation`
 --
 
 INSERT INTO `knowledge_representation` (`id`, `knowledge_representation`) VALUES
-(1, 'примеры'),
-(2, 'объектно-ориентированная модель представления знаний'),
 (3, 'дедуктивная модель представления знаний'),
-(4, 'продукционная модель представления знаний'),
-(5, 'фреймы'),
 (6, 'индуктивная модель представления знаний'),
+(2, 'объектно-ориентированная модель представления знаний'),
+(1, 'примеры'),
+(4, 'продукционная модель представления знаний'),
 (7, 'псевдофизические логики'),
-(8, 'функциональные сети'),
+(10, 'семантические сети'),
 (9, 'сценарии'),
-(10, 'семантические сети');
+(5, 'фреймы'),
+(8, 'функциональные сети');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `k_r_result`
+-- Структура таблицы `k_r_result`
 --
 
 CREATE TABLE IF NOT EXISTS `k_r_result` (
@@ -450,97 +454,98 @@ CREATE TABLE IF NOT EXISTS `k_r_result` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `manufacturing_company`
+-- Структура таблицы `manufacturing_company`
 --
 
 CREATE TABLE IF NOT EXISTS `manufacturing_company` (
   `id` tinyint(4) NOT NULL,
-  `company` text NOT NULL,
-  PRIMARY KEY (`id`)
+  `company` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `company` (`company`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `manufacturing_company`
+-- Дамп данных таблицы `manufacturing_company`
 --
 
 INSERT INTO `manufacturing_company` (`id`, `company`) VALUES
-(1, 'AlCorp'),
-(2, 'Gold Hill Computers'),
-(3, 'LITHP Systems BV'),
 (4, 'Aion Corp.'),
-(5, 'Olivetti Al Center'),
-(6, 'Harris & Hall Associates'),
-(7, 'Logic Programming'),
+(1, 'AlCorp'),
 (8, 'Arity Corp.'),
-(9, 'Inference Corp.'),
-(10, 'London School Economics'),
-(11, 'Intelligence Ware Inc.'),
-(12, 'VRS Software Ltd.'),
-(13, 'Cambridge Consultants'),
-(14, 'Texpert Systems Inc.'),
-(15, 'Britham Young Unv.'),
-(16, 'Peridom Inc.'),
-(17, 'Cognitech'),
-(18, 'Teknowledge'),
-(19, 'Intelligent Environ. Inc.'),
-(20, 'Software Plus'),
-(21, 'Smart Systems Tech'),
-(22, 'Systems Designers'),
-(23, 'EPITEC'),
-(24, 'IBM Corp.'),
 (25, 'AT&T Bell Lab.'),
-(26, 'Lightware'),
+(71, 'Attar Software'),
+(66, 'Berkshire Software Co.'),
+(45, 'Brainware Applic.'),
+(15, 'Britham Young Unv.'),
+(61, 'Bynas Div.'),
+(72, 'California Intelligence'),
+(13, 'Cambridge Consultants'),
+(46, 'Carnegie Group Inc.'),
+(17, 'Cognitech'),
+(51, 'Cognition Technology'),
+(50, 'Creative Logic Ltd.'),
+(54, 'CRIL'),
+(65, 'Dynamic Master Sys.'),
+(23, 'EPITEC'),
 (27, 'Expert Systems Int.'),
-(28, 'NEC Corp.'),
-(29, 'Intelligent Termin.'),
 (30, 'Expert Telligence'),
+(70, 'Expertech'),
 (31, 'Exsys Inc.'),
-(32, 'NOVOCAST AB'),
-(33, 'Kemp-Carraway Heart'),
+(64, 'General Research Corp.'),
 (34, 'Generic Software'),
 (35, 'Georgia Tech Res'),
-(36, 'Micro Data Base Sys Inc.'),
-(37, 'Xerox Special Info.'),
-(38, 'ICL'),
-(39, 'Level Five Research'),
+(2, 'Gold Hill Computers'),
+(6, 'Harris & Hall Associates'),
 (40, 'Human Intellect Corp.'),
-(41, 'KDS Corp.'),
-(42, 'Intellicorp'),
-(43, 'Software A&E'),
-(44, 'Technology Applic.'),
-(45, 'Brainware Applic.'),
-(46, 'Carnegie Group Inc.'),
-(47, 'Perceptics Corp.'),
-(48, 'Knowledge Garden'),
-(49, 'Intelligent Machine'),
-(50, 'Creative Logic Ltd.'),
-(51, 'Cognition Technology'),
-(52, 'Stone & Webster'),
-(53, 'Machine Intelligence'),
-(54, 'CRIL'),
-(55, 'Neuron Data'),
-(56, 'Mind Soft'),
-(57, 'Texas Instruments'),
-(58, 'Titan Systems Inc.'),
-(59, 'Radian Corp.'),
-(60, 'Intelligent Systems'),
-(61, 'Bynas Div.'),
-(62, 'UNY Co.'),
+(24, 'IBM Corp.'),
+(38, 'ICL'),
+(9, 'Inference Corp.'),
 (63, 'INRIA'),
-(64, 'General Research Corp.'),
-(65, 'Dynamic Master Sys.'),
-(66, 'Berkshire Software Co.'),
+(42, 'Intellicorp'),
+(11, 'Intelligence Ware Inc.'),
+(19, 'Intelligent Environ. Inc.'),
+(49, 'Intelligent Machine'),
+(60, 'Intelligent Systems'),
+(29, 'Intelligent Termin.'),
+(41, 'KDS Corp.'),
+(33, 'Kemp-Carraway Heart'),
+(48, 'Knowledge Garden'),
+(39, 'Level Five Research'),
+(26, 'Lightware'),
+(3, 'LITHP Systems BV'),
+(7, 'Logic Programming'),
+(10, 'London School Economics'),
+(53, 'Machine Intelligence'),
+(36, 'Micro Data Base Sys Inc.'),
+(56, 'Mind Soft'),
+(28, 'NEC Corp.'),
+(55, 'Neuron Data'),
 (67, 'Nixdorf Computer AG'),
+(32, 'NOVOCAST AB'),
+(5, 'Olivetti Al Center'),
 (68, 'Paperback Software'),
+(47, 'Perceptics Corp.'),
+(16, 'Peridom Inc.'),
+(59, 'Radian Corp.'),
+(21, 'Smart Systems Tech'),
+(43, 'Software A&E'),
 (69, 'Software Intelligence Lab.'),
-(70, 'Expertech'),
-(71, 'Attar Software'),
-(72, 'California Intelligence');
+(20, 'Software Plus'),
+(52, 'Stone & Webster'),
+(22, 'Systems Designers'),
+(44, 'Technology Applic.'),
+(18, 'Teknowledge'),
+(57, 'Texas Instruments'),
+(14, 'Texpert Systems Inc.'),
+(58, 'Titan Systems Inc.'),
+(62, 'UNY Co.'),
+(12, 'VRS Software Ltd.'),
+(37, 'Xerox Special Info.');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `opportunity_research`
+-- Структура таблицы `opportunity_research`
 --
 
 CREATE TABLE IF NOT EXISTS `opportunity_research` (
@@ -553,7 +558,7 @@ CREATE TABLE IF NOT EXISTS `opportunity_research` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `opportunity_research`
+-- Дамп данных таблицы `opportunity_research`
 --
 
 INSERT INTO `opportunity_research` (`id`, `measure`, `weight`, `a_v_id`) VALUES
@@ -568,119 +573,123 @@ INSERT INTO `opportunity_research` (`id`, `measure`, `weight`, `a_v_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `platform`
+-- Структура таблицы `platform`
 --
 
 CREATE TABLE IF NOT EXISTS `platform` (
   `id` tinyint(4) NOT NULL,
-  `platform_name` text NOT NULL,
-  PRIMARY KEY (`id`)
+  `platform_name` varchar(15) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `platform_name` (`platform_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `platform`
+-- Дамп данных таблицы `platform`
 --
 
 INSERT INTO `platform` (`id`, `platform_name`) VALUES
+(4, 'Appolo'),
+(9, 'AT&T'),
+(12, 'HP'),
 (1, 'IBM PC'),
+(11, 'ICL'),
+(8, 'Mac'),
+(5, 'microVAX'),
+(10, 'NEC'),
 (2, 'Olivetti'),
 (3, 'Sun'),
-(4, 'Appolo'),
-(5, 'microVAX'),
-(6, 'VAX'),
+(14, 'Tektornix'),
 (7, 'Vac'),
-(8, 'Mac'),
-(9, 'AT&T'),
-(10, 'NEC'),
-(11, 'ICL'),
-(12, 'HP'),
-(13, 'Wang'),
-(14, 'Tektornix');
+(6, 'VAX'),
+(13, 'Wang');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `producing_country`
+-- Структура таблицы `producing_country`
 --
 
 CREATE TABLE IF NOT EXISTS `producing_country` (
   `id` tinyint(4) NOT NULL,
-  `country` text NOT NULL,
-  PRIMARY KEY (`id`)
+  `country` varchar(15) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `country` (`country`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `producing_country`
+-- Дамп данных таблицы `producing_country`
 --
 
 INSERT INTO `producing_country` (`id`, `country`) VALUES
-(1, 'USA'),
-(2, 'Germany'),
-(3, 'UK'),
 (4, 'France'),
-(5, 'Sweden'),
-(6, 'Japan'),
+(2, 'Germany'),
 (7, 'Irland'),
-(8, 'The Nether');
+(6, 'Japan'),
+(5, 'Sweden'),
+(8, 'The Nether'),
+(3, 'UK'),
+(1, 'USA');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `programming_language`
+-- Структура таблицы `programming_language`
 --
 
 CREATE TABLE IF NOT EXISTS `programming_language` (
   `id` tinyint(4) NOT NULL,
-  `language` text NOT NULL,
-  PRIMARY KEY (`id`)
+  `language` varchar(15) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `language` (`language`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `programming_language`
+-- Дамп данных таблицы `programming_language`
 --
 
 INSERT INTO `programming_language` (`id`, `language`) VALUES
-(1, 'Ассемблер'),
-(2, 'Cobol'),
-(3, 'Fortran'),
-(4, 'Pascal'),
-(5, 'Prolog'),
-(6, 'Lisp'),
-(7, 'KnwlDef'),
-(8, 'PLATO'),
-(9, 'SmallTalk'),
-(10, 'IntComp'),
-(11, 'C'),
-(12, 'AL'),
-(13, 'SL'),
-(14, 'Forth'),
-(15, 'Assembly'),
-(16, 'Modula'),
-(17, 'Forthran'),
-(18, 'OPS5'),
-(19, 'Basic'),
-(20, 'Pro'),
-(21, 'Yes'),
-(22, 'Progol'),
 (23, 'Ada'),
-(24, 'APL');
+(12, 'AL'),
+(24, 'APL'),
+(15, 'Assembly'),
+(19, 'Basic'),
+(11, 'C'),
+(2, 'Cobol'),
+(14, 'Forth'),
+(17, 'Forthran'),
+(3, 'Fortran'),
+(10, 'IntComp'),
+(7, 'KnwlDef'),
+(6, 'Lisp'),
+(16, 'Modula'),
+(18, 'OPS5'),
+(4, 'Pascal'),
+(8, 'PLATO'),
+(20, 'Pro'),
+(22, 'Progol'),
+(5, 'Prolog'),
+(13, 'SL'),
+(9, 'SmallTalk'),
+(21, 'Yes'),
+(1, 'Ассемблер');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `project`
+-- Структура таблицы `project`
 --
 
 CREATE TABLE IF NOT EXISTS `project` (
-  `id` tinyint(4) NOT NULL,
-  `project_name` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+  `id` tinyint(4) NOT NULL AUTO_INCREMENT,
+  `project_name` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `project_name` (`project_name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=cp1251 AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `project_group`
+-- Структура таблицы `project_group`
 --
 
 CREATE TABLE IF NOT EXISTS `project_group` (
@@ -693,7 +702,7 @@ CREATE TABLE IF NOT EXISTS `project_group` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `propriety_research`
+-- Структура таблицы `propriety_research`
 --
 
 CREATE TABLE IF NOT EXISTS `propriety_research` (
@@ -706,7 +715,7 @@ CREATE TABLE IF NOT EXISTS `propriety_research` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `propriety_research`
+-- Дамп данных таблицы `propriety_research`
 --
 
 INSERT INTO `propriety_research` (`id`, `measure`, `weight`, `a_v_id`) VALUES
@@ -719,7 +728,7 @@ INSERT INTO `propriety_research` (`id`, `measure`, `weight`, `a_v_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `references_`
+-- Структура таблицы `references_`
 --
 
 CREATE TABLE IF NOT EXISTS `references_` (
@@ -729,7 +738,7 @@ CREATE TABLE IF NOT EXISTS `references_` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `references_`
+-- Дамп данных таблицы `references_`
 --
 
 INSERT INTO `references_` (`id`, `reference`) VALUES
@@ -779,7 +788,7 @@ INSERT INTO `references_` (`id`, `reference`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `relevance_research`
+-- Структура таблицы `relevance_research`
 --
 
 CREATE TABLE IF NOT EXISTS `relevance_research` (
@@ -792,7 +801,7 @@ CREATE TABLE IF NOT EXISTS `relevance_research` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `relevance_research`
+-- Дамп данных таблицы `relevance_research`
 --
 
 INSERT INTO `relevance_research` (`id`, `measure`, `weight`, `a_v_id`) VALUES
@@ -805,7 +814,7 @@ INSERT INTO `relevance_research` (`id`, `measure`, `weight`, `a_v_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rigidity_versatility`
+-- Структура таблицы `rigidity_versatility`
 --
 
 CREATE TABLE IF NOT EXISTS `rigidity_versatility` (
@@ -818,7 +827,7 @@ CREATE TABLE IF NOT EXISTS `rigidity_versatility` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `rigidity_versatility`
+-- Дамп данных таблицы `rigidity_versatility`
 --
 
 INSERT INTO `rigidity_versatility` (`id`, `statement`, `right_answer`, `a_v_id`) VALUES
@@ -876,45 +885,47 @@ INSERT INTO `rigidity_versatility` (`id`, `statement`, `right_answer`, `a_v_id`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `solver`
+-- Структура таблицы `solver`
 --
 
 CREATE TABLE IF NOT EXISTS `solver` (
   `id` tinyint(4) NOT NULL,
-  `solver` text NOT NULL,
-  PRIMARY KEY (`id`)
+  `solver` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `solver` (`solver`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `solver`
+-- Дамп данных таблицы `solver`
 --
 
 INSERT INTO `solver` (`id`, `solver`) VALUES
-(1, 'прямой вывод'),
-(2, 'обратный вывод'),
-(3, 'индукция'),
 (4, 'демоны'),
 (5, 'доска объявлений'),
-(6, 'мета-управление'),
-(7, 'поиск по образцу'),
-(8, 'обработка недостоверности'),
+(3, 'индукция'),
 (9, 'математические операции'),
-(10, 'наследование свойств');
+(6, 'мета-управление'),
+(10, 'наследование свойств'),
+(8, 'обработка недостоверности'),
+(2, 'обратный вывод'),
+(7, 'поиск по образцу'),
+(1, 'прямой вывод');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `system`
+-- Структура таблицы `system`
 --
 
 CREATE TABLE IF NOT EXISTS `system` (
   `id` tinyint(4) NOT NULL,
-  `system_name` text NOT NULL,
-  PRIMARY KEY (`id`)
+  `system_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `system_name` (`system_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `system`
+-- Дамп данных таблицы `system`
 --
 
 INSERT INTO `system` (`id`, `system_name`) VALUES
@@ -939,23 +950,26 @@ INSERT INTO `system` (`id`, `system_name`) VALUES
 (19, 'CRYSTAL'),
 (20, 'CxPERT'),
 (21, 'DUCK'),
-(22, 'Envisage'),
 (23, 'Ehitool'),
+(22, 'Envisage'),
 (24, 'ES Environment'),
 (25, 'ES/AG'),
 (26, 'ESIE'),
 (27, 'ESP-Advisor'),
-(28, 'EXCORE'),
 (29, 'EX-TRAN'),
-(30, 'Expertfacts'),
+(28, 'EXCORE'),
 (31, 'Expert Ease'),
+(85, 'Expert Edge'),
+(84, 'Expert-2'),
+(30, 'Expertfacts'),
+(83, 'Expertkit'),
 (32, 'EXSYS Professional'),
 (33, 'Flist Expert'),
 (34, 'FLOPS'),
 (35, 'FrameKit'),
 (36, 'GEST'),
 (37, 'Gold Works'),
-(38, 'Guru (РІ Р РѕСЃСЃРёРё Р?РќРўР•Р -Р­РљРЎРџР•Р Рў)'),
+(38, 'Guru (В России - ИТЕРЭКСПЕРТ)'),
 (39, 'Humble'),
 (40, 'ICL Adviser'),
 (41, 'INSIHT2+'),
@@ -967,9 +981,9 @@ INSERT INTO `system` (`id`, `system_name`) VALUES
 (47, 'Keystone'),
 (48, 'KISS'),
 (49, 'Knowledge Craft'),
-(50, 'Knowledge Shaper'),
 (51, 'Knowledge Maker'),
 (52, 'Knowledge Pro'),
+(50, 'Knowledge Shaper'),
 (53, 'KNOWOL+'),
 (54, 'Leonardo'),
 (55, 'Level5 Object'),
@@ -980,8 +994,8 @@ INSERT INTO `system` (`id`, `system_name`) VALUES
 (60, 'MicroExpert'),
 (61, 'MP-LPO'),
 (62, 'MUSE'),
-(63, 'NExpert Object'),
 (64, 'NETUX'),
+(63, 'NExpert Object'),
 (65, 'Personal Consultant Plus'),
 (66, 'RBEST'),
 (67, 'RuleMaster'),
@@ -999,15 +1013,12 @@ INSERT INTO `system` (`id`, `system_name`) VALUES
 (79, 'Wizdom'),
 (80, 'Xi Plus'),
 (81, 'Xpert Rule'),
-(82, 'XSYS'),
-(83, 'Expertkit'),
-(84, 'Expert-2'),
-(85, 'Expert Edge');
+(82, 'XSYS');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `system_integration_means`
+-- Структура таблицы `system_integration_means`
 --
 
 CREATE TABLE IF NOT EXISTS `system_integration_means` (
@@ -1018,7 +1029,7 @@ CREATE TABLE IF NOT EXISTS `system_integration_means` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `system_integration_means`
+-- Дамп данных таблицы `system_integration_means`
 --
 
 INSERT INTO `system_integration_means` (`id`, `sy_id`) VALUES
@@ -1140,7 +1151,7 @@ INSERT INTO `system_integration_means` (`id`, `sy_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `system_interface_means`
+-- Структура таблицы `system_interface_means`
 --
 
 CREATE TABLE IF NOT EXISTS `system_interface_means` (
@@ -1151,7 +1162,7 @@ CREATE TABLE IF NOT EXISTS `system_interface_means` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `system_interface_means`
+-- Дамп данных таблицы `system_interface_means`
 --
 
 INSERT INTO `system_interface_means` (`id`, `sy_id`) VALUES
@@ -1573,7 +1584,7 @@ INSERT INTO `system_interface_means` (`id`, `sy_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `system_knowledge_representation`
+-- Структура таблицы `system_knowledge_representation`
 --
 
 CREATE TABLE IF NOT EXISTS `system_knowledge_representation` (
@@ -1584,7 +1595,7 @@ CREATE TABLE IF NOT EXISTS `system_knowledge_representation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `system_knowledge_representation`
+-- Дамп данных таблицы `system_knowledge_representation`
 --
 
 INSERT INTO `system_knowledge_representation` (`id`, `sy_id`) VALUES
@@ -1789,7 +1800,7 @@ INSERT INTO `system_knowledge_representation` (`id`, `sy_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `system_manufacturing_company`
+-- Структура таблицы `system_manufacturing_company`
 --
 
 CREATE TABLE IF NOT EXISTS `system_manufacturing_company` (
@@ -1800,7 +1811,7 @@ CREATE TABLE IF NOT EXISTS `system_manufacturing_company` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `system_manufacturing_company`
+-- Дамп данных таблицы `system_manufacturing_company`
 --
 
 INSERT INTO `system_manufacturing_company` (`id`, `sy_id`) VALUES
@@ -1891,7 +1902,7 @@ INSERT INTO `system_manufacturing_company` (`id`, `sy_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `system_platform`
+-- Структура таблицы `system_platform`
 --
 
 CREATE TABLE IF NOT EXISTS `system_platform` (
@@ -1902,7 +1913,7 @@ CREATE TABLE IF NOT EXISTS `system_platform` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `system_platform`
+-- Дамп данных таблицы `system_platform`
 --
 
 INSERT INTO `system_platform` (`id`, `sy_id`) VALUES
@@ -2055,7 +2066,7 @@ INSERT INTO `system_platform` (`id`, `sy_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `system_producing_country`
+-- Структура таблицы `system_producing_country`
 --
 
 CREATE TABLE IF NOT EXISTS `system_producing_country` (
@@ -2066,7 +2077,7 @@ CREATE TABLE IF NOT EXISTS `system_producing_country` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `system_producing_country`
+-- Дамп данных таблицы `system_producing_country`
 --
 
 INSERT INTO `system_producing_country` (`id`, `sy_id`) VALUES
@@ -2156,7 +2167,7 @@ INSERT INTO `system_producing_country` (`id`, `sy_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `system_realization_language`
+-- Структура таблицы `system_realization_language`
 --
 
 CREATE TABLE IF NOT EXISTS `system_realization_language` (
@@ -2167,7 +2178,7 @@ CREATE TABLE IF NOT EXISTS `system_realization_language` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `system_realization_language`
+-- Дамп данных таблицы `system_realization_language`
 --
 
 INSERT INTO `system_realization_language` (`id`, `sy_id`) VALUES
@@ -2255,7 +2266,7 @@ INSERT INTO `system_realization_language` (`id`, `sy_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `system_solver`
+-- Структура таблицы `system_solver`
 --
 
 CREATE TABLE IF NOT EXISTS `system_solver` (
@@ -2266,7 +2277,7 @@ CREATE TABLE IF NOT EXISTS `system_solver` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `system_solver`
+-- Дамп данных таблицы `system_solver`
 --
 
 INSERT INTO `system_solver` (`id`, `sy_id`) VALUES
@@ -2590,7 +2601,7 @@ INSERT INTO `system_solver` (`id`, `sy_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `system_supported_language`
+-- Структура таблицы `system_supported_language`
 --
 
 CREATE TABLE IF NOT EXISTS `system_supported_language` (
@@ -2601,7 +2612,7 @@ CREATE TABLE IF NOT EXISTS `system_supported_language` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `system_supported_language`
+-- Дамп данных таблицы `system_supported_language`
 --
 
 INSERT INTO `system_supported_language` (`id`, `sy_id`) VALUES
@@ -2702,7 +2713,7 @@ INSERT INTO `system_supported_language` (`id`, `sy_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `s_result`
+-- Структура таблицы `s_result`
 --
 
 CREATE TABLE IF NOT EXISTS `s_result` (
@@ -2712,10 +2723,17 @@ CREATE TABLE IF NOT EXISTS `s_result` (
   KEY `R_53` (`u_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
+--
+-- Дамп данных таблицы `s_result`
+--
+
+INSERT INTO `s_result` (`id`, `u_id`) VALUES
+(1, 1);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `temperament_type`
+-- Структура таблицы `temperament_type`
 --
 
 CREATE TABLE IF NOT EXISTS `temperament_type` (
@@ -2730,7 +2748,7 @@ CREATE TABLE IF NOT EXISTS `temperament_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Dumping data for table `temperament_type`
+-- Дамп данных таблицы `temperament_type`
 --
 
 INSERT INTO `temperament_type` (`id`, `question`, `sincerity`, `instability`, `extraversion`, `a_v_id`) VALUES
@@ -2795,194 +2813,212 @@ INSERT INTO `temperament_type` (`id`, `question`, `sincerity`, `instability`, `e
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Структура таблицы `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `u_id` tinyint(4) NOT NULL,
+  `u_id` tinyint(4) NOT NULL AUTO_INCREMENT,
   `password` text NOT NULL,
   `name` text NOT NULL,
   `gender` enum('муж','жен') DEFAULT NULL,
   `age` tinyint(4) DEFAULT NULL,
   `u_g_id` tinyint(4) NOT NULL,
-  `login` text NOT NULL,
+  `login` varchar(32) NOT NULL,
   `competience_result` tinyint(1) DEFAULT NULL,
   `r_r_result` tinyint(1) DEFAULT NULL,
   `p_r_result` tinyint(1) DEFAULT NULL,
   `o_r_result` tinyint(1) DEFAULT NULL,
   `research_result` tinyint(1) DEFAULT NULL,
-  `f_f_result` enum('полезависимость','поленезависимость') NOT NULL,
+  `f_f_result` enum('полезависимость','поленезависимость') DEFAULT NULL,
   `c_s_result` enum('художник','логическое и художественное мышление','мыслитель') DEFAULT NULL,
   `r_v_result` enum('ригидный','черты ригидности и гибкости','гибкий') DEFAULT NULL,
   `t_t_result` enum('меланхолик','холерик','сангвиник','флегматик') DEFAULT NULL,
   `prototyping_strategy_result` enum('1','2','3') DEFAULT NULL,
   PRIMARY KEY (`u_id`),
+  UNIQUE KEY `login` (`login`),
   KEY `R_72` (`u_g_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+) ENGINE=InnoDB  DEFAULT CHARSET=cp1251 AUTO_INCREMENT=6 ;
+
+--
+-- Дамп данных таблицы `user`
+--
+
+INSERT INTO `user` (`u_id`, `password`, `name`, `gender`, `age`, `u_g_id`, `login`, `competience_result`, `r_r_result`, `p_r_result`, `o_r_result`, `research_result`, `f_f_result`, `c_s_result`, `r_v_result`, `t_t_result`, `prototyping_strategy_result`) VALUES
+(1, '9208084', 'Аминев Булат Даянович', 'муж', 21, 1, 'venima', 1, 1, 2, 1, NULL, 'полезависимость', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_group`
+-- Структура таблицы `user_group`
 --
 
 CREATE TABLE IF NOT EXISTS `user_group` (
   `id` tinyint(4) NOT NULL,
-  `group_name` text NOT NULL,
-  PRIMARY KEY (`id`)
+  `group_name` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `group_name` (`group_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
--- Constraints for dumped tables
+-- Дамп данных таблицы `user_group`
+--
+
+INSERT INTO `user_group` (`id`, `group_name`) VALUES
+(1, 'заказчик'),
+(2, 'инженер по знаниям'),
+(3, 'эксперт');
+
+--
+-- Ограничения внешнего ключа сохраненных таблиц
 --
 
 --
--- Constraints for table `creator_speculator`
+-- Ограничения внешнего ключа таблицы `creator_speculator`
 --
 ALTER TABLE `creator_speculator`
   ADD CONSTRAINT `creator_speculator_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
 
 --
--- Constraints for table `equivalents`
+-- Ограничения внешнего ключа таблицы `equivalents`
 --
 ALTER TABLE `equivalents`
   ADD CONSTRAINT `equivalents_ibfk_2` FOREIGN KEY (`equivalent`) REFERENCES `glossary` (`id`),
   ADD CONSTRAINT `equivalents_ibfk_1` FOREIGN KEY (`id`) REFERENCES `glossary` (`id`);
 
 --
--- Constraints for table `fielddependence_fieldindependence`
+-- Ограничения внешнего ключа таблицы `fielddependence_fieldindependence`
 --
 ALTER TABLE `fielddependence_fieldindependence`
   ADD CONSTRAINT `fielddependence_fieldindependence_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
 
 --
--- Constraints for table `ideal_expert`
+-- Ограничения внешнего ключа таблицы `ideal_expert`
 --
 ALTER TABLE `ideal_expert`
   ADD CONSTRAINT `ideal_expert_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
 
 --
--- Constraints for table `ideal_knowledge_ingeneer`
+-- Ограничения внешнего ключа таблицы `ideal_knowledge_ingeneer`
 --
 ALTER TABLE `ideal_knowledge_ingeneer`
   ADD CONSTRAINT `ideal_knowledge_ingeneer_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
 
 --
--- Constraints for table `k_r_result`
+-- Ограничения внешнего ключа таблицы `k_r_result`
 --
 ALTER TABLE `k_r_result`
   ADD CONSTRAINT `k_r_result_ibfk_2` FOREIGN KEY (`id`) REFERENCES `knowledge_representation` (`id`),
   ADD CONSTRAINT `k_r_result_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
 
 --
--- Constraints for table `opportunity_research`
+-- Ограничения внешнего ключа таблицы `opportunity_research`
 --
 ALTER TABLE `opportunity_research`
   ADD CONSTRAINT `opportunity_research_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
 
 --
--- Constraints for table `project_group`
+-- Ограничения внешнего ключа таблицы `project_group`
 --
 ALTER TABLE `project_group`
   ADD CONSTRAINT `project_group_ibfk_2` FOREIGN KEY (`pr_id`) REFERENCES `project` (`id`),
   ADD CONSTRAINT `project_group_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
 
 --
--- Constraints for table `propriety_research`
+-- Ограничения внешнего ключа таблицы `propriety_research`
 --
 ALTER TABLE `propriety_research`
   ADD CONSTRAINT `propriety_research_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
 
 --
--- Constraints for table `relevance_research`
+-- Ограничения внешнего ключа таблицы `relevance_research`
 --
 ALTER TABLE `relevance_research`
   ADD CONSTRAINT `relevance_research_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
 
 --
--- Constraints for table `rigidity_versatility`
+-- Ограничения внешнего ключа таблицы `rigidity_versatility`
 --
 ALTER TABLE `rigidity_versatility`
   ADD CONSTRAINT `rigidity_versatility_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
 
 --
--- Constraints for table `system_integration_means`
+-- Ограничения внешнего ключа таблицы `system_integration_means`
 --
 ALTER TABLE `system_integration_means`
   ADD CONSTRAINT `system_integration_means_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`),
   ADD CONSTRAINT `system_integration_means_ibfk_1` FOREIGN KEY (`id`) REFERENCES `integration_means` (`id`);
 
 --
--- Constraints for table `system_interface_means`
+-- Ограничения внешнего ключа таблицы `system_interface_means`
 --
 ALTER TABLE `system_interface_means`
   ADD CONSTRAINT `system_interface_means_ibfk_2` FOREIGN KEY (`id`) REFERENCES `interface_means` (`id`),
   ADD CONSTRAINT `system_interface_means_ibfk_1` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`);
 
 --
--- Constraints for table `system_knowledge_representation`
+-- Ограничения внешнего ключа таблицы `system_knowledge_representation`
 --
 ALTER TABLE `system_knowledge_representation`
   ADD CONSTRAINT `system_knowledge_representation_ibfk_2` FOREIGN KEY (`id`) REFERENCES `knowledge_representation` (`id`),
   ADD CONSTRAINT `system_knowledge_representation_ibfk_1` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`);
 
 --
--- Constraints for table `system_manufacturing_company`
+-- Ограничения внешнего ключа таблицы `system_manufacturing_company`
 --
 ALTER TABLE `system_manufacturing_company`
   ADD CONSTRAINT `system_manufacturing_company_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`),
   ADD CONSTRAINT `system_manufacturing_company_ibfk_1` FOREIGN KEY (`id`) REFERENCES `manufacturing_company` (`id`);
 
 --
--- Constraints for table `system_platform`
+-- Ограничения внешнего ключа таблицы `system_platform`
 --
 ALTER TABLE `system_platform`
   ADD CONSTRAINT `system_platform_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`),
   ADD CONSTRAINT `system_platform_ibfk_1` FOREIGN KEY (`id`) REFERENCES `platform` (`id`);
 
 --
--- Constraints for table `system_producing_country`
+-- Ограничения внешнего ключа таблицы `system_producing_country`
 --
 ALTER TABLE `system_producing_country`
   ADD CONSTRAINT `system_producing_country_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`),
   ADD CONSTRAINT `system_producing_country_ibfk_1` FOREIGN KEY (`id`) REFERENCES `producing_country` (`id`);
 
 --
--- Constraints for table `system_realization_language`
+-- Ограничения внешнего ключа таблицы `system_realization_language`
 --
 ALTER TABLE `system_realization_language`
   ADD CONSTRAINT `system_realization_language_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`),
   ADD CONSTRAINT `system_realization_language_ibfk_1` FOREIGN KEY (`id`) REFERENCES `programming_language` (`id`);
 
 --
--- Constraints for table `system_solver`
+-- Ограничения внешнего ключа таблицы `system_solver`
 --
 ALTER TABLE `system_solver`
   ADD CONSTRAINT `system_solver_ibfk_2` FOREIGN KEY (`id`) REFERENCES `solver` (`id`),
   ADD CONSTRAINT `system_solver_ibfk_1` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`);
 
 --
--- Constraints for table `system_supported_language`
+-- Ограничения внешнего ключа таблицы `system_supported_language`
 --
 ALTER TABLE `system_supported_language`
   ADD CONSTRAINT `system_supported_language_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`),
   ADD CONSTRAINT `system_supported_language_ibfk_1` FOREIGN KEY (`id`) REFERENCES `programming_language` (`id`);
 
 --
--- Constraints for table `s_result`
+-- Ограничения внешнего ключа таблицы `s_result`
 --
 ALTER TABLE `s_result`
   ADD CONSTRAINT `s_result_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
   ADD CONSTRAINT `s_result_ibfk_1` FOREIGN KEY (`id`) REFERENCES `system` (`id`);
 
 --
--- Constraints for table `temperament_type`
+-- Ограничения внешнего ключа таблицы `temperament_type`
 --
 ALTER TABLE `temperament_type`
   ADD CONSTRAINT `temperament_type_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
 
 --
--- Constraints for table `user`
+-- Ограничения внешнего ключа таблицы `user`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`u_g_id`) REFERENCES `user_group` (`id`);

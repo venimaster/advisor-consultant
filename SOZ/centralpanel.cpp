@@ -11,7 +11,7 @@ void CentralPanel::paintEvent(QPaintEvent *)
 {
     QPen pen(Qt::black);
     QBrush Brs(Qt::black);
-    QImage img(":/images/brain");
+    QImage img(":/backgrounds/brain");
     img = img.scaled(width(),height());//ƒалее идет преобразование под прозрачность
 
     QPixmap pixmap(img.size());

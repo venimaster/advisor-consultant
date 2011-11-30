@@ -5,6 +5,7 @@
 #include <QSplashScreen>
 #include <QResizeEvent>
 #include <QDebug>
+#include <QLineEdit>
 
 #include "helpbutton.h"
 #include "namepanel.h"
@@ -12,6 +13,7 @@
 #include "leftpanel.h"
 #include "bottompanel.h"
 #include "dbwork.h"
+#include "mylineedit.h"
 
 class MainWindow : public QMainWindow
 {
