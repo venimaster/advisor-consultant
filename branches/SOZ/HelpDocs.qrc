@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/HelpDocs">
+        <file alias="glossary">doc/glossary.htm</file>
+        <file alias="index">doc/index.htm</file>
+        <file alias="list">doc/list.htm</file>
+        <file alias="logo">doc/logo.jpg</file>
+    </qresource>
+</RCC>
