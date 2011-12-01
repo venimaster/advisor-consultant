@@ -21,8 +21,13 @@ SOURCES += main.cpp\
     bottompanel.cpp \
     commandclass.cpp \
     simplebutton.cpp \
+   # dbwork.cpp \
+    mylineedit.cpp \
+    tester.cpp \
+    psyh.cpp \
+    answervariantbutton.cpp \
     dbwork.cpp \
-    mylineedit.cpp
+    glossary.cpp
 
 HEADERS  += mainwindow.h \
     namepanel.h \
@@ -33,11 +38,22 @@ HEADERS  += mainwindow.h \
     bottompanel.h \
     commandclass.h \
     simplebutton.h \
+  #  dbwork.h \
+    mylineedit.h \
+    tester.h \
+    psyh.h \
+    answervariantbutton.h \
     dbwork.h \
-    mylineedit.h
+    glossary.h
 
 RESOURCES += \
     images.qrc
+
+
+
+
+
+
 
 
 

@@ -14,6 +14,7 @@
 #include "bottompanel.h"
 #include "dbwork.h"
 #include "mylineedit.h"
+#include "tester.h"
 
 class MainWindow : public QMainWindow
 {
@@ -36,7 +37,10 @@ class MainWindow : public QMainWindow
 
     QMenu* Menu;
 
+    Tester* tester;
+
     int EtapNum;
+
 
     void AddPanels();
 
