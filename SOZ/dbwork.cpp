@@ -69,6 +69,7 @@ dbWork::dbWork()
     qDebug()<<GetAttribute("answer_variant_list","a_v_id","answer_variant_1",1);
     qDebug()<<GetAttribute("system","id","system_name",2);
 
+    qDebug()<<GetProjectGroup("ПК СОЗ");
 //ВВОД
     // вводит в поле o_r_result значение 1, 0 - невозможно применять технологию СОЗ 1 - возможно
     SetResult("venima", "o_r_result",1);
@@ -269,14 +270,24 @@ QVector<QString> dbWork::GetAttribute(QString tableName, QString idColumnName, Q
 QVector<int> dbWork::GetProjectGroup(QString projectName)
 {
     QVector<int> groupList;
+    QVector<QString> pr_idVector;
     QSqlQuery query;
     QString pr_id;
     // получаем идентификатор группы
-//    pr_id <<  GetAttribute("project","project_name","id",projectName);
+    pr_idVector =  GetAttribute("project","project_name","id",projectName);
 
-//    query.exec("SELECT `u_id` FROM `project_group` WHERE `pr_id`='"+pr_id+"' AND ");
-
-
+    pr_id=pr_idVector[0];
+    qDebug()<<pr_id;
+    query.exec("SELECT  `project_group`.`u_id`"
+    "FROM `project_group`, `user`"
+    "WHERE"
+    "`project_group`.`pr_id`='"+pr_id+"' AND"
+    "`user`.`u_id`=`project_group`.`u_id` AND"
+    "`user`.`u_g_id`!='1';");
+    while(query.next())
+    {
+        groupList<<query.value(0).toInt();
+    }
     return groupList;
 }
 
