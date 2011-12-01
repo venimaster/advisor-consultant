@@ -277,7 +277,6 @@ QVector<int> dbWork::GetProjectGroup(QString projectName)
     pr_idVector =  GetAttribute("project","project_name","id",projectName);
 
     pr_id=pr_idVector[0];
-    qDebug()<<pr_id;
     query.exec("SELECT  `project_group`.`u_id`"
     "FROM `project_group`, `user`"
     "WHERE"
