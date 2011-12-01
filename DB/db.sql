@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Ноя 30 2011 г., 20:25
+-- Время создания: Дек 01 2011 г., 06:27
 -- Версия сервера: 5.5.16
 -- Версия PHP: 5.3.8
 
@@ -360,6 +360,19 @@ INSERT INTO `ideal_knowledge_ingeneer` (`id`, `question`, `weight`, `a_v_id`) VA
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `ideal_pair`
+--
+
+CREATE TABLE IF NOT EXISTS `ideal_pair` (
+  `u_id` tinyint(4) NOT NULL,
+  `pair_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`u_id`,`pair_id`),
+  KEY `R_148` (`pair_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `integration_means`
 --
 
@@ -684,7 +697,7 @@ CREATE TABLE IF NOT EXISTS `project` (
   `project_name` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `project_name` (`project_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=cp1251 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -2837,7 +2850,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`u_id`),
   UNIQUE KEY `login` (`login`),
   KEY `R_72` (`u_g_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=cp1251 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=cp1251 AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `user`
@@ -2882,8 +2895,8 @@ ALTER TABLE `creator_speculator`
 -- Ограничения внешнего ключа таблицы `equivalents`
 --
 ALTER TABLE `equivalents`
-  ADD CONSTRAINT `equivalents_ibfk_2` FOREIGN KEY (`equivalent`) REFERENCES `glossary` (`id`),
-  ADD CONSTRAINT `equivalents_ibfk_1` FOREIGN KEY (`id`) REFERENCES `glossary` (`id`);
+  ADD CONSTRAINT `equivalents_ibfk_1` FOREIGN KEY (`id`) REFERENCES `glossary` (`id`),
+  ADD CONSTRAINT `equivalents_ibfk_2` FOREIGN KEY (`equivalent`) REFERENCES `glossary` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `fielddependence_fieldindependence`
@@ -2904,11 +2917,18 @@ ALTER TABLE `ideal_knowledge_ingeneer`
   ADD CONSTRAINT `ideal_knowledge_ingeneer_ibfk_1` FOREIGN KEY (`a_v_id`) REFERENCES `answer_variant_list` (`a_v_id`);
 
 --
+-- Ограничения внешнего ключа таблицы `ideal_pair`
+--
+ALTER TABLE `ideal_pair`
+  ADD CONSTRAINT `ideal_pair_ibfk_2` FOREIGN KEY (`pair_id`) REFERENCES `user` (`u_id`),
+  ADD CONSTRAINT `ideal_pair_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
+
+--
 -- Ограничения внешнего ключа таблицы `k_r_result`
 --
 ALTER TABLE `k_r_result`
-  ADD CONSTRAINT `k_r_result_ibfk_2` FOREIGN KEY (`id`) REFERENCES `knowledge_representation` (`id`),
-  ADD CONSTRAINT `k_r_result_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
+  ADD CONSTRAINT `k_r_result_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
+  ADD CONSTRAINT `k_r_result_ibfk_2` FOREIGN KEY (`id`) REFERENCES `knowledge_representation` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `opportunity_research`
@@ -2920,8 +2940,8 @@ ALTER TABLE `opportunity_research`
 -- Ограничения внешнего ключа таблицы `project_group`
 --
 ALTER TABLE `project_group`
-  ADD CONSTRAINT `project_group_ibfk_2` FOREIGN KEY (`pr_id`) REFERENCES `project` (`id`),
-  ADD CONSTRAINT `project_group_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
+  ADD CONSTRAINT `project_group_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
+  ADD CONSTRAINT `project_group_ibfk_2` FOREIGN KEY (`pr_id`) REFERENCES `project` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `propriety_research`
@@ -2945,71 +2965,71 @@ ALTER TABLE `rigidity_versatility`
 -- Ограничения внешнего ключа таблицы `system_integration_means`
 --
 ALTER TABLE `system_integration_means`
-  ADD CONSTRAINT `system_integration_means_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`),
-  ADD CONSTRAINT `system_integration_means_ibfk_1` FOREIGN KEY (`id`) REFERENCES `integration_means` (`id`);
+  ADD CONSTRAINT `system_integration_means_ibfk_1` FOREIGN KEY (`id`) REFERENCES `integration_means` (`id`),
+  ADD CONSTRAINT `system_integration_means_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `system_interface_means`
 --
 ALTER TABLE `system_interface_means`
-  ADD CONSTRAINT `system_interface_means_ibfk_2` FOREIGN KEY (`id`) REFERENCES `interface_means` (`id`),
-  ADD CONSTRAINT `system_interface_means_ibfk_1` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`);
+  ADD CONSTRAINT `system_interface_means_ibfk_1` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`),
+  ADD CONSTRAINT `system_interface_means_ibfk_2` FOREIGN KEY (`id`) REFERENCES `interface_means` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `system_knowledge_representation`
 --
 ALTER TABLE `system_knowledge_representation`
-  ADD CONSTRAINT `system_knowledge_representation_ibfk_2` FOREIGN KEY (`id`) REFERENCES `knowledge_representation` (`id`),
-  ADD CONSTRAINT `system_knowledge_representation_ibfk_1` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`);
+  ADD CONSTRAINT `system_knowledge_representation_ibfk_1` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`),
+  ADD CONSTRAINT `system_knowledge_representation_ibfk_2` FOREIGN KEY (`id`) REFERENCES `knowledge_representation` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `system_manufacturing_company`
 --
 ALTER TABLE `system_manufacturing_company`
-  ADD CONSTRAINT `system_manufacturing_company_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`),
-  ADD CONSTRAINT `system_manufacturing_company_ibfk_1` FOREIGN KEY (`id`) REFERENCES `manufacturing_company` (`id`);
+  ADD CONSTRAINT `system_manufacturing_company_ibfk_1` FOREIGN KEY (`id`) REFERENCES `manufacturing_company` (`id`),
+  ADD CONSTRAINT `system_manufacturing_company_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `system_platform`
 --
 ALTER TABLE `system_platform`
-  ADD CONSTRAINT `system_platform_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`),
-  ADD CONSTRAINT `system_platform_ibfk_1` FOREIGN KEY (`id`) REFERENCES `platform` (`id`);
+  ADD CONSTRAINT `system_platform_ibfk_1` FOREIGN KEY (`id`) REFERENCES `platform` (`id`),
+  ADD CONSTRAINT `system_platform_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `system_producing_country`
 --
 ALTER TABLE `system_producing_country`
-  ADD CONSTRAINT `system_producing_country_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`),
-  ADD CONSTRAINT `system_producing_country_ibfk_1` FOREIGN KEY (`id`) REFERENCES `producing_country` (`id`);
+  ADD CONSTRAINT `system_producing_country_ibfk_1` FOREIGN KEY (`id`) REFERENCES `producing_country` (`id`),
+  ADD CONSTRAINT `system_producing_country_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `system_realization_language`
 --
 ALTER TABLE `system_realization_language`
-  ADD CONSTRAINT `system_realization_language_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`),
-  ADD CONSTRAINT `system_realization_language_ibfk_1` FOREIGN KEY (`id`) REFERENCES `programming_language` (`id`);
+  ADD CONSTRAINT `system_realization_language_ibfk_1` FOREIGN KEY (`id`) REFERENCES `programming_language` (`id`),
+  ADD CONSTRAINT `system_realization_language_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `system_solver`
 --
 ALTER TABLE `system_solver`
-  ADD CONSTRAINT `system_solver_ibfk_2` FOREIGN KEY (`id`) REFERENCES `solver` (`id`),
-  ADD CONSTRAINT `system_solver_ibfk_1` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`);
+  ADD CONSTRAINT `system_solver_ibfk_1` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`),
+  ADD CONSTRAINT `system_solver_ibfk_2` FOREIGN KEY (`id`) REFERENCES `solver` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `system_supported_language`
 --
 ALTER TABLE `system_supported_language`
-  ADD CONSTRAINT `system_supported_language_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`),
-  ADD CONSTRAINT `system_supported_language_ibfk_1` FOREIGN KEY (`id`) REFERENCES `programming_language` (`id`);
+  ADD CONSTRAINT `system_supported_language_ibfk_1` FOREIGN KEY (`id`) REFERENCES `programming_language` (`id`),
+  ADD CONSTRAINT `system_supported_language_ibfk_2` FOREIGN KEY (`sy_id`) REFERENCES `system` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `s_result`
 --
 ALTER TABLE `s_result`
-  ADD CONSTRAINT `s_result_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`),
-  ADD CONSTRAINT `s_result_ibfk_1` FOREIGN KEY (`id`) REFERENCES `system` (`id`);
+  ADD CONSTRAINT `s_result_ibfk_1` FOREIGN KEY (`id`) REFERENCES `system` (`id`),
+  ADD CONSTRAINT `s_result_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`);
 
 --
 -- Ограничения внешнего ключа таблицы `temperament_type`
