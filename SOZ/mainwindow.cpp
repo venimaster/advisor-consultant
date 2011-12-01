@@ -4,7 +4,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
 
-    setMinimumSize(800,600);
+    setMinimumSize(1280,800);
 
 
 
@@ -35,6 +35,8 @@ void MainWindow::AddPanels()
 
 
     DB = new dbWork();
+
+    tester = new Tester(CentralPnl,DB);
 
     connect(LeftPnl,SIGNAL(ButtonPressed(int)),this,SLOT(SetEtap(int)));
 
@@ -84,6 +86,9 @@ void MainWindow::SetEtap(int _num)
         case 3:
             EtapName="ÀÍÀËÈÇ ÍÀ ÏÐÈÌÅÍÈÌÎÑÒÜ/ÍÅÏÐÈÌÅÍÈÌÎÑÒÜ ÒÅÕÍÎËÎÃÈÈ ÑÎÇ";
             Label="Ïðîâåäåíèå ñèñòåìíîãî àíàëèçà ïðîáëåìíîé îáëàñòè íà ïðåäìåò ïðèìåíèìîñòè/íåïðèìåíèìîñòè òåõíîëîãèè ÑÎÇ äëÿ çàäà÷è çàêàç÷èêà (ýòàï èäåíòèôèêàöèè)";
+            tester->Test_I();
+
+
         break;
         case 4:
             EtapName="ÂÛÁÎÐ ÓÑÏÅØÍÎÉ ÊÎÍÒÀÊÒÍÎÉ ÏÀÐÛ";
@@ -106,12 +111,6 @@ void MainWindow::SetEtap(int _num)
 
     NamePnl->SetName(EtapName);
     LeftPnl->setLabel(Label);
-
-
-    MyLineEdit* LineEdit = new MyLineEdit();
-    LineEdit->setText("AAA");
-    LineEdit->show();
-
 
 
 

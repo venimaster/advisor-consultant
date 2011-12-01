@@ -10,32 +10,32 @@ dbWork::dbWork()
 
  //*****************ВЫВОД**************
     // выводит все критерии из relevance_research
-    qDebug()<<GetColumnFromTable("measure","relevance_research");
+//    qDebug()<<GetColumnFromTable("measure","relevance_research");
 
     // выводит все критерии из propriety_research
-    qDebug()<<GetColumnFromTable("measure","propriety_research");
+//    qDebug()<<GetColumnFromTable("measure","propriety_research");
 
     // выводит все критерии из opportunity_research
-    qDebug()<<GetColumnFromTable("measure","opportunity_research");
+  //  qDebug()<<GetColumnFromTable("measure","opportunity_research");
 
     //выводит веса критериев из relevance_research
-    qDebug()<<GetColumnFromTable("weight","relevance_research");
+  //  qDebug()<<GetColumnFromTable("weight","relevance_research");
 
     //выводит веса критериев из propriety_research
-    qDebug()<<GetColumnFromTable("weight","propriety_research");
+  //  qDebug()<<GetColumnFromTable("weight","propriety_research");
 
     //выводит веса критериев из opportunity_research
-    qDebug()<<GetColumnFromTable("weight","opportunity_research");
+  //  qDebug()<<GetColumnFromTable("weight","opportunity_research");
 
 
     //выводит варианты ответа на критерий из relevance_research с номером id
-    qDebug()<<GetAnswerVariants("relevance_research",id);
+ //   qDebug()<<GetAnswerVariants("relevance_research",id);
 
     //выводит варианты ответа на критерий из propriety_research с номером id
-    qDebug()<<GetAnswerVariants("propriety_research",id);
+ //   qDebug()<<GetAnswerVariants("propriety_research",id);
 
     //выводит варианты ответа на критерий из opportunity_research с номером id
-    qDebug()<< GetAnswerVariants("opportunity_research",id);
+ //   qDebug()<< GetAnswerVariants("opportunity_research",id);
 
 //*****************ВВОД**************
 
@@ -47,41 +47,41 @@ dbWork::dbWork()
 // ВТОРОЙ ЭТАП
 //----------------------------------------------------------------------------------------------------------------
     //выводит все вопросы из ideal_knowledge_ingeneer
-    qDebug()<<GetColumnFromTable("question","ideal_knowledge_ingeneer");
+ //   qDebug()<<GetColumnFromTable("question","ideal_knowledge_ingeneer");
 
     //выводит все вопросы из ideal_expert
-    qDebug()<<GetColumnFromTable("question","ideal_expert");
+  //  qDebug()<<GetColumnFromTable("question","ideal_expert");
 
     //выводит веса критериев из ideal_knowledge_ingeneer
-    qDebug()<<GetColumnFromTable("weight","ideal_knowledge_ingeneer");
+ //   qDebug()<<GetColumnFromTable("weight","ideal_knowledge_ingeneer");
 
     //выводит веса критериев из ideal_expert
-    qDebug()<<GetColumnFromTable("weight","ideal_expert");
+ //   qDebug()<<GetColumnFromTable("weight","ideal_expert");
 
     //выводит варианты ответа на вопрос из ideal_knowledge_ingeneer с номером id
-    qDebug()<<GetAnswerVariants("ideal_knowledge_ingeneer",id);
+ //   qDebug()<<GetAnswerVariants("ideal_knowledge_ingeneer",id);
 
     //выводит варианты ответа на вопрос из ideal_expert с номером id
-    qDebug()<<GetAnswerVariants("ideal_expert",id);
+ //   qDebug()<<GetAnswerVariants("ideal_expert",id);
 
 
-    qDebug()<<GetAttribute("user","u_id","login",1);
-    qDebug()<<GetAttribute("answer_variant_list","a_v_id","answer_variant_1",1);
-    qDebug()<<GetAttribute("system","id","system_name",2);
+//    qDebug()<<GetAttribute("user","u_id","login",1);
+ //   qDebug()<<GetAttribute("answer_variant_list","a_v_id","answer_variant_1",1);
+//    qDebug()<<GetAttribute("system","id","system_name",2);
 
-    qDebug()<<GetProjectGroup("ПК СОЗ");
+  //  qDebug()<<GetProjectGroup("ПК СОЗ");
 //ВВОД
     // вводит в поле o_r_result значение 1, 0 - невозможно применять технологию СОЗ 1 - возможно
-    SetResult("venima", "o_r_result",1);
+   // SetResult("venima", "o_r_result",1);
     // вводит в поле f_f_result значение полезависимость
-    SetResult("venima", "f_f_result","полезависимость");
+  //  SetResult("venima", "f_f_result","полезависимость");
     // вводит в таблицу s_result данному юзеру значение 1 - т.е. ему было решено посоветовать систему с id 1
-    SetResult("venima", "s_result",1);
+   // SetResult("venima", "s_result",1);
 
-    SetRegistrationInfo("prep", "123","Рыбина Галина Валентиновна", "ПК СОЗ");
-    SetRegistrationInfo("stud", "123","Кусков Иван Михайлович", "ПК СОЗ","эксперт","муж",21);
+  //  SetRegistrationInfo("prep", "123","Рыбина Галина Валентиновна", "ПК СОЗ");
+  //  SetRegistrationInfo("stud", "123","Кусков Иван Михайлович", "ПК СОЗ","эксперт","муж",21);
     // создает пару из 2 и 3.
-    SetPair (2,3);
+   // SetPair (2,3);
 }
 
 bool dbWork::connectDB(QString _dbType, QString _dbName, QString _host, QString _dbUser, QString _dbPass)
