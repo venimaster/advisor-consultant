@@ -30,6 +30,14 @@ public:
     //вносит результат в колонку columnName или в таблицы s_result, k_r_result
     void SetResult(QString login, QString columnName,int result);
     void SetResult(QString login, QString columnName,QString result);
+
+    // выводит аттрибут(ы), соответствующие id, находящемуся в поле idColumnName (может вывести название по id или все эл-ты колонки для данного id)
+    QVector<QString> GetAttribute(QString tableName,QString idColumnName, QString attributeColumnName,int id);
+    QVector<QString> GetAttribute(QString tableName,QString idColumnName, QString attributeColumnName,QString id);
+    // выводит зарегистрированных в данном проекте кандидатов в эксперты и инженеры по знаниям
+    QVector<int> GetProjectGroup(QString projectName);
+    // устанавливает одному юзеру в пару другого
+    void SetPair (int u_id, int pair_id);
     ~dbWork();
 };
 
