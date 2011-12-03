@@ -9,6 +9,7 @@ BottomPanel::BottomPanel(int _type, QWidget *parent) :
 void BottomPanel::SetText(QString _text)
 {
     Text=_text;
+    update();
 
 }
 

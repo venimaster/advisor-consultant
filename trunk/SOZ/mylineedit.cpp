@@ -8,7 +8,7 @@ MyLineEdit::MyLineEdit(QWidget *parent) :
     palette.setBrush(QPalette::Highlight,QBrush(Qt::darkBlue));
     palette.setColor(QPalette::HighlightedText,Qt::white);
     palette.setBrush(QPalette::Background,QBrush(Qt::black));
-    palette.setBrush(QPalette::Base,QBrush(Qt::black));
+    palette.setBrush(QPalette::Base,QBrush(Qt::transparent));
 
     palette.setColor(QPalette::Text,Qt::white);
 
