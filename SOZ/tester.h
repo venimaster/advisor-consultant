@@ -19,6 +19,12 @@ class Tester : public QObject
     int QuestionNum;
     int QuestionAll;
 
+    QString table;
+
+
+    int EtapNum;
+    int SubEtapNum;
+
     void AskQuestion(int QuestNumber);
 
 
@@ -28,9 +34,13 @@ public:
     void SetQuestions();
     void SetAnswers();
 
-    void Test_I();
+    void Test_I_I();
+    void Test_I_II();
+    void Test_I_III();
 
 signals:
+
+    void RenameSubEtap(QString str);
 
 public slots:
 

@@ -74,6 +74,7 @@ public slots:
 
     void Refresh();
     void SetEtap(int _num);
+    void RenameSubEtap(QString );
 
 };
 

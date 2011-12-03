@@ -19,6 +19,9 @@ void AnswerVariantButton::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
 
+    QColor MyColor(Qt::darkCyan);
+    MyColor.setAlpha(100);
+
     painter.setRenderHint(QPainter::Antialiasing,true);
     if (Choosen)
     {
@@ -26,9 +29,9 @@ void AnswerVariantButton::paintEvent(QPaintEvent *)
         QColor color(Qt::white);
         color.setAlpha(100);
 
-        painter.setBrush(QBrush(color));
+        painter.setBrush(QBrush(MyColor));
         painter.setPen(QPen(Qt::gray));
-        painter.setFont(QFont("Times",10,QFont::Bold));
+        painter.setFont(QFont("Times",13,QFont::Bold));
 
         painter.setPen(QPen(Qt::white));
 //        painter.drawEllipse(0,1,width(),2);
@@ -42,7 +45,7 @@ void AnswerVariantButton::paintEvent(QPaintEvent *)
 
         painter.setBrush(QBrush(color));
         painter.setPen(QPen(Qt::white));
-        painter.setFont(QFont("Times",10,QFont::Bold));
+        painter.setFont(QFont("Times",13,QFont::Bold));
 
     }
 
@@ -76,7 +79,7 @@ void AnswerVariantButton::resizeEvent(QResizeEvent *)
 
 void AnswerVariantButton::enterEvent(QEvent *)
 {
-    qDebug()<<label;
+
 }
 
 void AnswerVariantButton::setLabel(QString &lbl)

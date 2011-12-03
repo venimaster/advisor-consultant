@@ -19,7 +19,14 @@ void NamePanel::paintEvent(QPaintEvent *)
 
         QFont myFont;
         QPen pen(Qt::white);
-        QBrush Brs(Qt::black);
+
+        QColor MyColor(Qt::black);
+        QColor MyColor1(Qt::white);
+
+        MyColor1.setAlpha(0);
+
+        QBrush Brs(MyColor);
+
 
         myFont=QFont("Times",13,QFont::Bold);
 
@@ -29,13 +36,16 @@ void NamePanel::paintEvent(QPaintEvent *)
         painter.setBrush(Brs);
         painter.setFont(myFont);
         painter.drawRect(rect());
+
+        painter.setBrush(QBrush(MyColor1));
+        painter.drawRect(rect());
         painter.setPen(QPen(Qt::white));
 
         if (Name != "")
         {
 
             painter.setPen(pen);
-            painter.drawText(rect(),Qt::AlignVCenter | Qt::TextWordWrap,Name);
+            painter.drawText(rect(),Qt::AlignCenter | Qt::TextWordWrap,Name);
 
             painter.setRenderHint(QPainter::Antialiasing,true);
             painter.setBrush(QBrush(Qt::white));
