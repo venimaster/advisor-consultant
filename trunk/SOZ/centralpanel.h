@@ -7,6 +7,7 @@
 #include <QDebug>
 
 #include "answervariantbutton.h"
+#include "testerdaleebutton.h"
 
 
 class CentralPanel : public QWidget
@@ -22,16 +23,21 @@ class CentralPanel : public QWidget
     QRect AnswersRect;
     QRect ButtonsRect;
 
+    QImage BrainImg;
+    QImage BrainSourceImg;
+    QPixmap BrainPixmap;
+
 
     void drawButtons();
-
-
     void updateWidgets();
+    void updateBrain();
+    void resizeAnswerButtons();
+
 
 public:
     explicit CentralPanel(QWidget *parent = 0);
 
-    QPushButton* OK;
+    TesterDaleeButton* OK;
 
     void drawAnswers();
 

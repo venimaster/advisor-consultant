@@ -4,8 +4,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
 
-    setMinimumSize(1280,800);
-
+    setMinimumSize(800,600);
 
 
     connect(this,SIGNAL(NeedRefresh()),SLOT(Refresh()));
@@ -37,6 +36,7 @@ void MainWindow::AddPanels()
     DB = new dbWork();
 
     tester = new Tester(CentralPnl,DB);
+    connect (tester,SIGNAL(RenameSubEtap(QString)),this,SLOT(RenameSubEtap(QString)));
 
     connect(LeftPnl,SIGNAL(ButtonPressed(int)),this,SLOT(SetEtap(int)));
 
@@ -86,17 +86,19 @@ void MainWindow::SetEtap(int _num)
         case 3:
             EtapName="АНАЛИЗ НА ПРИМЕНИМОСТЬ/НЕПРИМЕНИМОСТЬ ТЕХНОЛОГИИ СОЗ";
             Label="Проведение системного анализа проблемной области на предмет применимости/неприменимости технологии СОЗ для задачи заказчика (этап идентификации)";
-            tester->Test_I();
+            tester->Test_I_I();
 
 
         break;
         case 4:
             EtapName="ВЫБОР УСПЕШНОЙ КОНТАКТНОЙ ПАРЫ";
             Label="Выбор идеальной пары \"эксперт-инженер по знаниям\" из нескольких кандидатов с целью эффективной реализации процесса получения знаний о проблемной области";
+
         break;
         case 5:
             EtapName="ВЫБОР МОДЕЛЕЙ ПРЕДСТАВЛЕНИЯ ЗНАНИЙ";
             Label="Выбор способов(моделей) представления знаний";
+
         break;
         case 6:
             EtapName="ВЫБОР ИНСТРУМЕНТАЛЬНЫХ СРЕДСТВ";
@@ -109,10 +111,16 @@ void MainWindow::SetEtap(int _num)
 
     }
 
-    NamePnl->SetName(EtapName);
+    HeaderPnl->SetText(EtapName);
     LeftPnl->setLabel(Label);
 
 
+
+}
+
+void MainWindow::RenameSubEtap(QString str)
+{
+    NamePnl->SetName(str);
 
 }
 

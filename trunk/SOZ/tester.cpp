@@ -6,7 +6,9 @@ Tester::Tester(CentralPanel *_CP, dbWork *_DB, QObject *parent) :
     DB = _DB;
     CP = _CP;
 
-    connect(CP->OK,SIGNAL(clicked()),this,SLOT (NextQuestion()));
+    ChoozenVariantNumber=-1;
+
+    connect(CP->OK,SIGNAL(iPressed()),this,SLOT (NextQuestion()));
 
 }
 
@@ -67,6 +69,15 @@ void Tester::Test_I_III()
 
 }
 
+void Tester::Test_II_I()
+{
+    EtapNum = 2;
+
+    SubEtapNum = 1;
+
+    emit RenameSubEtap ("");
+}
+
 void Tester::AskQuestion( int QuestNumber)
 {
     CP->SetQuestion(Questions[QuestNumber]);
@@ -96,13 +107,16 @@ void Tester::NextQuestion()
     {
         SubEtapNum++;
 
-    qDebug()<<SubEtapNum;
+        qDebug()<<SubEtapNum;
 
-    if (SubEtapNum == 2)
-        Test_I_II();
+        if (EtapNum == 1)
+        {
+            if (SubEtapNum == 2)
+                Test_I_II();
 
-    if (SubEtapNum == 3)
-        Test_I_III();
+            if (SubEtapNum == 3)
+                Test_I_III();
+        }
 
     }
 

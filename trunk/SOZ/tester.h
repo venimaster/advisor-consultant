@@ -19,6 +19,8 @@ class Tester : public QObject
     int QuestionNum;
     int QuestionAll;
 
+    int ChoozenVariantNumber;
+
     QString table;
 
 
@@ -34,9 +36,17 @@ public:
     void SetQuestions();
     void SetAnswers();
 
+    void ChangeChoozenVariantNumber(int num);
+
     void Test_I_I();
     void Test_I_II();
     void Test_I_III();
+
+    void Test_II_I();
+    void Test_III_I();
+    void Test_IV_I();
+    void Test_V_I();
+
 
 signals:
 

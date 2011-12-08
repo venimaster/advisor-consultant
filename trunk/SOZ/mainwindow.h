@@ -16,6 +16,7 @@
 #include "mylineedit.h"
 #include "tester.h"
 
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
