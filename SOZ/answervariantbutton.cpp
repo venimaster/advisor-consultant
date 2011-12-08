@@ -1,12 +1,14 @@
 #include "answervariantbutton.h"
 
-AnswerVariantButton::AnswerVariantButton(int &_ID, QString &lbl, double &weight, QWidget *parent) :
+AnswerVariantButton::AnswerVariantButton(int &_ID, QString &lbl, double &weight, const TesterDaleeButton *_OK, QWidget *parent) :
     QWidget(parent)
 {
     ID = _ID;
     setLabel(lbl);
     setWeight(weight);
     Choosen=false;
+
+    OK=_OK;
 
     update();
 
@@ -19,7 +21,7 @@ void AnswerVariantButton::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
 
-    QColor MyColor(Qt::darkCyan);
+    QColor MyColor(Qt::lightGray);
     MyColor.setAlpha(100);
 
     painter.setRenderHint(QPainter::Antialiasing,true);

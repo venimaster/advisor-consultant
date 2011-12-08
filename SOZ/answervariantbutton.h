@@ -5,6 +5,7 @@
 #include <QPainter>
 #include <QDebug>
 #include <QRgb>
+#include "testerdaleebutton.h"
 
 class AnswerVariantButton : public QWidget
 {
@@ -13,12 +14,14 @@ class AnswerVariantButton : public QWidget
     double weight;
     QString label;
 
+    const TesterDaleeButton* OK;
+
     int ID;
 
     bool Choosen;
 
 public:
-    explicit AnswerVariantButton(int &ID, QString &lbl, double &weight, QWidget *parent = 0);
+    explicit AnswerVariantButton(int &ID, QString &lbl, double &weight,const TesterDaleeButton* _OK, QWidget *parent = 0);
     ~AnswerVariantButton();
 
     void setLabel (QString &lbl);

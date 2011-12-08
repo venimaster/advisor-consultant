@@ -3,11 +3,19 @@
 CentralPanel::CentralPanel(QWidget *parent) :
     QWidget(parent)
 {
-    update();
+
     Question="";
-    OK = new QPushButton("Далее",this);
+    OK = new TesterDaleeButton(this);
+
+
+
+    BrainSourceImg = QImage(":/backgrounds/brain");
+    BrainImg = BrainSourceImg.scaled(width(),height());
+
+    varAnswers<<"";
 
     updateWidgets();
+
 
 
 }
@@ -22,9 +30,38 @@ void CentralPanel::updateWidgets()
     AnswersRect = QRect(0,H/6,W,H-2*H/6);
     ButtonsRect = QRect(0,H-H/6,W,H/6);
 
+    BrainImg = BrainSourceImg.scaled(width(),height());
+    updateBrain();
+
     drawButtons();
 
+
+
+
+
+
+
     update();
+
+}
+
+void CentralPanel::updateBrain()
+{
+    BrainPixmap = QPixmap(BrainImg.size());
+    BrainPixmap.fill(Qt::transparent);
+
+    QPainter p;
+    p.begin(&BrainPixmap);
+    p.setCompositionMode(QPainter::CompositionMode_Source);
+    p.drawPixmap(0, 0, QPixmap::fromImage(BrainImg));
+    p.setCompositionMode(QPainter::CompositionMode_DestinationIn);
+
+    // Set transparency level to 150 (possible values are 0-255)
+    // The alpha channel of a color specifies the transparency effect,
+    // 0 represents a fully transparent color, while 255 represents
+    // a fully opaque color.
+    p.fillRect(BrainPixmap.rect(), QColor(0, 0, 0, 30));
+    p.end();
 
 }
 
@@ -32,40 +69,29 @@ void CentralPanel::updateWidgets()
 
 void CentralPanel::paintEvent(QPaintEvent *)
 {
+    QColor MyColor(Qt::darkGreen);
+    MyColor.setAlpha(150);
+
     QPen pen(Qt::black);
     QBrush Brs(Qt::black);
-    QImage img(":/backgrounds/brain");
-    img = img.scaled(width(),height());//Далее идет преобразование под прозрачность
-
-    QPixmap pixmap(img.size());
-
-    // Do transparency
-    pixmap.fill(Qt::transparent);
-
-
-    QPainter p;
-    p.begin(&pixmap);
-    p.setCompositionMode(QPainter::CompositionMode_Source);
-    p.drawPixmap(0, 0, QPixmap::fromImage(img));
-    p.setCompositionMode(QPainter::CompositionMode_DestinationIn);
-
-    // Set transparency level to 150 (possible values are 0-255)
-    // The alpha channel of a color specifies the transparency effect,
-    // 0 represents a fully transparent color, while 255 represents
-    // a fully opaque color.
-    p.fillRect(pixmap.rect(), QColor(0, 0, 0, 30));
-    p.end();
 
     QPainter painter(this);
+
     painter.setBrush(Brs);
     painter.setPen(pen);
     painter.drawRect(rect());
-    painter.drawPixmap(rect(),pixmap);
+    painter.drawPixmap(rect(),BrainPixmap);
+
+
+
+
+
+    painter.setBrush(QBrush(MyColor));
 
 
     painter.setPen(QPen(Qt::white));
     painter.setFont(QFont("Sherif",11,QFont::Bold));
-
+    painter.drawRect(QuestionRect);
     painter.drawText(QuestionRect,Qt::AlignCenter | Qt::TextWordWrap, Question);
 
 
@@ -135,7 +161,7 @@ void CentralPanel::drawAnswers()
 
     foreach(QString str, varAnswers)
     {
-        AnswersBtns<<new AnswerVariantButton(i,str,weightAnswers[i],this);
+        AnswersBtns<<new AnswerVariantButton(i,str,weightAnswers[i],OK,this);
 
         AnswersBtns[i]->setGeometry(0,QuestionRect.height()+ H*i,width(),H);
 
@@ -154,6 +180,26 @@ void CentralPanel::drawAnswers()
 
 }
 
+void CentralPanel::resizeAnswerButtons()
+{
+    int i=0;
+
+    if (!(varAnswers[0]==""))
+    {
+
+        int size = varAnswers.size();
+
+        double H = AnswersRect.height()/size;
+
+        foreach(QString str, varAnswers)
+        {
+            AnswersBtns[i]->setGeometry(0,QuestionRect.height()+ H*i,width(),H);
+            i++;
+        }
+    }
+
+}
+
 void CentralPanel::UnClick(int N)
 {
     foreach(AnswerVariantButton* Ans, AnswersBtns)
@@ -165,7 +211,9 @@ void CentralPanel::UnClick(int N)
 
 void CentralPanel::resizeEvent(QResizeEvent *)
 {
+
         updateWidgets();
+        resizeAnswerButtons();
 
 }
 

@@ -27,7 +27,7 @@ SOURCES += main.cpp\
     psyh.cpp \
     answervariantbutton.cpp \
     dbwork.cpp \
-    glossary.cpp
+    testerdaleebutton.cpp
 
 HEADERS  += mainwindow.h \
     namepanel.h \
@@ -44,7 +44,7 @@ HEADERS  += mainwindow.h \
     psyh.h \
     answervariantbutton.h \
     dbwork.h \
-    glossary.h
+    testerdaleebutton.h
 
 RESOURCES += \
     images.qrc
