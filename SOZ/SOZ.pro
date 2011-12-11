@@ -4,12 +4,13 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT += core gui
 QT += sql
 
 TARGET = SOZ
 TEMPLATE = app
 
+PRECOMPILED_HEADER = stable.h
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -21,7 +22,6 @@ SOURCES += main.cpp\
     bottompanel.cpp \
     commandclass.cpp \
     simplebutton.cpp \
-   # dbwork.cpp \
     mylineedit.cpp \
     tester.cpp \
     psyh.cpp \
@@ -38,16 +38,17 @@ HEADERS  += mainwindow.h \
     bottompanel.h \
     commandclass.h \
     simplebutton.h \
-  #  dbwork.h \
     mylineedit.h \
     tester.h \
     psyh.h \
     answervariantbutton.h \
     dbwork.h \
-    testerdaleebutton.h
+    testerdaleebutton.h \
+    stable.h
 
 RESOURCES += \
     images.qrc
+
 
 
 

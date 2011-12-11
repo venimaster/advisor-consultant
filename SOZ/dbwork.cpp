@@ -1,5 +1,6 @@
 #include "dbwork.h"
 
+
 dbWork::dbWork()
 {
     connectDB();
@@ -83,7 +84,8 @@ dbWork::dbWork()
     //SetRegistrationInfo("stud", "123"," усков »ван ћихайлович", "ѕ  —ќ«","эксперт","муж",21);
     // создает пару из 2 и 3.
     //SetPair (2,3);
-    getGlossary(1);
+    getGlossary("b",18,"dfn",18);
+
 }
 
 bool dbWork::connectDB(QString _dbType, QString _dbName, QString _host, QString _dbUser, QString _dbPass)
@@ -103,51 +105,50 @@ bool dbWork::connectDB(QString _dbType, QString _dbName, QString _host, QString 
 
 }
 
-QString dbWork::getGlossary(int g_id)
+QString dbWork::getGlossary(QString terminFontStyle, int terminFontSize, QString definitionFontStyle, int definitionFontSize)
 {
     QSqlQuery query1,query2;
     QString glossary;
 
 
-    query1.exec("SELECT `id`, `termin`, `abbreviation`, `definition` FROM `glossary`;");
-    query2.exec("SELECT `equivalents`.`id` , `equivalents`.`equivalent` , `glossary`.`termin`"
-                "FROM `equivalents` , `glossary`"
-                "WHERE `glossary`.`id` = `equivalents`.`equivalent`");
+    query1.exec("SELECT `id`, `termin`, `abbreviation`, `definition` FROM `glossary` ORDER BY `termin` ASC;");
+
 
     //"<a name=\""+id+"\">"+termin+"</a>"+" ("+abbreviation+") - " +definition+"<br>"
     //"<a name=\""+id+"\">"+termin+"</a>"+" ("+abbreviation+") - см. <a href=\"#"+equivalentId+\">"+equivalentDefinition+"</a><br>"
 
 
-
     while(query1.next())
     {
-        glossary+="<a name=\""+query1.value(0).toString()+"\">"+query1.value(1).toString();+"</a>";
-        // есди есть сокращение у термина
+        glossary+="<a name=\"g"+query1.value(0).toString()+"\"><"+terminFontStyle+" style=\"font-size: "+QString::number(terminFontSize)+"px\">"+query1.value(1).toString()+"</"+terminFontStyle+"></a>";
+        // если есть сокращение у термина
         if (!query1.value(2).isNull())
         {
-            glossary+=" ("+query1.value(2).toString()+") - ";
-            //если определение у термина
-            if(!query1.value(3).isNull())
-            {
-                glossary+=query1.value(3).toString()+"<br>\n";
-            }
-            //если нет определени€ у термина (ставим ссылку)
-            else
-            {
-                glossary+="см. <a href=\"#";
-                //query2.next();
-                //while(query2.value(0)!=)
-                //equivalentId+\">"+equivalentDefinition+"</a><br>";
-            }
+            glossary+="<"+definitionFontStyle+" style=\"font-size: "+QString::number(definitionFontSize)+"px\"> ("+query1.value(2).toString()+") "+150+" ";
         }
         //если нет сокращни€ у термина
         else
         {
-            glossary+=" - " +query1.value(3).toString()+"<br>\n";
+            glossary+="<"+definitionFontStyle+" style=\"font-size: "+QString::number(definitionFontSize)+"px\"> "+150+" ";
         }
+        //если есть определение у термина
+        if(!query1.value(3).isNull())
+        {
+            glossary+=query1.value(3).toString()+"</"+definitionFontStyle+"><br>\n";
+        }
+        //если нет определени€ у термина (ставим ссылку)
+        else
+        {
+            //см. <a href=\"#"+equivalentId+\">"+equivalentDefinition+"</a><br>"
 
-        //           query1.value(1).toString();
-        //glossary<<query1.value(1).toString();
+            query2.exec("SELECT `equivalents`.`equivalent` , `glossary`.`termin`"
+                        "FROM `equivalents` , `glossary`"
+                        "WHERE"
+                        "`glossary`.`id` = `equivalents`.`equivalent` AND "
+                        "`equivalents`.`id` ='"+query1.value(0).toString()+"'");
+            query2.next();
+            glossary+="см. </"+definitionFontStyle+"><a href=\"#g"+query2.value(0).toString()+"\"><"+terminFontStyle+" style=\"font-size: "+QString::number(terminFontSize)+"px\">"+query2.value(1).toString()+"</"+terminFontStyle+"></a><"+definitionFontStyle+" style=\"font-size: "+QString::number(definitionFontSize)+"px\">.</"+definitionFontStyle+"><br>\n";
+        }
     }
     qDebug()<<glossary;
     return glossary;
@@ -236,11 +237,11 @@ void dbWork::SetRegistrationInfo(QString login, QString password,QString name, Q
 
      //заносим регистрационные данные в user (добавление пользовател€)
      query.exec("INSERT INTO `user` (`u_id` ,`password` ,`name` ,`gender` ,`age` ,`u_g_id` ,`login` ,`competience_result` ,`r_r_result` ,`p_r_result` ,`o_r_result` ,`research_result` ,`f_f_result` ,`c_s_result` ,`r_v_result` ,`t_t_result` ,`prototyping_strategy_result`)"
-                "VALUES('','"+password+"','"+name+"','','','1','"+login+"','','','','','','','','','','')");
+                "VALUES(NULL,'"+password+"','"+name+"',NULL,NULL,'1','"+login+"',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)");
 
      //заносим регистрационные данные в project (добавление проекта)
      query.exec("INSERT INTO `project` (`id` ,`project_name`)"
-                "VALUES ('','"+projectName+"')");
+                "VALUES (NULL,'"+projectName+"')");
      //получаем u_id
      query.exec("SELECT `u_id` FROM `user` WHERE `user`.`login`='"+login+"'");
      query.next();
@@ -266,7 +267,7 @@ void dbWork::SetRegistrationInfo(QString login, QString password,QString name, Q
     u_g_id=query.value(0).toInt();
     //заносим регистрационные данные в user (добавление пользовател€)
     query.exec("INSERT INTO `user` (`u_id` ,`password` ,`name` ,`gender` ,`age` ,`u_g_id` ,`login` ,`competience_result` ,`r_r_result` ,`p_r_result` ,`o_r_result` ,`research_result` ,`f_f_result` ,`c_s_result` ,`r_v_result` ,`t_t_result` ,`prototyping_strategy_result`)"
-               "VALUES('','"+password+"','"+name+"','"+gender+"','"+QString::number(age)+"','"+QString::number(u_g_id)+"','"+login+"','','','','','','','','','','')");
+               "VALUES(NULL,'"+password+"','"+name+"','"+gender+"','"+QString::number(age)+"','"+QString::number(u_g_id)+"','"+login+"',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)");
 
     //получаем u_id
     query.exec("SELECT `u_id` FROM `user` WHERE `user`.`login`='"+login+"'");
