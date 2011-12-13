@@ -1,4 +1,4 @@
-#include <QApplication>
+#include <QtGui/QApplication>
 #include <QTextCodec>
 
 #include <QSplashScreen>
