@@ -1,14 +1,17 @@
 #include "answervariantbutton.h"
 
-AnswerVariantButton::AnswerVariantButton(int &_ID, QString &lbl, double &weight, const TesterDaleeButton *_OK, QWidget *parent) :
+AnswerVariantButton::AnswerVariantButton(int &_ID, QString &lbl, double &weight, TesterDaleeButton *_OK, QWidget *parent) :
     QWidget(parent)
 {
     ID = _ID;
     setLabel(lbl);
     setWeight(weight);
+
     Choosen=false;
+    MouseOn = false;
 
     OK=_OK;
+
 
     update();
 
@@ -21,9 +24,6 @@ void AnswerVariantButton::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
 
-    QColor MyColor(Qt::lightGray);
-    MyColor.setAlpha(100);
-
     painter.setRenderHint(QPainter::Antialiasing,true);
     if (Choosen)
     {
@@ -31,26 +31,36 @@ void AnswerVariantButton::paintEvent(QPaintEvent *)
         QColor color(Qt::white);
         color.setAlpha(100);
 
-        painter.setBrush(QBrush(MyColor));
-        painter.setPen(QPen(Qt::gray));
-        painter.setFont(QFont("Times",13,QFont::Bold));
-
-        painter.setPen(QPen(Qt::white));
-//        painter.drawEllipse(0,1,width(),2);
-//        painter.drawEllipse(0,height()-1,width(),2);
-    }
-    else
-    {
-
-        QColor color(Qt::gray);
-        color.setAlpha(50);
-
         painter.setBrush(QBrush(color));
         painter.setPen(QPen(Qt::white));
         painter.setFont(QFont("Times",13,QFont::Bold));
 
     }
+    else
+    {
+        if (!MouseOn)
+        {
 
+            QColor color(Qt::gray);
+            color.setAlpha(50);
+
+            painter.setBrush(QBrush(color));
+            painter.setPen(QPen(Qt::white));
+            painter.setFont(QFont("Times",13,QFont::Bold));
+
+        }
+        else
+        {
+            QColor color(Qt::white);
+            color.setAlpha(70);
+
+            painter.setBrush(QBrush(color));
+            painter.setPen(QPen(Qt::white));
+            painter.setFont(QFont("Times",13,QFont::Bold));
+
+
+        }
+    }
     painter.drawRect(rect());
 
     painter.drawText(rect(),Qt::AlignCenter | Qt::TextWordWrap,label);
@@ -66,7 +76,19 @@ void AnswerVariantButton::mousePressEvent(QMouseEvent *)
 {
     emit (iPressed(ID));
 
+    if (Choosen)
+        OK->setDisAvilable();
+    else
+    {
+        OK->setAvilable();
+        OK->changeWeight(weight);
+    }
+    OK->update();
+
+
     Choosen = !Choosen;
+
+
 
     update();
 
@@ -81,7 +103,14 @@ void AnswerVariantButton::resizeEvent(QResizeEvent *)
 
 void AnswerVariantButton::enterEvent(QEvent *)
 {
+    MouseOn=true;
+    update();
+}
 
+void AnswerVariantButton::leaveEvent(QEvent *)
+{
+    MouseOn=false;
+    update();
 }
 
 void AnswerVariantButton::setLabel(QString &lbl)
@@ -114,5 +143,6 @@ bool AnswerVariantButton::isChoosen()
 
 AnswerVariantButton::~AnswerVariantButton()
 {
-    qDebug()<<"iDestruct";
+    OK->setDisAvilable();
+    OK->update();
 }

@@ -7,6 +7,12 @@ CentralPanel::CentralPanel(QWidget *parent) :
     Question="";
     OK = new TesterDaleeButton(this);
 
+    double W = width();
+    double H = height();
+
+    QuestionRect = QRect(0,0,W,H/6);
+    AnswersRect = QRect(0,H/6,W,H-2*H/6);
+    ButtonsRect = QRect(0,H-H/6,W,H/6);
 
 
     BrainSourceImg = QImage(":/backgrounds/brain");
@@ -26,9 +32,9 @@ void CentralPanel::updateWidgets()
     double W = width();
     double H = height();
 
-    QuestionRect = QRect(0,0,W,H/6);
-    AnswersRect = QRect(0,H/6,W,H-2*H/6);
-    ButtonsRect = QRect(0,H-H/6,W,H/6);
+    QuestionRect.setRect(0,0,W,H/6);
+    AnswersRect.setRect(0,H/6,W,H-2*H/6);
+    ButtonsRect.setRect(0,H-H/6,W,H/6);
 
     BrainImg = BrainSourceImg.scaled(width(),height());
     updateBrain();
@@ -50,6 +56,8 @@ void CentralPanel::updateBrain()
     BrainPixmap = QPixmap(BrainImg.size());
     BrainPixmap.fill(Qt::transparent);
 
+
+
     QPainter p;
     p.begin(&BrainPixmap);
     p.setCompositionMode(QPainter::CompositionMode_Source);
@@ -69,8 +77,8 @@ void CentralPanel::updateBrain()
 
 void CentralPanel::paintEvent(QPaintEvent *)
 {
-    QColor MyColor(Qt::darkGreen);
-    MyColor.setAlpha(150);
+    QColor MyColor(QColor::fromRgb(45,75,129));
+    MyColor.setAlpha(180);
 
     QPen pen(Qt::black);
     QBrush Brs(Qt::black);
@@ -120,7 +128,6 @@ void CentralPanel::SetAnswers(const QVector<QString> &Ans)
 
     varAnswers=Ans;
 
-    qDebug()<<varAnswers;
 
     update();
 }
@@ -172,7 +179,6 @@ void CentralPanel::drawAnswers()
 
         i++;
 
-        qDebug()<<i;
 
     }
 

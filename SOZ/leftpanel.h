@@ -6,15 +6,13 @@
 #include <QApplication>
 
 #include "etapbutton.h"
+#include "leftPanels/regpanel.h"
+#include "leftPanels/etappanel.h"
+#include "leftPanels/autorisationpanel.h"
 
 class LeftPanel : public QWidget
 {
     Q_OBJECT
-
-    QVector<EtapButton* > Buttons;
-    double BtnWidth;
-    double BtnHeight;
-    int PressBtnNumber;
 
     int Status; //1-окошко входа в систему, 2-окошко
 
@@ -22,16 +20,19 @@ class LeftPanel : public QWidget
     QRectF LabelRect;
 
     QString LabelText;
+    QString ErrorMsg;
+
+
+    RegPanel *regPnl;
+    EtapPanel *etapPnl;
+    AutorisationPanel *autPanel;
 
 
 
-
-    void addButton(int _num, QString Name = "");
-    void setButtonSize(double Wid, double Hei);
-
-    void addButtons();
+    void addEtapPanel();
     void addLoginPanel();
     void addRegistrationPanel();
+    void addAutorisationPanel();
 
 
 public:
@@ -44,10 +45,12 @@ protected:
     void resizeEvent(QResizeEvent *);
 
 signals:
-    void ButtonPressed(int num);
+    void EtapButtonPressed(int);
 
 public slots:
-    void unPress(int num);
+    void EtapButtonCalls(int);
+    void RegDataCatch(const QString &_log, const QString &_pass);
+    void catchError(const QString &_errMsg);
 
 };
 

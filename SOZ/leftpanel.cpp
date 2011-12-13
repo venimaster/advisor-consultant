@@ -10,39 +10,64 @@ LeftPanel::LeftPanel(int _status, QWidget *parent) :
     ButtonsRect = QRectF(0,0,width(),height()/2);
     LabelRect = QRectF(0,height()/2,width(),height()/2);
 
-    setButtonSize(width()-10,height()/15);
+    ErrorMsg = "";
 
-    switch(Status)
+    addLoginPanel();
+    addEtapPanel();
+    addAutorisationPanel();
+//    addRegistrationPanel();
+
+
+
+
+    switch (Status)
     {
-        case 1:
-            addLoginPanel();
+
+    case 1: etapPnl->show();
+        regPnl->hide();
+        autPanel->hide();
         break;
-        case 2:
-            addRegistrationPanel();
+
+    case 2: etapPnl->hide();
+        regPnl->show();
+        autPanel->hide();
         break;
-        case 3:
-            addButtons();
+
+    case 4: etapPnl->hide();
+        regPnl->hide();
+        autPanel->show();
         break;
 
     }
+
+
+
+
 
 
 }
 
-void LeftPanel::addButtons()
+void LeftPanel::addEtapPanel()
 {
-    {
-        for(int i=1;i<6;i++)
-        {
-            addButton(i,"ÝÒÀÏ "+ QString::number(i));
-        }
-    }
+
+    etapPnl = new EtapPanel(this);
+    etapPnl->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
+    connect(etapPnl,SIGNAL(ButtonPressed(int)),this,SLOT(EtapButtonCalls(int)));
 }
 
 void LeftPanel::addLoginPanel()
 {
+    regPnl = new RegPanel(this);
+    regPnl->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
 
+    qDebug()<<"123";
+}
 
+void LeftPanel::addAutorisationPanel()
+{
+    autPanel = new AutorisationPanel(this);
+    autPanel->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
+    connect (autPanel,SIGNAL(sendError(QString)),this,SLOT(catchError(QString)));
 }
 
 void LeftPanel::addRegistrationPanel()
@@ -52,46 +77,6 @@ void LeftPanel::addRegistrationPanel()
 }
 
 
-
-void LeftPanel::addButton(int _num, QString Name)
-{
-    int size = Buttons.size();
-    if (Name!="")
-        Buttons<<new EtapButton(_num, Name,this);
-
-    Buttons[size]->setGeometry((width()-BtnWidth)/2,10+(BtnHeight+10)*size,BtnWidth,BtnHeight);
-
-    connect(Buttons[size],SIGNAL(iPressed(int)),this,SLOT(unPress(int)));
-
-
-}
-
-void LeftPanel::setButtonSize(double Wid, double Hei)
-{
-    BtnWidth=Wid;
-    BtnHeight=Hei;
-}
-
-void LeftPanel::unPress(int _num)
-{
-    for (int i=0;i<Buttons.size();i++)
-    {
-        if (Buttons[i]->status==2)
-        {
-            Buttons[i]->status=0;
-            Buttons[i]->isPressed=false;
-
-            Buttons[i]->update();
-        }
-
-    }
-    Buttons[_num-1]->status = 2;
-    Buttons[_num-1]->isPressed = true;
-    Buttons[_num-1]->update();
-
-    emit ButtonPressed(_num+2);
-
-}
 
 void LeftPanel::setLabel(QString lbl)
 {
@@ -139,24 +124,51 @@ void LeftPanel::paintEvent(QPaintEvent *)
     painter.setFont(Font);
     painter.drawText(LabelRect, Qt::AlignHCenter | Qt::TextWordWrap, LabelText);
 
+    if (ErrorMsg != "")
+    {
+        painter.setPen(QPen(QColor::fromRgb(45,75,129)));
+        painter.setFont(QFont("Times",10));
+        painter.drawText(LabelRect, Qt::AlignLeft | Qt::TextWordWrap, ErrorMsg);
+    }
     painter.end();
 }
 
 void LeftPanel::resizeEvent(QResizeEvent *)
 {
-    setButtonSize(width()-10,height()/15);
 
-    for (int i=0;i<Buttons.size();i++)
-    {
-        Buttons[i]->setGeometry((width()-BtnWidth)/2,5+(BtnHeight+5)*i,BtnWidth,BtnHeight);
+    ButtonsRect.setRect(0,0,width(),height()/2);
+    LabelRect.setRect(0,height()/2,width(),height());
 
-    }
 
-    ButtonsRect.adjust(0,0,width(),height()/2);
-    LabelRect = QRectF(0,height()/2,width(),height());
+
+    if (regPnl)
+        regPnl->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
+    if (etapPnl)
+        etapPnl->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
+    if (autPanel)
+        autPanel->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
 
     update();
 
+}
+
+void LeftPanel::EtapButtonCalls(int _a)
+{
+    emit EtapButtonPressed(_a);
+    qDebug()<<_a;
+}
+
+void LeftPanel::RegDataCatch(const QString &_log, const QString &_pass)
+{
+
+
+
+}
+
+void LeftPanel::catchError(const QString &_errMsg)
+{
+    ErrorMsg = _errMsg;
+    update();
 }
 
 

@@ -6,6 +6,7 @@
 #include <QResizeEvent>
 #include <QDebug>
 #include <QLineEdit>
+#include <QKeyEvent>
 
 #include "helpbutton.h"
 #include "namepanel.h"
@@ -27,7 +28,6 @@ class MainWindow : public QMainWindow
     HelpButton* HelpBtn;
 
     LeftPanel* LeftPnl;
-    LeftPanel* RegPnl;
 
     CentralPanel* CentralPnl;
     BottomPanel* BottomPnl;
@@ -62,13 +62,16 @@ public:
     ~MainWindow();
 
 
+
 private:
     void resizeEvent(QResizeEvent *);
     void mousePressEvent(QMouseEvent *);
+    void keyPressEvent(QKeyEvent *);
 
 signals:
 
     void NeedRefresh();
+    void EnterPressed();
 
 public slots:
 

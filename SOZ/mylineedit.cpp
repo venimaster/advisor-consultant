@@ -5,10 +5,13 @@ MyLineEdit::MyLineEdit(QWidget *parent) :
 {
     QPalette palette;
 
-    palette.setBrush(QPalette::Highlight,QBrush(Qt::darkBlue));
+    QColor MyColor(QColor::fromRgb(45,75,129));
+    MyColor.setAlpha(200);
+
+    palette.setBrush(QPalette::Highlight,QBrush(Qt::gray));
     palette.setColor(QPalette::HighlightedText,Qt::white);
     palette.setBrush(QPalette::Background,QBrush(Qt::black));
-    palette.setBrush(QPalette::Base,QBrush(Qt::transparent));
+    palette.setBrush(QPalette::Base,QBrush(MyColor));
 
     palette.setColor(QPalette::Text,Qt::white);
 
@@ -19,6 +22,14 @@ MyLineEdit::MyLineEdit(QWidget *parent) :
 
 
 
+
+
+
+}
+
+void MyLineEdit::resizeEvent(QResizeEvent *)
+{
+    update();
 
 }
 

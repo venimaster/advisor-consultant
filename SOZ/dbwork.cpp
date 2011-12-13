@@ -150,7 +150,7 @@ QString dbWork::getGlossary(QString terminFontStyle, int terminFontSize, QString
             glossary+="см. </"+definitionFontStyle+"><a href=\"#g"+query2.value(0).toString()+"\"><"+terminFontStyle+" style=\"font-size: "+QString::number(terminFontSize)+"px\">"+query2.value(1).toString()+"</"+terminFontStyle+"></a><"+definitionFontStyle+" style=\"font-size: "+QString::number(definitionFontSize)+"px\">.</"+definitionFontStyle+"><br>\n";
         }
     }
-    qDebug()<<glossary;
+  //  qDebug()<<glossary;
     return glossary;
 }
 
