@@ -1,7 +1,7 @@
 #ifndef PSYH_H
 #define PSYH_H
 
-#include <cstdlib>
+#include "stdlib.h"
 
 class Psyh {
 public:

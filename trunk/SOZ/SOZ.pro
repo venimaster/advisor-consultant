@@ -4,13 +4,16 @@
 #
 #-------------------------------------------------
 
-QT += core gui
+QT       += core gui
 QT += sql
 
 TARGET = SOZ
 TEMPLATE = app
 
-PRECOMPILED_HEADER = stable.h
+INCLUDEPATH += C:/Projects/SOZ/leftPanels \
+    C:/Projects/SOZ
+
+
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -20,14 +23,19 @@ SOURCES += main.cpp\
     centralpanel.cpp \
     etapbutton.cpp \
     bottompanel.cpp \
-    commandclass.cpp \
-    simplebutton.cpp \
     mylineedit.cpp \
     tester.cpp \
     psyh.cpp \
     answervariantbutton.cpp \
     dbwork.cpp \
-    testerdaleebutton.cpp
+    testerdaleebutton.cpp \
+    gradients.cpp \
+    obrabotchik.cpp \
+    radiopushbutton.cpp \
+    leftPanels/regpanel.cpp \
+    leftPanels/etappanel.cpp \
+    leftPanels/registrationpanel.cpp \
+    leftPanels/autorisationpanel.cpp
 
 HEADERS  += mainwindow.h \
     namepanel.h \
@@ -36,18 +44,46 @@ HEADERS  += mainwindow.h \
     centralpanel.h \
     etapbutton.h \
     bottompanel.h \
-    commandclass.h \
-    simplebutton.h \
     mylineedit.h \
     tester.h \
     psyh.h \
     answervariantbutton.h \
     dbwork.h \
     testerdaleebutton.h \
-    stable.h
+    gradients.h \
+    obrabotchik.h \
+    radiopushbutton.h \
+    leftPanels/regpanel.h \
+    leftPanels/etappanel.h \
+    leftPanels/registrationpanel.h \
+    leftPanels/autorisationpanel.h
 
 RESOURCES += \
     images.qrc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

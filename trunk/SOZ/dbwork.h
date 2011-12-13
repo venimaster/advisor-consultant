@@ -14,9 +14,8 @@ class dbWork
 public:
     dbWork();
 
-    //возвращает размеченный html-текст - с казанными стилями и размерами шрифта для названия термина и самого определения.
-    //Стили: b -  жирный, i - курсив, u - подчеркивание, dfn - определение...
-    QString getGlossary(QString terminFontStyle, int terminFontSize, QString definitionFontStyle, int definitionFontSize);
+
+    QString getGlossary(int g_id);
 //ВЫВОД
     //выводит все элементы колонки ColumnName из таблицы TableName
     QVector<QString> GetColumnFromTable(QString columnName, QString tableName);
