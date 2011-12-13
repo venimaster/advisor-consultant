@@ -18,6 +18,7 @@ public:
 
     int status; //0,если ничего, 1, если наведена мышь, 2-если нажата
 
+    bool avilable;
     bool isPressed;
 
     void SetLabel(QString label);

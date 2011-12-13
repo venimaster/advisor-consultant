@@ -14,14 +14,15 @@ class AnswerVariantButton : public QWidget
     double weight;
     QString label;
 
-    const TesterDaleeButton* OK;
+    TesterDaleeButton* OK;
 
     int ID;
 
     bool Choosen;
+    bool MouseOn;
 
 public:
-    explicit AnswerVariantButton(int &ID, QString &lbl, double &weight,const TesterDaleeButton* _OK, QWidget *parent = 0);
+    explicit AnswerVariantButton(int &ID, QString &lbl, double &weight, TesterDaleeButton* _OK, QWidget *parent = 0);
     ~AnswerVariantButton();
 
     void setLabel (QString &lbl);
@@ -37,7 +38,7 @@ protected:
     void mousePressEvent(QMouseEvent *);
     void paintEvent(QPaintEvent *);
     void enterEvent(QEvent *);
-
+    void leaveEvent(QEvent *);
 
 
 signals:

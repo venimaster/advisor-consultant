@@ -16,6 +16,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::AddPanels()
 {
+    // ÇÀÃÎËÎÂÎÊ
+
     HeaderPnl = new BottomPanel(1,this);
     HeaderPnl->SetText("ÑÒÀĞÒÎÂÎÅ ÎÊÍÎ");
     HeaderPnl->SetFontSize(15);
@@ -23,10 +25,16 @@ void MainWindow::AddPanels()
     NamePnl = new NamePanel(this);
     HelpBtn = new HelpButton(this);
 
-    LeftPnl = new LeftPanel(3,this);
-    RegPnl = new LeftPanel(2,this);
+    // ËÅÂÀß ×ÀÑÒÜ
+
+    LeftPnl = new LeftPanel(4,this);
+
+    // ÖÅÍÒĞÀËÜÍÀß ×ÀÑÒÜ
 
     CentralPnl = new CentralPanel(this);
+    connect (this,SIGNAL(EnterPressed()),CentralPnl->OK,SLOT(enterPressed()));
+
+    // Íèæíÿÿ ÷àñòü
 
     BottomPnl = new BottomPanel(2,this);
     BottomPnl->SetText("Èñïîëíèòåëè: Êóñêîâ È.Ì., Àìèíåâ Á.Ä.          Ğóêîâîäèòåëü: Ğûáèíà Ã.Â. \nÌîñêâà  2011");
@@ -38,9 +46,12 @@ void MainWindow::AddPanels()
     tester = new Tester(CentralPnl,DB);
     connect (tester,SIGNAL(RenameSubEtap(QString)),this,SLOT(RenameSubEtap(QString)));
 
-    connect(LeftPnl,SIGNAL(ButtonPressed(int)),this,SLOT(SetEtap(int)));
+    connect(LeftPnl,SIGNAL(EtapButtonPressed(int)),this,SLOT(SetEtap(int)));
+
+
 
     emit NeedRefresh();
+
 
 }
 
@@ -53,12 +64,14 @@ void MainWindow::Refresh()
     NamePnl->setGeometry(W/3,30,W-W/3,50);
 
     LeftPnl->setGeometry(0,30,W/3,H-30);
-    RegPnl->setGeometry(0,30,W/3,H-30);
-    RegPnl->setVisible(false);
 
-    CentralPnl->setGeometry(W/3,48+30,W-W/3,H-48-30);
+ //   RegPnl->setVisible(false);
+
+    CentralPnl->setGeometry(W/3,48+30,W-W/3,H-48-30-30);
     HelpBtn->setGeometry(W-48,H-48-30,48,48);
     BottomPnl->setGeometry(0,H-30,width(),30);
+
+
 
 }
 
@@ -133,6 +146,15 @@ void MainWindow::resizeEvent(QResizeEvent *)
 
 void MainWindow::mousePressEvent(QMouseEvent *)
 {
+
+
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+
+    if (event->key()==16777220)
+        emit (EnterPressed());
 
 
 }

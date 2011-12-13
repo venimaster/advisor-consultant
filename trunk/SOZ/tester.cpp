@@ -82,7 +82,7 @@ void Tester::AskQuestion( int QuestNumber)
 {
     CP->SetQuestion(Questions[QuestNumber]);
 
-    qDebug()<<DB->GetAnswerVariants(table,QuestNumber+1)<<Questions[QuestNumber];
+   // qDebug()<<DB->GetAnswerVariants(table,QuestNumber+1)<<Questions[QuestNumber];
 
     CP->SetAnswers(DB->GetAnswerVariants(table,QuestNumber+1));
 
@@ -107,7 +107,7 @@ void Tester::NextQuestion()
     {
         SubEtapNum++;
 
-        qDebug()<<SubEtapNum;
+
 
         if (EtapNum == 1)
         {

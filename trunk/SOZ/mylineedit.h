@@ -17,6 +17,8 @@ class MyLineEdit : public QLineEdit
 public:
     explicit MyLineEdit(QWidget *parent = 0);
 
+protected:
+    void resizeEvent(QResizeEvent *);
 
 signals:
 
