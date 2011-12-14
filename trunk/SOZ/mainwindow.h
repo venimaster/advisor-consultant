@@ -1,13 +1,14 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QtGui/QMainWindow>
-#include <QSplashScreen>
-#include <QResizeEvent>
-#include <QDebug>
-#include <QLineEdit>
-#include <QKeyEvent>
+//#include <QMainWindow>
+//#include <QSplashScreen>
+//#include <QResizeEvent>
+//#include <QDebug>
+//#include <QLineEdit>
 
+
+#include "stable.h"
 #include "helpbutton.h"
 #include "namepanel.h"
 #include "centralpanel.h"

@@ -1,11 +1,12 @@
 #ifndef DBWORK_H
 #define DBWORK_H
 
-#include <QSqlError>
-#include <QSqlQuery>
-#include <QSqlDatabase>
-#include <QDebug>
-#include <QVariant>
+//#include <QSqlError>
+//#include <QSqlQuery>
+//#include <QSqlDatabase>
+//#include <QDebug>
+//#include <QVariant>
+#include "stable.h"
 
 class dbWork
 {

@@ -1,9 +1,10 @@
 #ifndef ETAPBUTTON_H
 #define ETAPBUTTON_H
 
-#include <QWidget>
-#include <QPainter>
-#include <QDebug>
+//#include <QWidget>
+//#include <QPainter>
+//#include <QDebug>
+#include "stable.h"
 
 class EtapButton : public QWidget
 {

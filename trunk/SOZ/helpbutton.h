@@ -1,8 +1,9 @@
 #ifndef HELPBUTTON_H
 #define HELPBUTTON_H
 
-#include <QWidget>
-#include <QPainter>
+//#include <QWidget>
+//#include <QPainter>
+#include "stable.h"
 
 class HelpButton : public QWidget
 {

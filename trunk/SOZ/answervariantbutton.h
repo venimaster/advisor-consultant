@@ -1,10 +1,11 @@
 #ifndef ANSWERVARIANTBUTTON_H
 #define ANSWERVARIANTBUTTON_H
 
-#include <QWidget>
-#include <QPainter>
-#include <QDebug>
-#include <QRgb>
+//#include <QWidget>
+//#include <QPainter>
+//#include <QDebug>
+//#include <QRgb>
+#include "stable.h"
 #include "testerdaleebutton.h"
 
 class AnswerVariantButton : public QWidget
