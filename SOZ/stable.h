@@ -5,6 +5,8 @@
 #include <QApplication>
 #include <QCursor>
 #include <QDebug>
+#include <QKeyEvent>
+#include <QLinearGradient>
 #include <QLineEdit>
 #include <QMainWindow>
 #include <QObject>

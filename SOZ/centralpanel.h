@@ -1,11 +1,11 @@
 #ifndef CENTRALPANEL_H
 #define CENTRALPANEL_H
 
-#include <QWidget>
-#include <QPainter>
-#include <QPushButton>
-#include <QDebug>
-
+//#include <QWidget>
+//#include <QPainter>
+//#include <QPushButton>
+//#include <QDebug>
+#include "stable.h"
 #include "answervariantbutton.h"
 #include "testerdaleebutton.h"
 

@@ -1,8 +1,8 @@
 #ifndef COMMANDCLASS_H
 #define COMMANDCLASS_H
 
-#include <QObject>
-
+//#include <QObject>
+#include "stable.h"
 #include "simplebutton.h"
 
 class CommandClass : public QObject

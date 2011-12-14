@@ -1,10 +1,11 @@
 #ifndef LEFTPANEL_H
 #define LEFTPANEL_H
 
-#include <QWidget>
-#include <QPainter>
-#include <QApplication>
+//#include <QWidget>
+//#include <QPainter>
+//#include <QApplication>
 
+#include "stable.h"
 #include "etapbutton.h"
 #include "leftPanels/regpanel.h"
 #include "leftPanels/etappanel.h"

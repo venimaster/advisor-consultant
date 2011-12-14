@@ -1,12 +1,13 @@
 #ifndef TESTERDALEEBUTTON_H
 #define TESTERDALEEBUTTON_H
 
-#include <QWidget>
-#include <QPainter>
-#include <QLinearGradient>
-#include <QKeyEvent>
-#include <QDebug>
+//#include <QWidget>
+//#include <QPainter>
+//#include <QKeyEvent>
+//#include <QDebug>
+//#include <QLinearGradient>
 
+#include "stable.h"
 #include "gradients.h"
 #include "obrabotchik.h"
 

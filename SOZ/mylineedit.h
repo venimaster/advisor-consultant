@@ -1,10 +1,10 @@
 #ifndef MYLINEEDIT_H
 #define MYLINEEDIT_H
 
-#include <QLineEdit>
-#include <QPainter>
-#include <QCursor>
-
+//#include <QLineEdit>
+//#include <QPainter>
+//#include <QCursor>
+#include "stable.h"
 
 
 

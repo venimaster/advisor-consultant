@@ -1,8 +1,9 @@
 #ifndef TESTER_H
 #define TESTER_H
 
-#include <QObject>
+//#include <QObject>
 
+#include "stable.h"
 #include "dbwork.h"
 #include "centralpanel.h"
 

@@ -1,8 +1,9 @@
 #ifndef NAMEPANEL_H
 #define NAMEPANEL_H
 
-#include <QWidget>
-#include <QPainter>
+//#include <QWidget>
+//#include <QPainter>
+#include "stable.h"
 
 class NamePanel : public QWidget
 {

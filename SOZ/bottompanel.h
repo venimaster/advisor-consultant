@@ -1,8 +1,9 @@
 #ifndef BOTTOMPANEL_H
 #define BOTTOMPANEL_H
 
-#include <QWidget>
-#include <QPainter>
+//#include <QWidget>
+//#include <QPainter>
+#include "stable.h"
 
 class BottomPanel : public QWidget
 {

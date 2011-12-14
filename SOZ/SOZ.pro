@@ -10,9 +10,9 @@ QT += sql
 TARGET = SOZ
 TEMPLATE = app
 
-INCLUDEPATH += C:/Projects/SOZ/leftPanels \
-    C:/Projects/SOZ
+INCLUDEPATH += leftPanels
 
+PRECOMPILED_HEADER = stable.h
 
 
 SOURCES += main.cpp\
@@ -56,75 +56,8 @@ HEADERS  += mainwindow.h \
     leftPanels/regpanel.h \
     leftPanels/etappanel.h \
     leftPanels/registrationpanel.h \
-    leftPanels/autorisationpanel.h
+    leftPanels/autorisationpanel.h \
+    stable.h
 
 RESOURCES += \
     images.qrc
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
