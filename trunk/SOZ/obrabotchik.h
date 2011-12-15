@@ -1,9 +1,10 @@
 #ifndef OBRABOTCHIK_H
 #define OBRABOTCHIK_H
 
-#include <QObject>
-#include <QVector>
-#include <QDebug>
+//#include <QObject>
+//#include <QVector>
+//#include <QDebug>
+#include "stable.h"
 
 class Obrabotchik : public QObject
 {

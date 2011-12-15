@@ -1,11 +1,3 @@
-//#include <QApplication>
-//#include <QTextCodec>
-//#include <QSplashScreen>
-//#include <QSplashScreen>
-//#include <QPixmap>
-//#include <QDebug>
-
-#include "stable.h"
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])

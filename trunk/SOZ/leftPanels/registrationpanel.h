@@ -1,8 +1,9 @@
 #ifndef REGISTRATIONPANEL_H
 #define REGISTRATIONPANEL_H
 
-#include <QWidget>
-#include <QRegExpValidator>
+//#include <QWidget>
+//#include <QRegExpValidator>
+#include "../stable.h"
 #include "../mylineedit.h"
 #include "../testerdaleebutton.h"
 

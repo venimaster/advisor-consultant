@@ -1,12 +1,14 @@
 #ifndef AUTORISATIONPANEL_H
 #define AUTORISATIONPANEL_H
 
-#include <QWidget>
+//#include <QWidget>
+//#include <QPainter>
+//#include <QRegExpValidator>
+//#include <QRegExp>
+#include "../stable.h"
 #include "../mylineedit.h"
 #include "../testerdaleebutton.h"
-#include <QPainter>
-#include <QRegExpValidator>
-#include <QRegExp>
+
 
 
 class AutorisationPanel : public QWidget
