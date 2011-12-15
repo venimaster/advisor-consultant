@@ -1,5 +1,4 @@
 #include "autorisationpanel.h"
-#include <QDebug>
 
 AutorisationPanel::AutorisationPanel(QWidget *parent) :
     QWidget(parent)

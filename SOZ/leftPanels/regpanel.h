@@ -1,8 +1,9 @@
 #ifndef REGPANEL_H
 #define REGPANEL_H
 
-#include <QWidget>
+//#include <QWidget>
 
+#include "../stable.h"
 #include "../mylineedit.h"
 #include "../testerdaleebutton.h"
 #include "../radiopushbutton.h"

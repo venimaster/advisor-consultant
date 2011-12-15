@@ -1,5 +1,4 @@
 #include "radiopushbutton.h"
-#include <QDebug>
 
 RadioPushButton::RadioPushButton(int _ID, const QString &_label, QWidget *parent) :
     QWidget(parent)
