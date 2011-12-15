@@ -4,7 +4,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
 
-    setMinimumSize(800,600);
+    setMinimumSize(1200,800);
 
 
     connect(this,SIGNAL(NeedRefresh()),SLOT(Refresh()));
@@ -27,7 +27,7 @@ void MainWindow::AddPanels()
 
     // ËÅÂÀß ×ÀÑÒÜ
 
-    LeftPnl = new LeftPanel(4,this);
+    LeftPnl = new LeftPanel(3,this);
 
     // ÖÅÍÒĞÀËÜÍÀß ×ÀÑÒÜ
 

@@ -10,6 +10,7 @@
 #include "leftPanels/regpanel.h"
 #include "leftPanels/etappanel.h"
 #include "leftPanels/autorisationpanel.h"
+#include "leftPanels/registrationpanel.h"
 
 class LeftPanel : public QWidget
 {
@@ -27,6 +28,8 @@ class LeftPanel : public QWidget
     RegPanel *regPnl;
     EtapPanel *etapPnl;
     AutorisationPanel *autPanel;
+    RegistrationPanel *regPanel;
+
 
 
 
