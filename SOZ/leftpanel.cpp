@@ -15,7 +15,7 @@ LeftPanel::LeftPanel(int _status, QWidget *parent) :
     addLoginPanel();
     addEtapPanel();
     addAutorisationPanel();
-//    addRegistrationPanel();
+    addRegistrationPanel();
 
 
 
@@ -26,15 +26,24 @@ LeftPanel::LeftPanel(int _status, QWidget *parent) :
     case 1: etapPnl->show();
         regPnl->hide();
         autPanel->hide();
+        regPanel->hide();
         break;
 
     case 2: etapPnl->hide();
         regPnl->show();
         autPanel->hide();
+        regPanel->hide();
+        break;
+
+    case 3: etapPnl->hide();
+        regPnl->hide();
+        autPanel->hide();
+        regPanel->show();
         break;
 
     case 4: etapPnl->hide();
         regPnl->hide();
+        regPanel->hide();
         autPanel->show();
         break;
 
@@ -72,7 +81,9 @@ void LeftPanel::addAutorisationPanel()
 
 void LeftPanel::addRegistrationPanel()
 {
-
+    regPanel = new RegistrationPanel(this);
+    regPanel->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
+    connect (regPanel,SIGNAL(sendError(QString)),this,SLOT(catchError(QString)));
 
 }
 
@@ -126,7 +137,7 @@ void LeftPanel::paintEvent(QPaintEvent *)
 
     if (ErrorMsg != "")
     {
-        painter.setPen(QPen(QColor::fromRgb(45,75,129)));
+        painter.setPen(QPen(QColor::fromRgb(255,128,0)));
         painter.setFont(QFont("Times",10));
         painter.drawText(LabelRect, Qt::AlignLeft | Qt::TextWordWrap, ErrorMsg);
     }
@@ -147,6 +158,9 @@ void LeftPanel::resizeEvent(QResizeEvent *)
         etapPnl->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
     if (autPanel)
         autPanel->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
+    if (regPanel)
+        regPanel->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
+
 
     update();
 
