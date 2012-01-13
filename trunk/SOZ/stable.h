@@ -1,8 +1,7 @@
-#ifndef STABLE_H
-#define STABLE_H
+#include <cstdlib>
 
 #if defined __cplusplus
-#include <cstdlib>
+
 #include <QApplication>
 #include <QCursor>
 #include <QDebug>
@@ -14,18 +13,19 @@
 #include <QPainter>
 #include <QPixmap>
 #include <QPushButton>
-#include <QRegExpValidator>
 #include <QRegExp>
+#include <QRegExpValidator>
 #include <QResizeEvent>
 #include <QRgb>
+#include <QScrollBar>
 #include <QSplashScreen>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QTextCodec>
+#include <QTextEdit>
+#include <QtWebKit/QWebView>
 #include <QVariant>
-#include <QVector>
 #include <QWidget>
 
-#endif //__cplusplus
-#endif //STABLE_H
+#endif

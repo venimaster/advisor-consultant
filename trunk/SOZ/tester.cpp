@@ -5,92 +5,108 @@ Tester::Tester(CentralPanel *_CP, dbWork *_DB, QObject *parent) :
 {
     DB = _DB;
     CP = _CP;
+    TP = CP->getTestPanel();
 
     ChoozenVariantNumber=-1;
 
-    connect(CP->OK,SIGNAL(iPressed()),this,SLOT (NextQuestion()));
+    connect(CP,SIGNAL(sig_askNextQuestion()),this,SLOT (NextQuestion()));
 
 }
 
-void Tester::Test_I_I()
+void Tester::Test(int _et, int _set)
 {
+    EtapNum = _et;
+    SubEtapNum = _set;
+    switch (EtapNum)
+    {
+        case 1:
+            switch (SubEtapNum)
+            {
+                case 1:
+                    emit RenameSubEtap("ÈÑÑËÅÄÎÂÀÍÈÅ ÍÀ ÓÌÅÑÒÍÎÑÒÜ");
+                    table = "relevance_research";
+                    Questions = DB->GetColumnFromTable("measure",table);
+                    QuestionAll = Questions.size();
+                    QuestionNum=0;
+                    AskQuestion(0);
+                break;
 
-    emit RenameSubEtap("ÈÑÑËÅÄÎÂÀÍÈÅ ÍÀ ÓÌÅÑÒÍÎÑÒÜ");
+                case 2:
+                    emit RenameSubEtap("ÈÑÑËÅÄÎÂÀÍÈÅ ÍÀ ÎÏÐÀÂÄÀÍÍÎÑÒÜ");
+                    table = "propriety_research";
+                    Questions = DB->GetColumnFromTable("measure",table);
+                    QuestionAll = Questions.size();
+                    QuestionNum=0;
+                    AskQuestion(0);
+                break;
 
-    EtapNum=1;
+                case 3:
 
-    SubEtapNum = 1;
+                emit RenameSubEtap("ÈÑÑËÅÄÎÂÀÍÈÅ ÍÀ ÂÎÇÌÎÆÍÎÑÒÜ");
+                    table = "opportunity_research";
+                    Questions = DB->GetColumnFromTable("measure",table);
+                    QuestionAll = Questions.size();
+                    QuestionNum=0;
+                    AskQuestion(0);
+                break;
+            }
+        break;
 
-    table = "relevance_research";
+        case 2:
+        {
+            switch (SubEtapNum)
+            {
+                case 1:
+                    emit RenameSubEtap("ÈÑÑËÅÄÎÂÀÍÈÅ ÍÀ ÓÌÅÑÒÍÎÑÒÜ");
+                    table = "relevance_research";
+                    Questions = DB->GetColumnFromTable("measure",table);
+                    QuestionAll = Questions.size();
+                    QuestionNum=0;
+                    AskQuestion(0);
+                break;
 
-    Questions = DB->GetColumnFromTable("measure",table);
+                case 2:
+                    emit RenameSubEtap("ÈÑÑËÅÄÎÂÀÍÈÅ ÍÀ ÎÏÐÀÂÄÀÍÍÎÑÒÜ");
+                    table = "propriety_research";
+                    Questions = DB->GetColumnFromTable("measure",table);
+                    QuestionAll = Questions.size();
+                    QuestionNum=0;
+                    AskQuestion(0);
+                break;
 
-    QuestionAll = Questions.size();
+                case 3:
 
-    QuestionNum=0;
+                emit RenameSubEtap("ÈÑÑËÅÄÎÂÀÍÈÅ ÍÀ ÂÎÇÌÎÆÍÎÑÒÜ");
+                    table = "opportunity_research";
+                    Questions = DB->GetColumnFromTable("measure",table);
+                    QuestionAll = Questions.size();
+                    QuestionNum=0;
+                    AskQuestion(0);
+                break;
+            }
+            break;
+        }
+        case 3:
+        break;
 
-    AskQuestion(0);
-
+    }
 }
 
-void Tester::Test_I_II()
-{
 
-    emit RenameSubEtap("ÈÑÑËÅÄÎÂÀÍÈÅ ÍÀ ÎÏÐÀÂÄÀÍÍÎÑÒÜ");
-
-    table = "propriety_research";
-
-    Questions = DB->GetColumnFromTable("measure",table);
-
-    QuestionAll = Questions.size();
-
-    QuestionNum=0;
-
-    AskQuestion(0);
-
-}
-
-void Tester::Test_I_III()
-{
-
-    emit RenameSubEtap("ÈÑÑËÅÄÎÂÀÍÈÅ ÍÀ ÂÎÇÌÎÆÍÎÑÒÜ");
-
-    table = "opportunity_research";
-
-    Questions = DB->GetColumnFromTable("measure",table);
-
-    QuestionAll = Questions.size();
-
-    QuestionNum=0;
-
-    AskQuestion(0);
-
-
-
-}
-
-void Tester::Test_II_I()
-{
-    EtapNum = 2;
-
-    SubEtapNum = 1;
-
-    emit RenameSubEtap ("");
-}
 
 void Tester::AskQuestion( int QuestNumber)
 {
-    CP->SetQuestion(Questions[QuestNumber]);
+    TP->SetQuestion(Questions[QuestNumber]);
 
    // qDebug()<<DB->GetAnswerVariants(table,QuestNumber+1)<<Questions[QuestNumber];
 
-    CP->SetAnswers(DB->GetAnswerVariants(table,QuestNumber+1));
+    TP->SetAnswers(DB->GetAnswerVariants(table,QuestNumber+1));
 
-    CP->SetWeightAnswers(DB->GetColumnFromTable("weight",table));
+    TP->SetWeightAnswers(DB->GetColumnFromTable("weight",table));
 
-    CP->update();
+    TP->update();
 
-    CP->drawAnswers();
+    TP->drawAnswers();
 
 }
 
@@ -106,17 +122,7 @@ void Tester::NextQuestion()
     else
     {
         SubEtapNum++;
-
-
-
-        if (EtapNum == 1)
-        {
-            if (SubEtapNum == 2)
-                Test_I_II();
-
-            if (SubEtapNum == 3)
-                Test_I_III();
-        }
+        Test(EtapNum,SubEtapNum);
 
     }
 

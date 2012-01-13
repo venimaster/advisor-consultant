@@ -16,38 +16,12 @@ LeftPanel::LeftPanel(int _status, QWidget *parent) :
     addEtapPanel();
     addAutorisationPanel();
     addRegistrationPanel();
+    addHelpButton();
 
 
 
 
-    switch (Status)
-    {
-
-    case 1: etapPnl->show();
-        regPnl->hide();
-        autPanel->hide();
-        regPanel->hide();
-        break;
-
-    case 2: etapPnl->hide();
-        regPnl->show();
-        autPanel->hide();
-        regPanel->hide();
-        break;
-
-    case 3: etapPnl->hide();
-        regPnl->hide();
-        autPanel->hide();
-        regPanel->show();
-        break;
-
-    case 4: etapPnl->hide();
-        regPnl->hide();
-        regPanel->hide();
-        autPanel->show();
-        break;
-
-    }
+    changeWGT(Status);
 
 
 
@@ -66,10 +40,9 @@ void LeftPanel::addEtapPanel()
 
 void LeftPanel::addLoginPanel()
 {
-    regPnl = new RegPanel(this);
-    regPnl->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
+    choosePanel = new RegPanel(this);
+    choosePanel->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
 
-    qDebug()<<"123";
 }
 
 void LeftPanel::addAutorisationPanel()
@@ -77,14 +50,27 @@ void LeftPanel::addAutorisationPanel()
     autPanel = new AutorisationPanel(this);
     autPanel->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
     connect (autPanel,SIGNAL(sendError(QString)),this,SLOT(catchError(QString)));
+    connect (autPanel,SIGNAL(doRegistration(int)),this,SLOT(changeWGT(int)));
+    connect (autPanel,SIGNAL(getEtaps(int)),this,SLOT(changeWGT(int)));
 }
 
 void LeftPanel::addRegistrationPanel()
 {
-    regPanel = new RegistrationPanel(this);
+    regPanel = new RegistrationPanel(1,this);
     regPanel->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
     connect (regPanel,SIGNAL(sendError(QString)),this,SLOT(catchError(QString)));
+    connect (regPanel,SIGNAL(doAutorisation(int)),this,SLOT(changeWGT(int)));
+    connect (regPanel,SIGNAL(getEtaps(int)),this,SLOT(changeWGT(int)));
 
+
+
+}
+void LeftPanel::addHelpButton()
+{
+    HB = new HelpButton(this);
+    HB->setGeometry(rect().left()+2,rect().bottom()-66,32,32);
+    connect (HB,SIGNAL(iPressed()),this,SIGNAL(showHelp()));
+    connect (HB,SIGNAL(iPressed(int)),this,SLOT(changeWGT(int)));
 }
 
 
@@ -108,6 +94,10 @@ void LeftPanel::paintEvent(QPaintEvent *)
     QPen pen(Qt::white);
     QBrush Brs(Qt::black);
     QFont Font("Times",13);
+    QString LblTxt;
+    QString ErrMsg;
+
+    if (ErrorMsg!="") LblTxt=""; else LblTxt=LabelText;
 
 
     QPainter painter(this);
@@ -133,7 +123,7 @@ void LeftPanel::paintEvent(QPaintEvent *)
     painter.drawLine(width()-3,0,width()-3,height());
 
     painter.setFont(Font);
-    painter.drawText(LabelRect, Qt::AlignHCenter | Qt::TextWordWrap, LabelText);
+    painter.drawText(LabelRect, Qt::AlignHCenter | Qt::TextWordWrap, LblTxt);
 
     if (ErrorMsg != "")
     {
@@ -152,15 +142,16 @@ void LeftPanel::resizeEvent(QResizeEvent *)
 
 
 
-    if (regPnl)
-        regPnl->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
+    if (choosePanel)
+        choosePanel->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
     if (etapPnl)
         etapPnl->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
     if (autPanel)
         autPanel->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
     if (regPanel)
         regPanel->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
-
+    if (HB)
+        HB->setGeometry(rect().left()+2,rect().bottom()-66,32,32);
 
     update();
 
@@ -169,7 +160,6 @@ void LeftPanel::resizeEvent(QResizeEvent *)
 void LeftPanel::EtapButtonCalls(int _a)
 {
     emit EtapButtonPressed(_a);
-    qDebug()<<_a;
 }
 
 void LeftPanel::RegDataCatch(const QString &_log, const QString &_pass)
@@ -183,6 +173,64 @@ void LeftPanel::catchError(const QString &_errMsg)
 {
     ErrorMsg = _errMsg;
     update();
+}
+
+
+void LeftPanel::changeWGT(int st)
+{
+    switch (st)
+    {
+
+    case 1:
+        choosePanel->show();
+        autPanel->hide();
+        regPanel->hide();
+        etapPnl->hide();
+        break;
+
+    case 2:
+        choosePanel->hide();
+        autPanel->show();
+        regPanel->hide();
+        etapPnl->hide();
+        break;
+
+    case 3:
+        choosePanel->hide();
+        autPanel->hide();
+        regPanel->show();
+        etapPnl->hide();
+        break;
+
+    case 4:
+        choosePanel->hide();
+        regPanel->hide();
+        autPanel->hide();
+        etapPnl->show();
+        break;
+
+    case 5:
+        choosePanel->hide();
+        regPanel->hide();
+        autPanel->hide();
+        etapPnl->hide();
+        LabelText="Справочная информация";
+        ErrorMsg="";
+        update();
+        break;
+
+    }
+
+}
+
+void LeftPanel::setDB(dbWork *_db)
+{
+
+    DB = _db;
+
+    autPanel->setDB(_db);
+    regPanel->setDB(_db);
+
 }
 
 

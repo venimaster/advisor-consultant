@@ -10,6 +10,8 @@ void Obrabotchik::addAnswer(double &_weight)
 {
     Answers<<_weight;
 
+    qDebug()<<Answers;
+
 
 
 }

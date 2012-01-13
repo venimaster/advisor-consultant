@@ -6,6 +6,7 @@
 #include "stable.h"
 #include "dbwork.h"
 #include "centralpanel.h"
+#include "testpanel.h"
 
 class Tester : public QObject
 {
@@ -16,6 +17,7 @@ class Tester : public QObject
 
     dbWork* DB;
     CentralPanel* CP;
+    TestPanel* TP;
 
     int QuestionNum;
     int QuestionAll;
@@ -38,6 +40,8 @@ public:
     void SetAnswers();
 
     void ChangeChoozenVariantNumber(int num);
+
+    void Test (int Etap = 0, int _set = 0);
 
     void Test_I_I();
     void Test_I_II();

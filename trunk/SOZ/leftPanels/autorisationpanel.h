@@ -1,13 +1,10 @@
 #ifndef AUTORISATIONPANEL_H
 #define AUTORISATIONPANEL_H
 
-//#include <QWidget>
-//#include <QPainter>
-//#include <QRegExpValidator>
-//#include <QRegExp>
 #include "../stable.h"
 #include "../mylineedit.h"
 #include "../testerdaleebutton.h"
+#include "../dbwork.h"
 
 
 
@@ -33,6 +30,8 @@ class AutorisationPanel : public QWidget
     QString Nick;
     QString Pass;
 
+    dbWork *DB;
+
 
     QString ErrorMsg;
 
@@ -44,9 +43,11 @@ class AutorisationPanel : public QWidget
 
 
 
+
     Q_OBJECT
 public:
     explicit AutorisationPanel(QWidget *parent = 0);
+    void setDB(dbWork *_db);
 
 protected:
     void paintEvent(QPaintEvent *);
@@ -56,11 +57,15 @@ signals:
     void sendData(const QString &_log, const QString &_pass);
     void checkInput(bool);
     void sendError(const QString &_ErrMsg);
+    void doRegistration(int);
+    void getEtaps(int);
 
 public slots:
-    void getNickName(QString);
-    void getPass(QString);
+    void getNickName(QString="");
+    void getPass(QString="");
     void unlockOK(bool b);
+    void doReg();
+    void enter();
 
 
 

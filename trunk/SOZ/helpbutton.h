@@ -16,6 +16,8 @@ protected:
     void mousePressEvent(QMouseEvent *);
 
 signals:
+    void iPressed();
+    void iPressed(int);
 
 public slots:
 

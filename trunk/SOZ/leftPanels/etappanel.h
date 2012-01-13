@@ -1,7 +1,6 @@
 #ifndef ETAPPANEL_H
 #define ETAPPANEL_H
 
-//#include <QWidget>
 #include "../stable.h"
 #include "../etapbutton.h"
 

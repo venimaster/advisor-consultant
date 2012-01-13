@@ -20,6 +20,7 @@ public:
 //ВЫВОД
     //выводит все элементы колонки ColumnName из таблицы TableName
     QVector<QString> GetColumnFromTable(QString columnName, QString tableName);
+    QVector<QString> GetColumnFromTable(QString columnName, QString tableName, QString login);
     //выводит все варианты ответа на вопрос из указанной таблицы с указанным идентификатором
     QVector<QString> GetAnswerVariants(QString questionTableName, int id);
 //ВВОД

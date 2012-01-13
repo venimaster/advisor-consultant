@@ -154,6 +154,18 @@ QString dbWork::getGlossary(QString terminFontStyle, int terminFontSize, QString
     return glossary;
 }
 
+QVector<QString> dbWork::GetColumnFromTable(QString columnName, QString tableName, QString login)
+{
+    QVector<QString> columnContent;
+    QSqlQuery query;
+    query.exec("SELECT `"+columnName+"` FROM `"+tableName+"` WHERE `"+tableName+"`.`login` = '"+login+"' ;");
+
+    while(query.next())
+    {
+        columnContent<<query.value(0).toString();
+    }
+    return columnContent;
+}
 
 QVector<QString> dbWork::GetColumnFromTable(QString columnName, QString tableName)
 {

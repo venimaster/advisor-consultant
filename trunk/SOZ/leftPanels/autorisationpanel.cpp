@@ -1,4 +1,5 @@
 #include "autorisationpanel.h"
+#include <QDebug>
 
 AutorisationPanel::AutorisationPanel(QWidget *parent) :
     QWidget(parent)
@@ -10,13 +11,14 @@ AutorisationPanel::AutorisationPanel(QWidget *parent) :
     ButtonHeight = 40;
     LblHeight = 25;
 
-    NameRect = QRect(0,0,width(),height()/6);
+    NameRect = QRect(0,0,width(),height()/8);
 
 
 
     NickName = new MyLineEdit(this);
     NickName->setPlaceholderText("Логин");
     connect (NickName, SIGNAL(textChanged(QString)), this, SLOT (getNickName(QString)));
+    connect (NickName, SIGNAL(editingFinished()),this,SLOT(getPass()));
 
 
 
@@ -24,17 +26,20 @@ AutorisationPanel::AutorisationPanel(QWidget *parent) :
     Passwd->setEchoMode(QLineEdit::Password);
     Passwd->setPlaceholderText("Пароль");
     connect (Passwd, SIGNAL(textChanged(QString)),this,SLOT (getPass(QString)));
+    connect (Passwd, SIGNAL(editingFinished()),this, SLOT(getNickName()));
 
 
     OK = new TesterDaleeButton(this);
     OK->setName("ВХОД");
     OK->setFontSize(12);
     OK->setDisAvilable();
+    connect (OK,SIGNAL(iPressed()),this,SLOT(enter()));
 
     Reg = new TesterDaleeButton(this);
-    Reg->setName("РЕГИСТРАЦИЯ");
+    Reg->setName("ЗАРЕГИСТРИРОВАТЬСЯ");
     Reg->setFontSize(12);
     Reg->setAvilable();
+    connect(Reg,SIGNAL(iPressed()),this,SLOT(doReg()));
 
     resizeWidgets();
 
@@ -50,8 +55,8 @@ AutorisationPanel::AutorisationPanel(QWidget *parent) :
 void AutorisationPanel::resizeWidgets()
 {
 
-    qDebug()<<"AAAAAA";
-    NameRect.setRect(0,0,width(),height()/6);
+    //qDebug()<<"AAAAAA";
+    NameRect.setRect(0,0,width(),height()/8);
 
 
     NickNameLblRect.setRect(0,NameRect.bottom()+5,width()-3,LblHeight);
@@ -141,7 +146,10 @@ void AutorisationPanel::unlockOK(bool b)
         {
             ErrorMsg+="ОШИБКА: \n";
         }
+
         ErrorMsg+="\t     В поле 'Логин' введены недопустимые символы. Допустимые символы-буквы латинского алфавита, цифры и знаки '-' и '_' \n\n";
+        if (Nick.length()<4)
+        ErrorMsg+="\t  Длина логина не должна быть меньше четырех символов; \n\n";
         b=false;
     }
 
@@ -151,7 +159,9 @@ void AutorisationPanel::unlockOK(bool b)
         {
             ErrorMsg+="ОШИБКА: \n";
         }
+        if (Pass.length() >= 4)
         ErrorMsg+="\t     В поле 'Пароль' введены недопустимые символы. Допустимые символы-буквы латинского алфавита и цифры\n\n";
+        else ErrorMsg+="\t  Длина пароля не должна быть меньше четырех символов; \n\n";
         b=false;
     }
 
@@ -163,3 +173,42 @@ void AutorisationPanel::unlockOK(bool b)
         OK->setDisAvilable();
 }
 
+void AutorisationPanel::doReg()
+{
+    Passwd->clear();
+    emit sendError("");
+    emit doRegistration(3);
+
+}
+
+void AutorisationPanel::setDB(dbWork *_db)
+{
+    DB = _db;
+}
+
+void AutorisationPanel::enter()
+{
+    QVector<QString> Logins;
+    QVector<QString> Group;
+    QVector<QString> Passwrd;
+    int flag = 0;
+
+    Logins = DB->GetColumnFromTable("login","user");
+    for (int i = 0; i<Logins.size(); i++)
+    {
+        Group = DB->GetColumnFromTable("u_g_id","user",Logins[i]);
+        Passwrd = DB->GetColumnFromTable("password","user",Logins[i]);
+        qDebug()<<Logins[i]<<Group<<Passwrd;
+
+        if (Logins[i]==NickName->text() && Group[0] == "1" && Passwrd[0]==Passwd->text())
+        {
+            flag = 1;
+        }
+    }
+
+    if (flag == 0) emit sendError("Заказчика с таким именем нет в базе данных");
+    else
+    {
+        emit getEtaps(4);
+    }
+}

@@ -1,4 +1,5 @@
 #include "regpanel.h"
+#include <QDebug>
 
 RegPanel::RegPanel(QWidget *parent) :
     QWidget(parent)

@@ -1,11 +1,10 @@
 #ifndef REGISTRATIONPANEL_H
 #define REGISTRATIONPANEL_H
 
-//#include <QWidget>
-//#include <QRegExpValidator>
 #include "../stable.h"
 #include "../mylineedit.h"
 #include "../testerdaleebutton.h"
+#include "../dbwork.h"
 
 class RegistrationPanel : public QWidget
 {
@@ -16,6 +15,10 @@ class RegistrationPanel : public QWidget
     QRect FIORect;
     QRect SexRect;
     QRect AgeRect;
+    QRect ProjRect;
+
+    int type;
+
 
 
     double LineEditHeight;
@@ -30,6 +33,7 @@ class RegistrationPanel : public QWidget
     MyLineEdit* FIO;
     MyLineEdit* Sex;
     MyLineEdit* Age;
+    MyLineEdit* Project;
 
     TesterDaleeButton* OK;
     TesterDaleeButton* Reg;
@@ -40,12 +44,16 @@ class RegistrationPanel : public QWidget
     QString FIOStr;
     QString SexStr;
     QString AgeStr;
+    QString ProjectStr;
     bool AgeB;
+
+    dbWork* DB;
 
 
     QVector<QString> ErrorMsgs;
 
     QString ErrorMsg;
+    QString GroupName;
 
 
     void resizeWidgets();
@@ -53,7 +61,8 @@ class RegistrationPanel : public QWidget
 
     Q_OBJECT
 public:
-    explicit RegistrationPanel(QWidget *parent = 0);
+    explicit RegistrationPanel(const int _type, QWidget *parent = 0);
+    void setDB(dbWork *_db);
 
 protected:
     void paintEvent(QPaintEvent *);
@@ -63,15 +72,21 @@ signals:
     void sendData(const QString &_log, const QString &_pass, const QString &_FIO, const QChar &_Sex, const int age);
     void checkInput();
     void sendError(const QString &_ErrMsg);
+    void doAutorisation(int);
+    void getEtaps(int);
+
 
 public slots:
-    void getNickName(QString);
-    void getPass(QString);
-    void getConfirmPass(QString);
-    void getFIO(QString);
-    void getSex(QString);
-    void getAge(QString);
+    void getNickName(QString = "");
+    void getPass(QString = "");
+    void getConfirmPass(QString = "");
+    void getFIO(QString = "");
+    void getSex(QString = "");
+    void getAge(QString = "");
+    void writeUser();
     void unlockOK();
+
+    void doAut();
 
 };
 
