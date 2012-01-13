@@ -1,3 +1,11 @@
+//#include <QApplication>
+//#include <QTextCodec>
+//#include <QSplashScreen>
+//#include <QSplashScreen>
+//#include <QPixmap>
+//#include <QDebug>
+
+#include "stable.h"
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])
@@ -7,6 +15,7 @@ int main(int argc, char *argv[])
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("Windows-1251"));
 
     QPixmap pixmap(":/backgrounds/brain");
+    pixmap = pixmap.scaled(1200,800);
 
     QSplashScreen* splash = new QSplashScreen(pixmap);
 

@@ -8,43 +8,36 @@
 #include "stable.h"
 #include "answervariantbutton.h"
 #include "testerdaleebutton.h"
+#include "testpanel.h"
+#include "helppanel.h"
 
 
 class CentralPanel : public QWidget
 {
     Q_OBJECT
 
-    QString Question;
-    QVector<QString> varAnswers;
-    QVector<double> weightAnswers;
-    QVector<AnswerVariantButton *> AnswersBtns;
+    TestPanel *TP;
+    HelpPanel *HP;
 
-    QRect QuestionRect;
-    QRect AnswersRect;
-    QRect ButtonsRect;
 
     QImage BrainImg;
     QImage BrainSourceImg;
     QPixmap BrainPixmap;
 
-
-    void drawButtons();
-    void updateWidgets();
     void updateBrain();
-    void resizeAnswerButtons();
+
+    void changeWgt(const int _num);
 
 
 public:
     explicit CentralPanel(QWidget *parent = 0);
 
-    TesterDaleeButton* OK;
+    void addTestPanel();
 
-    void drawAnswers();
+    void updateWidgets();
 
+    TestPanel *getTestPanel();
 
-    void SetQuestion(const QString &_quest);
-    void SetAnswers(const QVector<QString> &Ans);
-    void SetWeightAnswers(const QVector<QString> &WeightAns);
 
 
 protected:
@@ -53,9 +46,14 @@ protected:
 
 
 signals:
+    void sig_enterPressed();
+    void sig_askNextQuestion();
 
 public slots:
-    void UnClick(int N);
+    void slot_enterPressed();
+    void slot_askNextQuestion();
+    void needHelp();
+    void dontNeedHelp();
 
 };
 

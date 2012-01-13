@@ -9,7 +9,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(this,SIGNAL(NeedRefresh()),SLOT(Refresh()));
 
+
     AddPanels();
+
+    SetEtap(3);
 
 }
 
@@ -25,14 +28,16 @@ void MainWindow::AddPanels()
     NamePnl = new NamePanel(this);
     HelpBtn = new HelpButton(this);
 
-    // ËÅÂÀß ×ÀÑÒÜ
-
-    LeftPnl = new LeftPanel(3,this);
 
     // ÖÅÍÒĞÀËÜÍÀß ×ÀÑÒÜ
 
     CentralPnl = new CentralPanel(this);
-    connect (this,SIGNAL(EnterPressed()),CentralPnl->OK,SLOT(enterPressed()));
+    connect (this,SIGNAL(EnterPressed()),CentralPnl,SLOT(slot_enterPressed()));
+
+    // ËÅÂÀß ×ÀÑÒÜ
+
+    LeftPnl = new LeftPanel(3,this);
+    connect (LeftPnl,SIGNAL(showHelp()),CentralPnl,SLOT(needHelp()));
 
     // Íèæíÿÿ ÷àñòü
 
@@ -42,6 +47,7 @@ void MainWindow::AddPanels()
 
 
     DB = new dbWork();
+    LeftPnl->setDB(DB);
 
     tester = new Tester(CentralPnl,DB);
     connect (tester,SIGNAL(RenameSubEtap(QString)),this,SLOT(RenameSubEtap(QString)));
@@ -99,7 +105,7 @@ void MainWindow::SetEtap(int _num)
         case 3:
             EtapName="ÀÍÀËÈÇ ÍÀ ÏĞÈÌÅÍÈÌÎÑÒÜ/ÍÅÏĞÈÌÅÍÈÌÎÑÒÜ ÒÅÕÍÎËÎÃÈÈ ÑÎÇ";
             Label="Ïğîâåäåíèå ñèñòåìíîãî àíàëèçà ïğîáëåìíîé îáëàñòè íà ïğåäìåò ïğèìåíèìîñòè/íåïğèìåíèìîñòè òåõíîëîãèè ÑÎÇ äëÿ çàäà÷è çàêàç÷èêà (ıòàï èäåíòèôèêàöèè)";
-            tester->Test_I_I();
+            tester->Test(1,1);
 
 
         break;

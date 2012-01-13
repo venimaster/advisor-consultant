@@ -26,7 +26,6 @@ void EtapPanel::setButtonSize(double Wid, double Hei)
 void EtapPanel::addButton(int _num, QString Name)
 {
     int size = etaps.size();
-    qDebug()<<"10";
     if (Name!="")
         etaps<<new EtapButton(_num, Name ,this);
 

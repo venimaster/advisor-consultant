@@ -25,6 +25,7 @@ void HelpButton::paintEvent(QPaintEvent *)
 
 void HelpButton::mousePressEvent(QMouseEvent *)
 {
-
+    emit(iPressed());
+    emit(iPressed(5));
 
 }

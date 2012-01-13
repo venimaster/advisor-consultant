@@ -11,6 +11,8 @@
 #include "leftPanels/etappanel.h"
 #include "leftPanels/autorisationpanel.h"
 #include "leftPanels/registrationpanel.h"
+#include "dbwork.h"
+#include "helpbutton.h"
 
 class LeftPanel : public QWidget
 {
@@ -25,13 +27,18 @@ class LeftPanel : public QWidget
     QString ErrorMsg;
 
 
-    RegPanel *regPnl;
+    RegPanel *choosePanel;
     EtapPanel *etapPnl;
     AutorisationPanel *autPanel;
     RegistrationPanel *regPanel;
 
+    HelpButton *HB;
+
+    dbWork* DB;
 
 
+
+    void addHelpButton();
 
     void addEtapPanel();
     void addLoginPanel();
@@ -43,6 +50,7 @@ public:
     explicit LeftPanel(int _status, QWidget *parent = 0);
     void setLabel(QString lbl);
     void setStatus(int _stat);
+    void setDB(dbWork *_db);
 
 protected:
     void paintEvent(QPaintEvent *);
@@ -50,11 +58,13 @@ protected:
 
 signals:
     void EtapButtonPressed(int);
+    void showHelp();
 
 public slots:
     void EtapButtonCalls(int);
     void RegDataCatch(const QString &_log, const QString &_pass);
     void catchError(const QString &_errMsg);
+    void changeWGT(int st);
 
 };
 

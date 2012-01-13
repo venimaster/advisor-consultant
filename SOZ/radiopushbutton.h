@@ -1,8 +1,6 @@
 #ifndef RADIOPUSHBUTTON_H
 #define RADIOPUSHBUTTON_H
 
-//#include <QWidget>
-//#include <QPainter>
 #include "stable.h"
 
 class RadioPushButton : public QWidget

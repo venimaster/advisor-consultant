@@ -6,6 +6,7 @@
 
 QT       += core gui
 QT += sql
+QT += webkit
 
 TARGET = SOZ
 TEMPLATE = app
@@ -35,7 +36,10 @@ SOURCES += main.cpp\
     leftPanels/regpanel.cpp \
     leftPanels/etappanel.cpp \
     leftPanels/registrationpanel.cpp \
-    leftPanels/autorisationpanel.cpp
+    leftPanels/autorisationpanel.cpp \
+    testpanel.cpp \
+    helppanel.cpp \
+    mytextedit.cpp
 
 HEADERS  += mainwindow.h \
     namepanel.h \
@@ -57,7 +61,10 @@ HEADERS  += mainwindow.h \
     leftPanels/etappanel.h \
     leftPanels/registrationpanel.h \
     leftPanels/autorisationpanel.h \
-    stable.h
+    stable.h \
+    testpanel.h \
+    helppanel.h \
+    mytextedit.h
 
 RESOURCES += \
     images.qrc

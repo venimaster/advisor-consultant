@@ -1,7 +1,6 @@
 #ifndef GRADIENTS_H
 #define GRADIENTS_H
 
-//#include <QLinearGradient>
 #include "stable.h"
 
 class Gradients
