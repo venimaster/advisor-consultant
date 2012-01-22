@@ -84,7 +84,7 @@ dbWork::dbWork()
     //SetRegistrationInfo("stud", "123","Кусков Иван Михайлович", "ПК СОЗ","эксперт","муж",21);
     // создает пару из 2 и 3.
     //SetPair (2,3);
-    qDebug()<<getGlossary("b",18,"dfn",18);
+  //  qDebug()<<getGlossary("b",18,"dfn",18);
 
 }
 
@@ -150,7 +150,6 @@ QString dbWork::getGlossary(QString terminFontStyle, int terminFontSize, QString
             glossary+="см. </"+definitionFontStyle+"><a href=\"#g"+query2.value(0).toString()+"\"><"+terminFontStyle+" style=\"font-size: "+QString::number(terminFontSize)+"px\">"+query2.value(1).toString()+"</"+terminFontStyle+"></a><"+definitionFontStyle+" style=\"font-size: "+QString::number(definitionFontSize)+"px\">.</"+definitionFontStyle+"><br>\n";
         }
     }
-    qDebug()<<glossary;
     return glossary;
 }
 

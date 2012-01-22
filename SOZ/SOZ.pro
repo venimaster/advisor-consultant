@@ -11,7 +11,7 @@ QT += webkit
 TARGET = SOZ
 TEMPLATE = app
 
-INCLUDEPATH += leftPanels
+INCLUDEPATH += leftPanels\ Etaps
 
 PRECOMPILED_HEADER = stable.h
 
@@ -39,7 +39,12 @@ SOURCES += main.cpp\
     leftPanels/autorisationpanel.cpp \
     testpanel.cpp \
     helppanel.cpp \
-    mytextedit.cpp
+    mytextedit.cpp \
+    Etaps/etap2.cpp \
+    Etaps/psyhtest.cpp \
+    hipanel.cpp \
+    Etaps/psyhtestvariantbutton.cpp \
+    literature.cpp
 
 HEADERS  += mainwindow.h \
     namepanel.h \
@@ -64,7 +69,12 @@ HEADERS  += mainwindow.h \
     stable.h \
     testpanel.h \
     helppanel.h \
-    mytextedit.h
+    mytextedit.h \
+    Etaps/etap2.h \
+    Etaps/psyhtest.h \
+    hipanel.h \
+    Etaps/psyhtestvariantbutton.h \
+    literature.h
 
 RESOURCES += \
     images.qrc

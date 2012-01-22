@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 
     QSplashScreen* splash = new QSplashScreen(pixmap);
 
-    splash->show();
+    splash->showFullScreen();
 
     a.processEvents();
 
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
     splash->showMessage("Opening Main Window");
 
 
-    w.show();
+    w.showMaximized();
 
 
 

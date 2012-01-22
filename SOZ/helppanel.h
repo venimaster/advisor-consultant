@@ -11,6 +11,8 @@ class HelpPanel : public QWidget
 
     dbWork* DB;
 
+    int ID;
+
     QString HelpHTML;
 
     QWebView* TextEdit;
@@ -22,7 +24,7 @@ class HelpPanel : public QWidget
     QString Literature();
 
 public:
-    explicit HelpPanel(QWidget *parent = 0);
+    explicit HelpPanel(int _ID, QWidget *parent=0);
     
 protected:
     void paintEvent(QPaintEvent *);

@@ -13,6 +13,7 @@
 #include "leftPanels/registrationpanel.h"
 #include "dbwork.h"
 #include "helpbutton.h"
+#include "literature.h"
 
 class LeftPanel : public QWidget
 {
@@ -33,6 +34,7 @@ class LeftPanel : public QWidget
     RegistrationPanel *regPanel;
 
     HelpButton *HB;
+    Literature *LB;
 
     dbWork* DB;
 
@@ -48,7 +50,6 @@ class LeftPanel : public QWidget
 
 public:
     explicit LeftPanel(int _status, QWidget *parent = 0);
-    void setLabel(QString lbl);
     void setStatus(int _stat);
     void setDB(dbWork *_db);
 
@@ -65,6 +66,7 @@ public slots:
     void RegDataCatch(const QString &_log, const QString &_pass);
     void catchError(const QString &_errMsg);
     void changeWGT(int st);
+    void setLabel(QString lbl);
 
 };
 
