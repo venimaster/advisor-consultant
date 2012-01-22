@@ -1,8 +1,16 @@
 <RCC>
     <qresource prefix="/backgrounds">
         <file alias="brain">Images/Start.jpg</file>
+        <file alias="Pol1">Images/Pol1.jpg</file>
+        <file alias="Pol2">Images/Pol2.jpg</file>
+        <file alias="Pol3">Images/Pol3.jpg</file>
+        <file alias="Pol4">Images/Pol4.jpg</file>
+        <file alias="Pol5">Images/Pol5.jpg</file>
+        <file alias="PolEx1">Images/PolEx1.jpg</file>
+        <file alias="PolEx2">Images/PolEx2.jpg</file>
     </qresource>
     <qresource prefix="/icons">
         <file alias="help">Images/Help.png</file>
+        <file alias="book">Images/Book.png</file>
     </qresource>
 </RCC>

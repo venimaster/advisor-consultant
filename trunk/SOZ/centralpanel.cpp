@@ -1,17 +1,39 @@
 #include "centralpanel.h"
 
-CentralPanel::CentralPanel(QWidget *parent) :
+CentralPanel::CentralPanel(dbWork* _db, QWidget *parent) :
     QWidget(parent)
 {
+
+    DB = _db;
+
+    WgtNum=0;
+    PrevWgtNum=0;
 
     TP = new TestPanel(this);
     connect(this,SIGNAL(sig_enterPressed()),TP,SLOT(slot_enterPressed()));
     connect(TP,SIGNAL(sig_nextPressed()),this,SLOT(slot_askNextQuestion()));
 
 
-    HP = new HelpPanel(this);
+    HP = new HelpPanel(0);
+    LP = new HelpPanel(1);
+    LP->hide();
 
-    changeWgt(1);
+    HiP = new HiPanel(this);
+
+    PsTest = new PsyhTest(DB,3,"venima",this);
+    connect(PsTest,SIGNAL(changeCentralName(QString)),this,SIGNAL(changeCentralName(QString)));
+    connect(PsTest,SIGNAL(changeLeftPanLabel(QString)),this,SIGNAL(changeLeftPanLabel(QString)));
+    connect(PsTest,SIGNAL(changeMainName(QString)),this,SIGNAL(changeMainName(QString)));
+    connect(PsTest,SIGNAL(heightChanged(int)),this,SLOT(changeScroll(int)));
+    PsTest->hide();
+    HiP->show();
+
+    PsScr = new QScrollBar(Qt::Vertical,this);
+    connect(PsScr,SIGNAL(valueChanged(int)),this,SLOT(scrollMove(int)));
+
+
+
+    changeWgt(3);
 
 
     BrainSourceImg = QImage(":/backgrounds/brain");
@@ -25,6 +47,14 @@ void CentralPanel::updateWidgets()
 {
     TP->resize(width(),height());
     HP->resize(width(),height());
+    HiP->resize(width(),height());
+    PsTest->resize(width()-18,height());
+    PsScr->setGeometry(QRect(width()-18,0,18,height()));
+
+    PsScr->setSingleStep(50);
+    PsScr->setMinimum(height());
+    PsScr->setValue(PsScr->minimum());
+
 
     BrainImg = BrainSourceImg.scaled(width(),height());
     updateBrain();
@@ -35,8 +65,10 @@ void CentralPanel::changeWgt(const int _num)
 {
     switch (_num)
     {
-        case 1: TP->show(); HP->hide(); break;
-        case 2: TP->hide(); HP->show(); break;
+        case 0: TP->hide(); HP->hide(); HiP->show(); PsTest->hide(); PrevWgtNum=WgtNum; WgtNum=0; PsScr->hide(); break;
+        case 1: TP->show(); HP->hide(); HiP->hide(); PsTest->hide(); PrevWgtNum=WgtNum; WgtNum=1; PsScr->hide(); break;
+        case 2: HP->show();  break;
+        case 3: TP->hide(); HP->hide(); HiP->hide(); PsTest->show(); PrevWgtNum=WgtNum; WgtNum=3; PsTest->renameNames(); PsScr->show(); break;
     }
 }
 
@@ -105,12 +137,33 @@ TestPanel* CentralPanel::getTestPanel()
 
 void CentralPanel::needHelp()
 {
-    changeWgt(2);
+    HP->show();
+    LP->show();
 }
 
 void CentralPanel::dontNeedHelp()
 {
     changeWgt(1);
+}
+
+void CentralPanel::scrollMove(int pos)
+{
+
+
+    PsTest->moveUp(-pos+PsScr->minimum());
+
+
+}
+
+void CentralPanel::changeScroll(int _h)
+{
+    PsScr->setMaximum(_h);
+    PsScr->setValue(PsScr->minimum());
+    PsScr->update();
+
+    qDebug()<<PsScr->minimum()<<PsScr->maximum();
+
+
 }
 
 

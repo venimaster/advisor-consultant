@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     AddPanels();
 
-    SetEtap(3);
+    SetEtap(0);
 
 }
 
@@ -20,6 +20,8 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::AddPanels()
 {
     // ÇÀÃÎËÎÂÎÊ
+
+    DB = new dbWork();
 
     HeaderPnl = new BottomPanel(1,this);
     HeaderPnl->SetText("ÑÒÀÐÒÎÂÎÅ ÎÊÍÎ");
@@ -31,13 +33,16 @@ void MainWindow::AddPanels()
 
     // ÖÅÍÒÐÀËÜÍÀß ×ÀÑÒÜ
 
-    CentralPnl = new CentralPanel(this);
+    CentralPnl = new CentralPanel(DB, this);
     connect (this,SIGNAL(EnterPressed()),CentralPnl,SLOT(slot_enterPressed()));
+    connect (CentralPnl, SIGNAL(changeMainName(QString)),this,SLOT(RenameMainName(QString)));
+    connect (CentralPnl,SIGNAL(changeCentralName(QString)),SLOT(RenameSubEtap(QString)));
 
     // ËÅÂÀß ×ÀÑÒÜ
 
     LeftPnl = new LeftPanel(3,this);
     connect (LeftPnl,SIGNAL(showHelp()),CentralPnl,SLOT(needHelp()));
+    connect (CentralPnl, SIGNAL(changeLeftPanLabel(QString)),LeftPnl,SLOT(setLabel(QString)));
 
     // Íèæíÿÿ ÷àñòü
 
@@ -53,7 +58,6 @@ void MainWindow::AddPanels()
     connect (tester,SIGNAL(RenameSubEtap(QString)),this,SLOT(RenameSubEtap(QString)));
 
     connect(LeftPnl,SIGNAL(EtapButtonPressed(int)),this,SLOT(SetEtap(int)));
-
 
 
     emit NeedRefresh();
@@ -105,9 +109,6 @@ void MainWindow::SetEtap(int _num)
         case 3:
             EtapName="ÀÍÀËÈÇ ÍÀ ÏÐÈÌÅÍÈÌÎÑÒÜ/ÍÅÏÐÈÌÅÍÈÌÎÑÒÜ ÒÅÕÍÎËÎÃÈÈ ÑÎÇ";
             Label="Ïðîâåäåíèå ñèñòåìíîãî àíàëèçà ïðîáëåìíîé îáëàñòè íà ïðåäìåò ïðèìåíèìîñòè/íåïðèìåíèìîñòè òåõíîëîãèè ÑÎÇ äëÿ çàäà÷è çàêàç÷èêà (ýòàï èäåíòèôèêàöèè)";
-            tester->Test(1,1);
-
-
         break;
         case 4:
             EtapName="ÂÛÁÎÐ ÓÑÏÅØÍÎÉ ÊÎÍÒÀÊÒÍÎÉ ÏÀÐÛ";
@@ -130,8 +131,8 @@ void MainWindow::SetEtap(int _num)
 
     }
 
-    HeaderPnl->SetText(EtapName);
-    LeftPnl->setLabel(Label);
+ //   RenameMainName(EtapName);
+ //   LeftPnl->setLabel(Label);
 
 
 
@@ -140,6 +141,8 @@ void MainWindow::SetEtap(int _num)
 void MainWindow::RenameSubEtap(QString str)
 {
     NamePnl->SetName(str);
+    NamePnl->update();
+    qDebug()<<"ASDASDSADASDASDASDASDASD";
 
 }
 
@@ -165,6 +168,12 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 
 }
 
+void MainWindow::RenameMainName(QString str)
+{
+    HeaderPnl->SetText(str);
+    HeaderPnl->update();
+    qDebug()<<str;
+}
 
 MainWindow::~MainWindow()
 {

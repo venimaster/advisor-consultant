@@ -17,6 +17,7 @@
 #include "dbwork.h"
 #include "mylineedit.h"
 #include "tester.h"
+#include "psyhtest.h"
 
 
 class MainWindow : public QMainWindow
@@ -79,7 +80,9 @@ public slots:
 
     void Refresh();
     void SetEtap(int _num);
-    void RenameSubEtap(QString );
+    void RenameSubEtap(QString);
+    void RenameMainName(QString);
+
 
 };
 

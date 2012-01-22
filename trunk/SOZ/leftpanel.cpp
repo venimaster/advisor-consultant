@@ -7,8 +7,8 @@ LeftPanel::LeftPanel(int _status, QWidget *parent) :
     Status=_status;
 
 
-    ButtonsRect = QRectF(0,0,width(),height()/2);
-    LabelRect = QRectF(0,height()/2,width(),height()/2);
+    ButtonsRect = QRectF(0,0,width(),height()/2+50);
+    LabelRect = QRectF(0,height()/2+50,width(),height()/2-50);
 
     ErrorMsg = "";
 
@@ -71,6 +71,11 @@ void LeftPanel::addHelpButton()
     HB->setGeometry(rect().left()+2,rect().bottom()-66,32,32);
     connect (HB,SIGNAL(iPressed()),this,SIGNAL(showHelp()));
     connect (HB,SIGNAL(iPressed(int)),this,SLOT(changeWGT(int)));
+
+    LB = new Literature(this);
+    LB->setGeometry(rect().left()+2+32,rect().bottom()-66,32,32);
+    connect (LB,SIGNAL(iPressed()),this,SIGNAL(showHelp()));
+    connect (LB,SIGNAL(iPressed(int)),this,SLOT(changeWGT(int)));
 }
 
 
@@ -114,7 +119,7 @@ void LeftPanel::paintEvent(QPaintEvent *)
 
     painter.setRenderHint(QPainter::Antialiasing,true);
 
-    painter.drawEllipse(0,height()/2-1,width(),1);
+    painter.drawEllipse(0,height()/2+50,width(),1);
 
     painter.setRenderHint(QPainter::Antialiasing,false);
 
@@ -152,6 +157,8 @@ void LeftPanel::resizeEvent(QResizeEvent *)
         regPanel->setGeometry(ButtonsRect.left(),ButtonsRect.top(),ButtonsRect.width(),ButtonsRect.height());
     if (HB)
         HB->setGeometry(rect().left()+2,rect().bottom()-66,32,32);
+    if (LB)
+        LB->setGeometry(rect().left()+2+50,rect().bottom()-66,32,32);
 
     update();
 
@@ -209,15 +216,15 @@ void LeftPanel::changeWGT(int st)
         etapPnl->show();
         break;
 
-    case 5:
-        choosePanel->hide();
-        regPanel->hide();
-        autPanel->hide();
-        etapPnl->hide();
-        LabelText="Справочная информация";
-        ErrorMsg="";
-        update();
-        break;
+//    case 5:
+//        choosePanel->hide();
+//        regPanel->hide();
+//        autPanel->hide();
+//        etapPnl->hide();
+//        LabelText="Справочная информация";
+//        ErrorMsg="";
+//        update();
+//        break;
 
     }
 
